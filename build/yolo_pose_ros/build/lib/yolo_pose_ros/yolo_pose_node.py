@@ -72,12 +72,12 @@ def load_model(weight_file, device):
     """
     Load the pre-trained YOLOv7 pose estimation model
     """
-    model = Model(cfg="/home/taras/thesis_ws/src/yolo_pose_ros/yolo_pose_ros/cfg/yolov7-w6-pose.yaml")
+    #model = Model(cfg="/home/taras/thesis_ws/src/yolo_pose_ros/yolo_pose_ros/cfg/yolov7-w6-pose.yaml")
 
-    model.load_state_dict(torch.load('yolov7-w6-pose2.pt', map_location=device))
+    #model.load_state_dict(torch.load('yolov7-w6-pose2.pt', map_location=device))
 
-    #model = torch.load('yolov7-w6-pose2.pt', map_location=device)['model']
-    #print(model)
+    model = torch.load('yolov7-w6-pose.pt', map_location=device)['model']
+    print("Model loaded")
     #model.load_state_dict()
 
     # Put model in inference mode
