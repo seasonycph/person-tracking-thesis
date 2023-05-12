@@ -8,10 +8,9 @@ from torchvision import transforms
 import math
 import cv2
 import numpy as np
-import os
 
 from sensor_msgs.msg import Image
-from cv_bridge import CvBridge
+from cv_bridge import CvBridge, CvBridgeError
 
 from yolo_pose_ros.utils.datasets import letterbox
 from yolo_pose_ros.utils.general import non_max_suppression_kpt
@@ -25,32 +24,34 @@ class YoloPoseNode(Node):
 
         # Initialize the node
         self.get_logger().info("YOLOPose node initialized.")
-        self.get_logger().info(f"Current directory: {os.getcwd()}")
 
         # Read the parameters for the model
         self.read_parameters()
 
         # Initialize the subscriber and the publishers
-        self.init_communications()
+        self.init_communication()
 
     def read_parameters(self):
         # Chack availability of GPU
         if torch.cuda.is_available():
-            self.get_logger().info(f"GPU available: {torch.cuda.device.__name__}")
+            self.get_logger().info(
+                f"GPU available: {torch.cuda.device.__name__}")
             self.device_ = "cuda:0"
         else:
             self.get_logger().warn("GPU not available, using CPU instead.")
             self.device_ = "cpu"
-        
+
         self.weight_file_ = "weights/yolo-pose/yolov7-w6-pose.pt"
 
         # Load the model
         self.get_logger().info("Loading model...")
         self.model_ = load_model(self.weight_file_, self.device_)
-        
-        
+        self.get_logger().info("YOLO-Pose loaded successfully.")
 
-    def init_communications(self):
+        # Create bridge to convert Image msg into jpg image
+        self.bridge_ = CvBridge()
+
+    def init_communication(self):
         """
         Initialize ROS connection
         """
@@ -63,38 +64,105 @@ class YoloPoseNode(Node):
             Image, topic, self.callback_camera_front, qos_profile=10)
 
     def callback_camera_front(self, msg):
-        
-        # Convert the raw image into a .jpg file
 
-        pass
+        # Try converting the msg into a image
+        try:
+            # Convert the raw image into a OpenCV2
+            self.cv2_image_ = self.bridge_.imgmsg_to_cv2(msg, 'bgr8')
+        except CvBridgeError as e:
+            self.get_logger().error(e)
+
+        # Run inference on the converted image
+        output, self.cv2_image_ = run_inference(
+            self.model_, self.cv2_image_, self.device_)
+        
+        # Draw keypoints and skeleton on the image
+        nimg, kpts = draw_keypoints(self.model_, output, self.cv2_image_)
+
+        # Show the inference 
+        display_inference(nimg)
+
 
 def load_model(weight_file, device):
     """
     Load the pre-trained YOLOv7 pose estimation model
     """
-    #model = Model(cfg="/home/taras/thesis_ws/src/yolo_pose_ros/yolo_pose_ros/cfg/yolov7-w6-pose.yaml")
 
-    #model.load_state_dict(torch.load('yolov7-w6-pose2.pt', map_location=device))
-
+    # Load model to GPU from the weight file
     model = torch.load(weight_file, map_location=device)['model']
-    print("Model loaded")
-    #model.load_state_dict()
 
     # Put model in inference mode
     model.float().eval()
 
     if torch.cuda.is_available():
-        # half() turns predicitons into float16 tensors, 
+        # half() turns predicitons into float16 tensors,
         # which lowers inference time
         model.half().to(device)
-    
+
     return model
+
+
+def run_inference(model, image, device):
+    # Resize and pad the image
+    image = letterbox(image, 960, stride=64, auto=True)[0]
+    # Apply transforms
+    image = transforms.ToTensor()(image)  # torch.Size([3, 567, 960])
+    # If GPU is available, run the image there
+    if torch.cuda.is_available():
+        image = image.half().to(device)
+    # Turn image into batch
+    image = image.unsqueeze(0)  # torch.Size([1, 3, 567, 960])
+    with torch.no_grad():
+        output, _ = model(image)
+
+    return output, image
+
+
+def draw_keypoints(model, output, image):
+    # Apply non-maximum suppression
+    output = non_max_suppression_kpt(output,
+                                     0.4, #Confidence threshold
+                                     0.65, #IoU threshold
+                                     nc=model.yaml['nc'], # Number of classes (only 1)
+                                     nkpt=model.yaml['nkpt'], # Number of Keypoints (17)
+                                     kpt_label=True)
+    
+    # Disable gradient propagation
+    with torch.no_grad():
+        output = output_to_keypoint(output)
+    
+    # Drop the first 7 elements so then we have 51 elements per person 
+    if len(output) != 0:
+        output = output[:, 7:]
+    
+    # Fit the frame to the needed representation
+    nimg = image[0].permute(1, 2, 0) * 255
+    nimg = nimg.cpu().numpy().astype(np.uint8)
+    nimg = cv2.cvtColor(nimg, cv2.COLOR_RGB2BGR)
+    kpts = []
+    for idx in range(output.shape[0]):
+        plot_skeleton_kpts(nimg, output[idx].T, 3) # steps will always have to be 3
+        # since for each keypoint we have 3 elements {x, y, conf.}
+    
+    return cv2.cvtColor(nimg, cv2.COLOR_BGR2RGB), kpts
+
+
+
+def display_inference(image):
+    # Create a window that sizes itself
+    cv2.namedWindow("Front Camera", cv2.WINDOW_AUTOSIZE)
+    # Show the image
+    cv2.imshow("Front Camera", image)
+    # Wait 1ms before closing the window
+    cv2.waitKey(1)
+
 
 def main(args=None):
     rclpy.init(args=args)
     node = YoloPoseNode()
     rclpy.spin(node)
     rclpy.shutdown()
+    cv2.destroyAllWindows()
 
 
 if __name__ == "__main__":
