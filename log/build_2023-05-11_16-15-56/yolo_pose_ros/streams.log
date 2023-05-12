@@ -1,0 +1,86 @@
+[1.015s] Invoking command in '/home/taras/thesis_ws/src/yolo_pose_ros': PYTHONPATH=/home/taras/thesis_ws/build/yolo_pose_ros/prefix_override:/home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/yolo_pose_ros build --build-base /home/taras/thesis_ws/build/yolo_pose_ros/build install --record /home/taras/thesis_ws/build/yolo_pose_ros/install.log --single-version-externally-managed
+[1.286s] running egg_info
+[1.286s] creating ../../build/yolo_pose_ros/yolo_pose_ros.egg-info
+[1.287s] writing ../../build/yolo_pose_ros/yolo_pose_ros.egg-info/PKG-INFO
+[1.287s] writing dependency_links to ../../build/yolo_pose_ros/yolo_pose_ros.egg-info/dependency_links.txt
+[1.287s] writing entry points to ../../build/yolo_pose_ros/yolo_pose_ros.egg-info/entry_points.txt
+[1.287s] writing requirements to ../../build/yolo_pose_ros/yolo_pose_ros.egg-info/requires.txt
+[1.287s] writing top-level names to ../../build/yolo_pose_ros/yolo_pose_ros.egg-info/top_level.txt
+[1.287s] writing manifest file '../../build/yolo_pose_ros/yolo_pose_ros.egg-info/SOURCES.txt'
+[1.289s] reading manifest file '../../build/yolo_pose_ros/yolo_pose_ros.egg-info/SOURCES.txt'
+[1.289s] writing manifest file '../../build/yolo_pose_ros/yolo_pose_ros.egg-info/SOURCES.txt'
+[1.290s] running build
+[1.290s] running build_py
+[1.290s] creating /home/taras/thesis_ws/build/yolo_pose_ros/build
+[1.290s] creating /home/taras/thesis_ws/build/yolo_pose_ros/build/lib
+[1.290s] creating /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros
+[1.290s] copying yolo_pose_ros/__init__.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros
+[1.290s] copying yolo_pose_ros/yolo_pose_node.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros
+[1.290s] creating /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+[1.291s] copying yolo_pose_ros/utils/google_utils.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+[1.291s] copying yolo_pose_ros/utils/autoanchor.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+[1.291s] copying yolo_pose_ros/utils/datasets.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+[1.291s] copying yolo_pose_ros/utils/general.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+[1.291s] copying yolo_pose_ros/utils/add_nms.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+[1.291s] copying yolo_pose_ros/utils/metrics.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+[1.291s] copying yolo_pose_ros/utils/loss.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+[1.291s] copying yolo_pose_ros/utils/__init__.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+[1.292s] copying yolo_pose_ros/utils/plots.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+[1.292s] copying yolo_pose_ros/utils/activations.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+[1.292s] copying yolo_pose_ros/utils/torch_utils.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+[1.292s] creating /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/models
+[1.292s] copying yolo_pose_ros/models/common.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/models
+[1.292s] copying yolo_pose_ros/models/__init__.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/models
+[1.292s] copying yolo_pose_ros/models/experimental.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/models
+[1.292s] copying yolo_pose_ros/models/yolo.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/models
+[1.292s] running install
+[1.293s] running install_lib
+[1.293s] creating /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros
+[1.293s] creating /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+[1.293s] copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/google_utils.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+[1.293s] copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/autoanchor.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+[1.293s] copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/datasets.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+[1.293s] copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/general.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+[1.294s] copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/add_nms.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+[1.294s] copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/metrics.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+[1.294s] copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/loss.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+[1.294s] copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/__init__.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+[1.294s] copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/plots.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+[1.294s] copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/activations.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+[1.294s] copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/torch_utils.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+[1.294s] creating /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/models
+[1.295s] copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/models/common.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/models
+[1.295s] copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/models/__init__.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/models
+[1.295s] copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/models/experimental.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/models
+[1.295s] copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/models/yolo.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/models
+[1.295s] copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/__init__.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros
+[1.295s] copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/yolo_pose_node.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros
+[1.295s] byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/google_utils.py to google_utils.cpython-310.pyc
+[1.296s] byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/autoanchor.py to autoanchor.cpython-310.pyc
+[1.297s] byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/datasets.py to datasets.cpython-310.pyc
+[1.305s] byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/general.py to general.cpython-310.pyc
+[1.310s] byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/add_nms.py to add_nms.cpython-310.pyc
+[1.311s] byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/metrics.py to metrics.cpython-310.pyc
+[1.312s] byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/loss.py to loss.cpython-310.pyc
+[1.321s] byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/__init__.py to __init__.cpython-310.pyc
+[1.321s] byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/plots.py to plots.cpython-310.pyc
+[1.325s] byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/activations.py to activations.cpython-310.pyc
+[1.325s] byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/torch_utils.py to torch_utils.cpython-310.pyc
+[1.327s] byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/models/common.py to common.cpython-310.pyc
+[1.341s] byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/models/__init__.py to __init__.cpython-310.pyc
+[1.341s] byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/models/experimental.py to experimental.cpython-310.pyc
+[1.343s] byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/models/yolo.py to yolo.cpython-310.pyc
+[1.348s] byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/__init__.py to __init__.cpython-310.pyc
+[1.348s] byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/yolo_pose_node.py to yolo_pose_node.cpython-310.pyc
+[1.349s] running install_data
+[1.349s] creating /home/taras/thesis_ws/install/yolo_pose_ros/share/ament_index
+[1.349s] creating /home/taras/thesis_ws/install/yolo_pose_ros/share/ament_index/resource_index
+[1.350s] creating /home/taras/thesis_ws/install/yolo_pose_ros/share/ament_index/resource_index/packages
+[1.350s] copying resource/yolo_pose_ros -> /home/taras/thesis_ws/install/yolo_pose_ros/share/ament_index/resource_index/packages
+[1.350s] copying package.xml -> /home/taras/thesis_ws/install/yolo_pose_ros/share/yolo_pose_ros
+[1.350s] running install_egg_info
+[1.351s] Copying ../../build/yolo_pose_ros/yolo_pose_ros.egg-info to /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros-1.0.0-py3.10.egg-info
+[1.352s] running install_scripts
+[1.370s] Installing yolo_pose_node script to /home/taras/thesis_ws/install/yolo_pose_ros/lib/yolo_pose_ros
+[1.370s] writing list of installed files to '/home/taras/thesis_ws/build/yolo_pose_ros/install.log'
+[1.409s] Invoked command in '/home/taras/thesis_ws/src/yolo_pose_ros' returned '0': PYTHONPATH=/home/taras/thesis_ws/build/yolo_pose_ros/prefix_override:/home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/yolo_pose_ros build --build-base /home/taras/thesis_ws/build/yolo_pose_ros/build install --record /home/taras/thesis_ws/build/yolo_pose_ros/install.log --single-version-externally-managed

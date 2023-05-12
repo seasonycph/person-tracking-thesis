@@ -1,0 +1,16 @@
+package.xml
+setup.cfg
+setup.py
+../../build/drspaam/drspaam.egg-info/PKG-INFO
+../../build/drspaam/drspaam.egg-info/SOURCES.txt
+../../build/drspaam/drspaam.egg-info/dependency_links.txt
+../../build/drspaam/drspaam.egg-info/entry_points.txt
+../../build/drspaam/drspaam.egg-info/requires.txt
+../../build/drspaam/drspaam.egg-info/top_level.txt
+../../build/drspaam/drspaam.egg-info/zip-safe
+drspaam/__init__.py
+drspaam/drspaam_node.py
+resource/drspaam
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py
