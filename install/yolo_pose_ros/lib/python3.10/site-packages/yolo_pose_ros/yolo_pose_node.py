@@ -42,7 +42,7 @@ class YoloPoseNode(Node):
             self.get_logger().warn("GPU not available, using CPU instead.")
             self.device_ = "cpu"
         
-        self.weight_file_ = "/home/taras/thesis_ws/src/yolo_pose_ros/weights/yolov7-w6-pose.pt"
+        self.weight_file_ = "weights/yolo-pose/yolov7-w6-pose.pt"
 
         # Load the model
         self.get_logger().info("Loading model...")
@@ -76,7 +76,7 @@ def load_model(weight_file, device):
 
     #model.load_state_dict(torch.load('yolov7-w6-pose2.pt', map_location=device))
 
-    model = torch.load('yolov7-w6-pose.pt', map_location=device)['model']
+    model = torch.load(weight_file, map_location=device)['model']
     print("Model loaded")
     #model.load_state_dict()
 

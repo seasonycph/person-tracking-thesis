@@ -35,7 +35,7 @@ class DrSpaamNode(Node):
         """
         Reads parameters from ROS server
         """
-        self.weight_file = "/home/taras/thesis_ws/src/drspaam/ckpts/dr_spaam_e40.pth"
+        self.weight_file = "weights/dr-spaam/dr_spaam_e40.pth"
         self.stride = 1
         self.conf_thresh = 0.5
 
