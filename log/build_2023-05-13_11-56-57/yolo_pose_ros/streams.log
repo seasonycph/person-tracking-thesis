@@ -1,0 +1,21 @@
+[1.001s] Invoking command in '/home/taras/thesis_ws/src/yolo_pose_ros': PYTHONPATH=/home/taras/thesis_ws/build/yolo_pose_ros/prefix_override:/home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/yolo_pose_ros build --build-base /home/taras/thesis_ws/build/yolo_pose_ros/build install --record /home/taras/thesis_ws/build/yolo_pose_ros/install.log --single-version-externally-managed
+[1.277s] running egg_info
+[1.278s] writing ../../build/yolo_pose_ros/yolo_pose_ros.egg-info/PKG-INFO
+[1.278s] writing dependency_links to ../../build/yolo_pose_ros/yolo_pose_ros.egg-info/dependency_links.txt
+[1.278s] writing entry points to ../../build/yolo_pose_ros/yolo_pose_ros.egg-info/entry_points.txt
+[1.278s] writing requirements to ../../build/yolo_pose_ros/yolo_pose_ros.egg-info/requires.txt
+[1.278s] writing top-level names to ../../build/yolo_pose_ros/yolo_pose_ros.egg-info/top_level.txt
+[1.280s] reading manifest file '../../build/yolo_pose_ros/yolo_pose_ros.egg-info/SOURCES.txt'
+[1.280s] writing manifest file '../../build/yolo_pose_ros/yolo_pose_ros.egg-info/SOURCES.txt'
+[1.281s] running build
+[1.281s] running build_py
+[1.281s] running install
+[1.281s] running install_lib
+[1.283s] running install_data
+[1.283s] running install_egg_info
+[1.285s] removing '/home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros-1.0.0-py3.10.egg-info' (and everything under it)
+[1.285s] Copying ../../build/yolo_pose_ros/yolo_pose_ros.egg-info to /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros-1.0.0-py3.10.egg-info
+[1.285s] running install_scripts
+[1.304s] Installing yolo_pose_node script to /home/taras/thesis_ws/install/yolo_pose_ros/lib/yolo_pose_ros
+[1.305s] writing list of installed files to '/home/taras/thesis_ws/build/yolo_pose_ros/install.log'
+[1.334s] Invoked command in '/home/taras/thesis_ws/src/yolo_pose_ros' returned '0': PYTHONPATH=/home/taras/thesis_ws/build/yolo_pose_ros/prefix_override:/home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/yolo_pose_ros build --build-base /home/taras/thesis_ws/build/yolo_pose_ros/build install --record /home/taras/thesis_ws/build/yolo_pose_ros/install.log --single-version-externally-managed

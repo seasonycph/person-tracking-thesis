@@ -59,8 +59,8 @@ class YoloPoseNode(Node):
         """
 
         # Publisher
-        # self.dets_pub_ = self.create_publisher(
-        #     msg_type=Pose, torpic="/yolo_pose/detections", qos_profile=10)
+        self.dets_pub_ = self.create_publisher(
+            msg_type=PersonPose, topic="/yolo_pose/detections", qos_profile=10)
 
         # Subscriber
         topic = "/lewis_b1/camera_front/rgb/image_raw"

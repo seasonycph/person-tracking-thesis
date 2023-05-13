@@ -1,1 +1,1 @@
-rclpy:seondor_msg:torch:torchvision
+custom_interfaces:rclpy:seondor_msg:torch:torchvision
