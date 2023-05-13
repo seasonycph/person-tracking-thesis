@@ -1,0 +1,10 @@
+# Message to save the keypoints, the confidences and other info. 
+#about the pose of a person
+
+std_msgs/Header header
+
+float32[] keypoints     # Positions of the keypoints in the same order than in YOLO-Pose
+
+float32[] kpt_conf      # Confidences of each keypoints
+
+bool[] looking          # Flag to asses whether the person is looking at the robot or not 

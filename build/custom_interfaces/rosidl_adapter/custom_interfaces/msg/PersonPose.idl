@@ -1,0 +1,28 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from custom_interfaces/msg/PersonPose.msg
+// generated code does not contain a copyright notice
+
+#include "std_msgs/msg/Header.idl"
+
+module custom_interfaces {
+  module msg {
+    @verbatim (language="comment", text=
+      " Message to save the keypoints, the confidences and other info. " "\n"
+      "about the pose of a person")
+    struct PersonPose {
+      std_msgs::msg::Header header;
+
+      @verbatim (language="comment", text=
+        "Positions of the keypoints in the same order than in YOLO-Pose")
+      sequence<float> keypoints;
+
+      @verbatim (language="comment", text=
+        "Confidences of each keypoints")
+      sequence<float> kpt_conf;
+
+      @verbatim (language="comment", text=
+        "Flag to asses whether the person is looking at the robot or not")
+      sequence<boolean> looking;
+    };
+  };
+};

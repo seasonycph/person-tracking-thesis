@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import time
 import rclpy
 from rclpy.node import Node
 
@@ -10,6 +11,7 @@ import cv2
 import numpy as np
 
 from sensor_msgs.msg import Image
+from custom_interfaces.msg import PersonPose
 from cv_bridge import CvBridge, CvBridgeError
 
 from yolo_pose_ros.utils.datasets import letterbox
@@ -57,6 +59,8 @@ class YoloPoseNode(Node):
         """
 
         # Publisher
+        # self.dets_pub_ = self.create_publisher(
+        #     msg_type=Pose, torpic="/yolo_pose/detections", qos_profile=10)
 
         # Subscriber
         topic = "/lewis_b1/camera_front/rgb/image_raw"
@@ -71,15 +75,17 @@ class YoloPoseNode(Node):
             self.cv2_image_ = self.bridge_.imgmsg_to_cv2(msg, 'bgr8')
         except CvBridgeError as e:
             self.get_logger().error(e)
-
+        t = time.time()
         # Run inference on the converted image
         output, self.cv2_image_ = run_inference(
             self.model_, self.cv2_image_, self.device_)
-        
+
         # Draw keypoints and skeleton on the image
         nimg, kpts = draw_keypoints(self.model_, output, self.cv2_image_)
+        #print(kpts)
+        self.get_logger().info(f"FPS: {1 / (time.time() - t)}")
 
-        # Show the inference 
+        # Show the inference
         display_inference(nimg)
 
 
@@ -103,6 +109,9 @@ def load_model(weight_file, device):
 
 
 def run_inference(model, image, device):
+    """
+    Function to run the image through the model
+    """
     # Resize and pad the image
     image = letterbox(image, 960, stride=64, auto=True)[0]
     # Apply transforms
@@ -121,31 +130,35 @@ def run_inference(model, image, device):
 def draw_keypoints(model, output, image):
     # Apply non-maximum suppression
     output = non_max_suppression_kpt(output,
-                                     0.4, #Confidence threshold
-                                     0.65, #IoU threshold
-                                     nc=model.yaml['nc'], # Number of classes (only 1)
-                                     nkpt=model.yaml['nkpt'], # Number of Keypoints (17)
+                                     0.4,  # Confidence threshold
+                                     0.65,  # IoU threshold
+                                     # Number of classes (only 1)
+                                     nc=model.yaml['nc'],
+                                     # Number of Keypoints (17)
+                                     nkpt=model.yaml['nkpt'],
                                      kpt_label=True)
-    
+
     # Disable gradient propagation
     with torch.no_grad():
         output = output_to_keypoint(output)
-    
-    # Drop the first 7 elements so then we have 51 elements per person 
+
+    # Drop the first 7 elements so then we have 51 elements per person
     if len(output) != 0:
         output = output[:, 7:]
-    
+
     # Fit the frame to the needed representation
     nimg = image[0].permute(1, 2, 0) * 255
     nimg = nimg.cpu().numpy().astype(np.uint8)
     nimg = cv2.cvtColor(nimg, cv2.COLOR_RGB2BGR)
     kpts = []
     for idx in range(output.shape[0]):
-        plot_skeleton_kpts(nimg, output[idx].T, 3) # steps will always have to be 3
+        # steps will always have to be 3
         # since for each keypoint we have 3 elements {x, y, conf.}
-    
-    return nimg, kpts
+        plot_skeleton_kpts(nimg, output[idx].T, 3)
+        kpts.append(output[idx])
+        
 
+    return nimg, kpts
 
 
 def display_inference(image):
