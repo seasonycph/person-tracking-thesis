@@ -30,6 +30,9 @@ CMakeFiles/custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/cust
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__struct.h \
+  /opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/time__struct.h \
+  /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence.h \
   rosidl_generator_c/custom_interfaces/msg/detail/person_pose__type_support.h \
   rosidl_generator_c/custom_interfaces/msg/rosidl_generator_c__visibility_control.h \
@@ -46,6 +49,12 @@ rosidl_generator_c/custom_interfaces/msg/rosidl_generator_c__visibility_control.
 /opt/ros/humble/include/rosidl_typesupport_c/rosidl_typesupport_c/identifier.h:
 
 /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence.h:
+
+/opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string.h:
+
+/opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/time__struct.h:
+
+/opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__struct.h:
 
 /usr/include/x86_64-linux-gnu/bits/long-double.h:
 

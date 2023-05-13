@@ -64,9 +64,32 @@ CMakeFiles/custom_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_type
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   rosidl_generator_c/custom_interfaces/msg/rosidl_generator_c__visibility_control.h \
   rosidl_generator_c/custom_interfaces/msg/detail/person_pose__struct.h \
+  /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__struct.h \
+  /opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/time__struct.h \
+  /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence.h \
+  /opt/ros/humble/include/std_msgs/std_msgs/msg/header.h \
+  /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__functions.h \
+  /opt/ros/humble/include/std_msgs/std_msgs/msg/rosidl_generator_c__visibility_control.h \
+  /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__type_support.h \
+  /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__rosidl_typesupport_introspection_c.h \
+  /opt/ros/humble/include/std_msgs/std_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence_functions.h
 
+
+/opt/ros/humble/include/std_msgs/std_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h:
+
+/opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__rosidl_typesupport_introspection_c.h:
+
+/opt/ros/humble/include/std_msgs/std_msgs/msg/rosidl_generator_c__visibility_control.h:
+
+/opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__functions.h:
+
+/opt/ros/humble/include/std_msgs/std_msgs/msg/header.h:
+
+/opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/time__struct.h:
+
+/opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__struct.h:
 
 /usr/include/alloca.h:
 
@@ -106,7 +129,11 @@ rosidl_typesupport_introspection_c/custom_interfaces/msg/detail/person_pose__typ
 
 /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/message_type_support_struct.h:
 
+/opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__type_support.h:
+
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
+
+/opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string.h:
 
 /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/visibility_control.h:
 

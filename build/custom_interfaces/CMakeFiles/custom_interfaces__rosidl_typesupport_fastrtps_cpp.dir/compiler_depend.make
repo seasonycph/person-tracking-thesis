@@ -196,6 +196,8 @@ CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesup
   /usr/include/c++/11/stdexcept \
   /opt/ros/humble/include/rosidl_runtime_cpp/rosidl_runtime_cpp/message_initialization.hpp \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/message_initialization.h \
+  /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__struct.hpp \
+  /opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/time__struct.hpp \
   /opt/ros/humble/include/fastcdr/fastcdr/Cdr.h \
   /opt/ros/humble/include/fastcdr/fastcdr/fastcdr_dll.h \
   /opt/ros/humble/include/fastcdr/fastcdr/config.h \
@@ -277,11 +279,7 @@ CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesup
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h:
 
-/usr/include/c++/11/bits/locale_classes.tcc:
-
 /usr/include/c++/11/bits/locale_classes.h:
-
-/usr/include/c++/11/bits/ios_base.h:
 
 /usr/include/c++/11/bits/erase_if.h:
 
@@ -294,6 +292,14 @@ CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesup
 /opt/ros/humble/include/fastcdr/fastcdr/config.h:
 
 /opt/ros/humble/include/fastcdr/fastcdr/fastcdr_dll.h:
+
+/usr/include/c++/11/bits/locale_classes.tcc:
+
+/opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/time__struct.hpp:
+
+/usr/include/c++/11/bits/ios_base.h:
+
+/opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__struct.hpp:
 
 /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/message_initialization.h:
 

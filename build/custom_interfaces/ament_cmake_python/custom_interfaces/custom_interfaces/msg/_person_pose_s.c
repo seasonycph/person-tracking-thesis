@@ -19,6 +19,10 @@
 #include "rosidl_runtime_c/primitives_sequence.h"
 #include "rosidl_runtime_c/primitives_sequence_functions.h"
 
+ROSIDL_GENERATOR_C_IMPORT
+bool std_msgs__msg__header__convert_from_py(PyObject * _pymsg, void * _ros_message);
+ROSIDL_GENERATOR_C_IMPORT
+PyObject * std_msgs__msg__header__convert_to_py(void * raw_ros_message);
 
 ROSIDL_GENERATOR_C_EXPORT
 bool custom_interfaces__msg__person_pose__convert_from_py(PyObject * _pymsg, void * _ros_message)
@@ -53,6 +57,17 @@ bool custom_interfaces__msg__person_pose__convert_from_py(PyObject * _pymsg, voi
     assert(strncmp("custom_interfaces.msg._person_pose.PersonPose", full_classname_dest, 45) == 0);
   }
   custom_interfaces__msg__PersonPose * ros_message = _ros_message;
+  {  // header
+    PyObject * field = PyObject_GetAttrString(_pymsg, "header");
+    if (!field) {
+      return false;
+    }
+    if (!std_msgs__msg__header__convert_from_py(field, &ros_message->header)) {
+      Py_DECREF(field);
+      return false;
+    }
+    Py_DECREF(field);
+  }
   {  // keypoints
     PyObject * field = PyObject_GetAttrString(_pymsg, "keypoints");
     if (!field) {
@@ -261,6 +276,20 @@ PyObject * custom_interfaces__msg__person_pose__convert_to_py(void * raw_ros_mes
     }
   }
   custom_interfaces__msg__PersonPose * ros_message = (custom_interfaces__msg__PersonPose *)raw_ros_message;
+  {  // header
+    PyObject * field = NULL;
+    field = std_msgs__msg__header__convert_to_py(&ros_message->header);
+    if (!field) {
+      return NULL;
+    }
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "header", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
   {  // keypoints
     PyObject * field = NULL;
     field = PyObject_GetAttrString(_pymessage, "keypoints");

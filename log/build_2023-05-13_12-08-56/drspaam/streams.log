@@ -1,0 +1,21 @@
+[0.672s] Invoking command in '/home/taras/thesis_ws/src/drspaam': PYTHONPATH=/home/taras/thesis_ws/build/drspaam/prefix_override:/home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/drspaam build --build-base /home/taras/thesis_ws/build/drspaam/build install --record /home/taras/thesis_ws/build/drspaam/install.log --single-version-externally-managed
+[0.929s] running egg_info
+[0.929s] writing ../../build/drspaam/drspaam.egg-info/PKG-INFO
+[0.930s] writing dependency_links to ../../build/drspaam/drspaam.egg-info/dependency_links.txt
+[0.930s] writing entry points to ../../build/drspaam/drspaam.egg-info/entry_points.txt
+[0.930s] writing requirements to ../../build/drspaam/drspaam.egg-info/requires.txt
+[0.930s] writing top-level names to ../../build/drspaam/drspaam.egg-info/top_level.txt
+[0.932s] reading manifest file '../../build/drspaam/drspaam.egg-info/SOURCES.txt'
+[0.932s] writing manifest file '../../build/drspaam/drspaam.egg-info/SOURCES.txt'
+[0.932s] running build
+[0.932s] running build_py
+[0.933s] running install
+[0.933s] running install_lib
+[0.934s] running install_data
+[0.935s] running install_egg_info
+[0.936s] removing '/home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages/drspaam-1.0.0-py3.10.egg-info' (and everything under it)
+[0.936s] Copying ../../build/drspaam/drspaam.egg-info to /home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages/drspaam-1.0.0-py3.10.egg-info
+[0.937s] running install_scripts
+[0.955s] Installing dr_spaam_node script to /home/taras/thesis_ws/install/drspaam/lib/drspaam
+[0.955s] writing list of installed files to '/home/taras/thesis_ws/build/drspaam/install.log'
+[0.984s] Invoked command in '/home/taras/thesis_ws/src/drspaam' returned '0': PYTHONPATH=/home/taras/thesis_ws/build/drspaam/prefix_override:/home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/drspaam build --build-base /home/taras/thesis_ws/build/drspaam/build install --record /home/taras/thesis_ws/build/drspaam/install.log --single-version-externally-managed

@@ -23,6 +23,9 @@ from yolo_pose_ros.models.yolo import Model
 class YoloPoseNode(Node):
     def __init__(self):
         super().__init__("yolo_pose_node")
+        
+        # Get parameter to show the video
+        self.declare_parameter('show_video', True)
 
         # Initialize the node
         self.get_logger().info("YOLOPose node initialized.")
@@ -86,7 +89,8 @@ class YoloPoseNode(Node):
         self.get_logger().info(f"FPS: {1 / (time.time() - t)}")
 
         # Show the inference
-        display_inference(nimg)
+        if self.get_parameter('show_video') == True:
+            display_inference(nimg)
 
 
 def load_model(weight_file, device):
