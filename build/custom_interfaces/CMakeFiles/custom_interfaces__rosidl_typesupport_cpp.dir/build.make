@@ -108,6 +108,35 @@ rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt
 rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/std_msgs/msg/UInt64MultiArray.idl
 rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/std_msgs/msg/UInt8.idl
 rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/std_msgs/msg/UInt8MultiArray.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/Accel.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/AccelStamped.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/AccelWithCovariance.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/AccelWithCovarianceStamped.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/Inertia.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/InertiaStamped.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/Point.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/Point32.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/PointStamped.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/Polygon.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/PolygonStamped.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/Pose.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/Pose2D.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/PoseArray.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/PoseStamped.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/PoseWithCovariance.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/PoseWithCovarianceStamped.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/Quaternion.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/QuaternionStamped.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/Transform.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/TransformStamped.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/Twist.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/TwistStamped.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/TwistWithCovariance.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/TwistWithCovarianceStamped.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/Vector3.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/Vector3Stamped.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/Wrench.idl
+rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp: /opt/ros/humble/share/geometry_msgs/msg/WrenchStamped.idl
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/taras/thesis_ws/build/custom_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ type support dispatch for ROS interfaces"
 	/usr/bin/python3.10 /opt/ros/humble/lib/rosidl_typesupport_cpp/rosidl_typesupport_cpp --generator-arguments-file /home/taras/thesis_ws/build/custom_interfaces/rosidl_typesupport_cpp__arguments.json --typesupports rosidl_typesupport_fastrtps_cpp rosidl_typesupport_introspection_cpp
 
@@ -134,6 +163,7 @@ custom_interfaces__rosidl_typesupport_cpp_EXTERNAL_OBJECTS =
 
 libcustom_interfaces__rosidl_typesupport_cpp.so: CMakeFiles/custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp.o
 libcustom_interfaces__rosidl_typesupport_cpp.so: CMakeFiles/custom_interfaces__rosidl_typesupport_cpp.dir/build.make
+libcustom_interfaces__rosidl_typesupport_cpp.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_cpp.so
 libcustom_interfaces__rosidl_typesupport_cpp.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_cpp.so
 libcustom_interfaces__rosidl_typesupport_cpp.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_cpp.so
 libcustom_interfaces__rosidl_typesupport_cpp.so: /opt/ros/humble/lib/librosidl_typesupport_cpp.so

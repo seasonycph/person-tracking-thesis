@@ -34,6 +34,9 @@ CMakeFiles/custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/cust
   /opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/time__struct.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence.h \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose__struct.h \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__struct.h \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion__struct.h \
   rosidl_generator_c/custom_interfaces/msg/detail/person_pose__type_support.h \
   rosidl_generator_c/custom_interfaces/msg/rosidl_generator_c__visibility_control.h \
   /opt/ros/humble/include/rosidl_typesupport_c/rosidl_typesupport_c/identifier.h \
@@ -46,9 +49,13 @@ CMakeFiles/custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/cust
 
 rosidl_generator_c/custom_interfaces/msg/rosidl_generator_c__visibility_control.h:
 
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose__struct.h:
+
 /opt/ros/humble/include/rosidl_typesupport_c/rosidl_typesupport_c/identifier.h:
 
 /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence.h:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__struct.h:
 
 /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string.h:
 
@@ -93,6 +100,8 @@ rosidl_generator_c/custom_interfaces/msg/detail/person_pose__type_support.h:
 /usr/include/stdc-predef.h:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion__struct.h:
 
 rosidl_typesupport_c/custom_interfaces/msg/person_pose__type_support.cpp:
 

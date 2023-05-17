@@ -34,11 +34,26 @@ extern "C"
 {
 #endif
 
-#include "rosidl_runtime_c/primitives_sequence.h"  // keypoints, kpt_conf, looking
-#include "rosidl_runtime_c/primitives_sequence_functions.h"  // keypoints, kpt_conf, looking
+#include "geometry_msgs/msg/detail/point__functions.h"  // keypoints
+#include "rosidl_runtime_c/primitives_sequence.h"  // kpt_conf, looking
+#include "rosidl_runtime_c/primitives_sequence_functions.h"  // kpt_conf, looking
 #include "std_msgs/msg/detail/header__functions.h"  // header
 
 // forward declare type support functions
+ROSIDL_TYPESUPPORT_FASTRTPS_C_IMPORT_custom_interfaces
+size_t get_serialized_size_geometry_msgs__msg__Point(
+  const void * untyped_ros_message,
+  size_t current_alignment);
+
+ROSIDL_TYPESUPPORT_FASTRTPS_C_IMPORT_custom_interfaces
+size_t max_serialized_size_geometry_msgs__msg__Point(
+  bool & full_bounded,
+  bool & is_plain,
+  size_t current_alignment);
+
+ROSIDL_TYPESUPPORT_FASTRTPS_C_IMPORT_custom_interfaces
+const rosidl_message_type_support_t *
+  ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_fastrtps_c, geometry_msgs, msg, Point)();
 ROSIDL_TYPESUPPORT_FASTRTPS_C_IMPORT_custom_interfaces
 size_t get_serialized_size_std_msgs__msg__Header(
   const void * untyped_ros_message,
@@ -82,10 +97,21 @@ static bool _PersonPose__cdr_serialize(
 
   // Field name: keypoints
   {
+    const message_type_support_callbacks_t * callbacks =
+      static_cast<const message_type_support_callbacks_t *>(
+      ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
+        rosidl_typesupport_fastrtps_c, geometry_msgs, msg, Point
+      )()->data);
     size_t size = ros_message->keypoints.size;
     auto array_ptr = ros_message->keypoints.data;
     cdr << static_cast<uint32_t>(size);
-    cdr.serializeArray(array_ptr, size);
+    for (size_t i = 0; i < size; ++i) {
+      if (!callbacks->cdr_serialize(
+          &array_ptr[i], cdr))
+      {
+        return false;
+      }
+    }
   }
 
   // Field name: kpt_conf
@@ -132,18 +158,29 @@ static bool _PersonPose__cdr_deserialize(
 
   // Field name: keypoints
   {
+    const message_type_support_callbacks_t * callbacks =
+      static_cast<const message_type_support_callbacks_t *>(
+      ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
+        rosidl_typesupport_fastrtps_c, geometry_msgs, msg, Point
+      )()->data);
     uint32_t cdrSize;
     cdr >> cdrSize;
     size_t size = static_cast<size_t>(cdrSize);
     if (ros_message->keypoints.data) {
-      rosidl_runtime_c__float__Sequence__fini(&ros_message->keypoints);
+      geometry_msgs__msg__Point__Sequence__fini(&ros_message->keypoints);
     }
-    if (!rosidl_runtime_c__float__Sequence__init(&ros_message->keypoints, size)) {
+    if (!geometry_msgs__msg__Point__Sequence__init(&ros_message->keypoints, size)) {
       fprintf(stderr, "failed to create array for field 'keypoints'");
       return false;
     }
     auto array_ptr = ros_message->keypoints.data;
-    cdr.deserializeArray(array_ptr, size);
+    for (size_t i = 0; i < size; ++i) {
+      if (!callbacks->cdr_deserialize(
+          cdr, &array_ptr[i]))
+      {
+        return false;
+      }
+    }
   }
 
   // Field name: kpt_conf
@@ -209,10 +246,11 @@ size_t get_serialized_size_custom_interfaces__msg__PersonPose(
     auto array_ptr = ros_message->keypoints.data;
     current_alignment += padding +
       eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
-    (void)array_ptr;
-    size_t item_size = sizeof(array_ptr[0]);
-    current_alignment += array_size * item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment += get_serialized_size_geometry_msgs__msg__Point(
+        &array_ptr[index], current_alignment);
+    }
   }
   // field.name kpt_conf
   {
@@ -286,8 +324,16 @@ size_t max_serialized_size_custom_interfaces__msg__PersonPose(
     current_alignment += padding +
       eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
 
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+
+    for (size_t index = 0; index < array_size; ++index) {
+      bool inner_full_bounded;
+      bool inner_is_plain;
+      current_alignment +=
+        max_serialized_size_geometry_msgs__msg__Point(
+        inner_full_bounded, inner_is_plain, current_alignment);
+      full_bounded &= inner_full_bounded;
+      is_plain &= inner_is_plain;
+    }
   }
   // member: kpt_conf
   {

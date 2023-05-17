@@ -17,6 +17,8 @@
 // Include directives for member types
 // Member 'header'
 #include "std_msgs/msg/detail/header__traits.hpp"
+// Member 'keypoints'
+#include "geometry_msgs/msg/detail/point__traits.hpp"
 
 namespace custom_interfaces
 {
@@ -44,7 +46,7 @@ inline void to_flow_style_yaml(
       out << "keypoints: [";
       size_t pending_items = msg.keypoints.size();
       for (auto item : msg.keypoints) {
-        rosidl_generator_traits::value_to_yaml(item, out);
+        to_flow_style_yaml(item, out);
         if (--pending_items > 0) {
           out << ", ";
         }
@@ -117,9 +119,8 @@ inline void to_block_style_yaml(
         if (indentation > 0) {
           out << std::string(indentation, ' ');
         }
-        out << "- ";
-        rosidl_generator_traits::value_to_yaml(item, out);
-        out << "\n";
+        out << "-\n";
+        to_block_style_yaml(item, out, indentation + 2);
       }
     }
   }

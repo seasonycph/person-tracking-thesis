@@ -39,46 +39,46 @@ void PersonPose_fini_function(void * message_memory)
 
 size_t size_function__PersonPose__keypoints(const void * untyped_member)
 {
-  const auto * member = reinterpret_cast<const std::vector<float> *>(untyped_member);
+  const auto * member = reinterpret_cast<const std::vector<geometry_msgs::msg::Point> *>(untyped_member);
   return member->size();
 }
 
 const void * get_const_function__PersonPose__keypoints(const void * untyped_member, size_t index)
 {
   const auto & member =
-    *reinterpret_cast<const std::vector<float> *>(untyped_member);
+    *reinterpret_cast<const std::vector<geometry_msgs::msg::Point> *>(untyped_member);
   return &member[index];
 }
 
 void * get_function__PersonPose__keypoints(void * untyped_member, size_t index)
 {
   auto & member =
-    *reinterpret_cast<std::vector<float> *>(untyped_member);
+    *reinterpret_cast<std::vector<geometry_msgs::msg::Point> *>(untyped_member);
   return &member[index];
 }
 
 void fetch_function__PersonPose__keypoints(
   const void * untyped_member, size_t index, void * untyped_value)
 {
-  const auto & item = *reinterpret_cast<const float *>(
+  const auto & item = *reinterpret_cast<const geometry_msgs::msg::Point *>(
     get_const_function__PersonPose__keypoints(untyped_member, index));
-  auto & value = *reinterpret_cast<float *>(untyped_value);
+  auto & value = *reinterpret_cast<geometry_msgs::msg::Point *>(untyped_value);
   value = item;
 }
 
 void assign_function__PersonPose__keypoints(
   void * untyped_member, size_t index, const void * untyped_value)
 {
-  auto & item = *reinterpret_cast<float *>(
+  auto & item = *reinterpret_cast<geometry_msgs::msg::Point *>(
     get_function__PersonPose__keypoints(untyped_member, index));
-  const auto & value = *reinterpret_cast<const float *>(untyped_value);
+  const auto & value = *reinterpret_cast<const geometry_msgs::msg::Point *>(untyped_value);
   item = value;
 }
 
 void resize_function__PersonPose__keypoints(void * untyped_member, size_t size)
 {
   auto * member =
-    reinterpret_cast<std::vector<float> *>(untyped_member);
+    reinterpret_cast<std::vector<geometry_msgs::msg::Point> *>(untyped_member);
   member->resize(size);
 }
 
@@ -176,9 +176,9 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember PersonPose_me
   },
   {
     "keypoints",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_MESSAGE,  // type
     0,  // upper bound of string
-    nullptr,  // members of sub message
+    ::rosidl_typesupport_introspection_cpp::get_message_type_support_handle<geometry_msgs::msg::Point>(),  // members of sub message
     true,  // is array
     0,  // array size
     false,  // is upper bound

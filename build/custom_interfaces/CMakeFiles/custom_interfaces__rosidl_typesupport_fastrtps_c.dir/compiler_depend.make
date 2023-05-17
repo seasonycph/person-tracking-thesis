@@ -226,9 +226,14 @@ CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesuppo
   /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__struct.h \
   /opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/time__struct.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string.h \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose__struct.h \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__struct.h \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion__struct.h \
   rosidl_generator_c/custom_interfaces/msg/detail/person_pose__functions.h \
   /usr/include/c++/11/stdlib.h \
   rosidl_generator_c/custom_interfaces/msg/rosidl_generator_c__visibility_control.h \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose__functions.h \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/rosidl_generator_c__visibility_control.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence_functions.h \
   /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__functions.h \
   /opt/ros/humble/include/std_msgs/std_msgs/msg/rosidl_generator_c__visibility_control.h
@@ -239,6 +244,8 @@ rosidl_generator_c/custom_interfaces/msg/rosidl_generator_c__visibility_control.
 /usr/include/c++/11/stdlib.h:
 
 rosidl_generator_c/custom_interfaces/msg/detail/person_pose__functions.h:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__struct.h:
 
 /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string.h:
 
@@ -488,6 +495,8 @@ rosidl_typesupport_fastrtps_c/custom_interfaces/msg/rosidl_typesupport_fastrtps_
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose__struct.h:
+
 /usr/include/c++/11/bits/cxxabi_init_exception.h:
 
 /usr/include/wchar.h:
@@ -592,6 +601,8 @@ rosidl_typesupport_fastrtps_c/custom_interfaces/msg/detail/person_pose__rosidl_t
 
 /usr/include/c++/11/iosfwd:
 
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/rosidl_generator_c__visibility_control.h:
+
 /usr/include/x86_64-linux-gnu/bits/types.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
@@ -613,6 +624,8 @@ rosidl_typesupport_fastrtps_c/custom_interfaces/msg/detail/person_pose__rosidl_t
 /usr/include/locale.h:
 
 /usr/include/x86_64-linux-gnu/bits/locale.h:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion__struct.h:
 
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
 
@@ -651,6 +664,8 @@ rosidl_generator_c/custom_interfaces/msg/detail/person_pose__struct.h:
 /usr/include/x86_64-linux-gnu/bits/time.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose__functions.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
 

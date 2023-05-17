@@ -18,6 +18,9 @@
 // Member `header`
 #include "std_msgs/msg/detail/header__rosidl_typesupport_introspection_c.h"
 // Member `keypoints`
+#include "geometry_msgs/msg/point.h"
+// Member `keypoints`
+#include "geometry_msgs/msg/detail/point__rosidl_typesupport_introspection_c.h"
 // Member `kpt_conf`
 // Member `looking`
 #include "rosidl_runtime_c/primitives_sequence_functions.h"
@@ -44,56 +47,56 @@ void custom_interfaces__msg__PersonPose__rosidl_typesupport_introspection_c__Per
 size_t custom_interfaces__msg__PersonPose__rosidl_typesupport_introspection_c__size_function__PersonPose__keypoints(
   const void * untyped_member)
 {
-  const rosidl_runtime_c__float__Sequence * member =
-    (const rosidl_runtime_c__float__Sequence *)(untyped_member);
+  const geometry_msgs__msg__Point__Sequence * member =
+    (const geometry_msgs__msg__Point__Sequence *)(untyped_member);
   return member->size;
 }
 
 const void * custom_interfaces__msg__PersonPose__rosidl_typesupport_introspection_c__get_const_function__PersonPose__keypoints(
   const void * untyped_member, size_t index)
 {
-  const rosidl_runtime_c__float__Sequence * member =
-    (const rosidl_runtime_c__float__Sequence *)(untyped_member);
+  const geometry_msgs__msg__Point__Sequence * member =
+    (const geometry_msgs__msg__Point__Sequence *)(untyped_member);
   return &member->data[index];
 }
 
 void * custom_interfaces__msg__PersonPose__rosidl_typesupport_introspection_c__get_function__PersonPose__keypoints(
   void * untyped_member, size_t index)
 {
-  rosidl_runtime_c__float__Sequence * member =
-    (rosidl_runtime_c__float__Sequence *)(untyped_member);
+  geometry_msgs__msg__Point__Sequence * member =
+    (geometry_msgs__msg__Point__Sequence *)(untyped_member);
   return &member->data[index];
 }
 
 void custom_interfaces__msg__PersonPose__rosidl_typesupport_introspection_c__fetch_function__PersonPose__keypoints(
   const void * untyped_member, size_t index, void * untyped_value)
 {
-  const float * item =
-    ((const float *)
+  const geometry_msgs__msg__Point * item =
+    ((const geometry_msgs__msg__Point *)
     custom_interfaces__msg__PersonPose__rosidl_typesupport_introspection_c__get_const_function__PersonPose__keypoints(untyped_member, index));
-  float * value =
-    (float *)(untyped_value);
+  geometry_msgs__msg__Point * value =
+    (geometry_msgs__msg__Point *)(untyped_value);
   *value = *item;
 }
 
 void custom_interfaces__msg__PersonPose__rosidl_typesupport_introspection_c__assign_function__PersonPose__keypoints(
   void * untyped_member, size_t index, const void * untyped_value)
 {
-  float * item =
-    ((float *)
+  geometry_msgs__msg__Point * item =
+    ((geometry_msgs__msg__Point *)
     custom_interfaces__msg__PersonPose__rosidl_typesupport_introspection_c__get_function__PersonPose__keypoints(untyped_member, index));
-  const float * value =
-    (const float *)(untyped_value);
+  const geometry_msgs__msg__Point * value =
+    (const geometry_msgs__msg__Point *)(untyped_value);
   *item = *value;
 }
 
 bool custom_interfaces__msg__PersonPose__rosidl_typesupport_introspection_c__resize_function__PersonPose__keypoints(
   void * untyped_member, size_t size)
 {
-  rosidl_runtime_c__float__Sequence * member =
-    (rosidl_runtime_c__float__Sequence *)(untyped_member);
-  rosidl_runtime_c__float__Sequence__fini(member);
-  return rosidl_runtime_c__float__Sequence__init(member, size);
+  geometry_msgs__msg__Point__Sequence * member =
+    (geometry_msgs__msg__Point__Sequence *)(untyped_member);
+  geometry_msgs__msg__Point__Sequence__fini(member);
+  return geometry_msgs__msg__Point__Sequence__init(member, size);
 }
 
 size_t custom_interfaces__msg__PersonPose__rosidl_typesupport_introspection_c__size_function__PersonPose__kpt_conf(
@@ -226,9 +229,9 @@ static rosidl_typesupport_introspection_c__MessageMember custom_interfaces__msg_
   },
   {
     "keypoints",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    rosidl_typesupport_introspection_c__ROS_TYPE_MESSAGE,  // type
     0,  // upper bound of string
-    NULL,  // members of sub message
+    NULL,  // members of sub message (initialized later)
     true,  // is array
     0,  // array size
     false,  // is upper bound
@@ -300,6 +303,8 @@ const rosidl_message_type_support_t *
 ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, custom_interfaces, msg, PersonPose)() {
   custom_interfaces__msg__PersonPose__rosidl_typesupport_introspection_c__PersonPose_message_member_array[0].members_ =
     ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, std_msgs, msg, Header)();
+  custom_interfaces__msg__PersonPose__rosidl_typesupport_introspection_c__PersonPose_message_member_array[1].members_ =
+    ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, geometry_msgs, msg, Point)();
   if (!custom_interfaces__msg__PersonPose__rosidl_typesupport_introspection_c__PersonPose_message_type_support_handle.typesupport_identifier) {
     custom_interfaces__msg__PersonPose__rosidl_typesupport_introspection_c__PersonPose_message_type_support_handle.typesupport_identifier =
       rosidl_typesupport_introspection_c__identifier;

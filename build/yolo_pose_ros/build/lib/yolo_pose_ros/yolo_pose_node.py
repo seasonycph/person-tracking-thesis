@@ -12,6 +12,7 @@ import numpy as np
 
 from sensor_msgs.msg import Image
 from custom_interfaces.msg import PersonPose
+from geometry_msgs.msg import Point
 from cv_bridge import CvBridge, CvBridgeError
 
 from yolo_pose_ros.utils.datasets import letterbox
@@ -46,7 +47,11 @@ class YoloPoseNode(Node):
             self.get_logger().warn("GPU not available, using CPU instead.")
             self.device_ = "cpu"
 
+        # Location of the weight file
         self.weight_file_ = "weights/yolo-pose/yolov7-w6-pose.pt"
+
+        # Confidence threshold
+        self.conf_thres_ = 0.4
 
         # Load the model
         self.get_logger().info("Loading model...")
@@ -78,7 +83,9 @@ class YoloPoseNode(Node):
             self.cv2_image_ = self.bridge_.imgmsg_to_cv2(msg, 'bgr8')
         except CvBridgeError as e:
             self.get_logger().error(e)
+
         t = time.time()
+        
         # Run inference on the converted image
         output, self.cv2_image_ = run_inference(
             self.model_, self.cv2_image_, self.device_)
@@ -86,11 +93,18 @@ class YoloPoseNode(Node):
         # Draw keypoints and skeleton on the image
         nimg, kpts = draw_keypoints(self.model_, output, self.cv2_image_)
         #print(kpts)
+        
+
+        # Convert the detections into PersonPose message
+        dets_msg = kpts_to_person_pose(kpts)
+        dets_msg.header = msg.header
+        self.dets_pub_.publish(dets_msg)
+
         self.get_logger().info(f"FPS: {1 / (time.time() - t)}")
 
         # Show the inference
-        if self.get_parameter('show_video') == True:
-            display_inference(nimg)
+        #if self.get_parameter('show_video') == True:
+        display_inference(nimg)
 
 
 def load_model(weight_file, device):
@@ -164,6 +178,29 @@ def draw_keypoints(model, output, image):
 
     return nimg, kpts
 
+
+def kpts_to_person_pose(output):
+    person_pose = PersonPose()
+
+    # Select the keypoints
+    for kpts in output: # Range through the 17 keypoints
+        i = 0
+        for _ in range(17):
+            # Define the position of each keypoint
+            kpt_pose = Point()
+            kpt_pose.x = kpts[i]
+            kpt_pose.y = kpts[i+1]
+            kpt_pose.z = 0.0
+
+            # Append the positions of the keypoints and the confidence
+            person_pose.kpt_conf.append(kpts[i+2])
+            person_pose.keypoints.append(kpt_pose)
+
+            # Increase i to the next set of kpt values {x, y, conf.}
+            i += 3
+    
+    return person_pose
+            
 
 def display_inference(image):
     # Create a window that sizes itself

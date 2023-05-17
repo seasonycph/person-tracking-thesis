@@ -15,6 +15,7 @@
 // Member `header`
 #include "std_msgs/msg/detail/header__functions.h"
 // Member `keypoints`
+#include "geometry_msgs/msg/detail/point__functions.h"
 // Member `kpt_conf`
 // Member `looking`
 #include "rosidl_runtime_c/primitives_sequence_functions.h"
@@ -31,7 +32,7 @@ custom_interfaces__msg__PersonPose__init(custom_interfaces__msg__PersonPose * ms
     return false;
   }
   // keypoints
-  if (!rosidl_runtime_c__float__Sequence__init(&msg->keypoints, 0)) {
+  if (!geometry_msgs__msg__Point__Sequence__init(&msg->keypoints, 0)) {
     custom_interfaces__msg__PersonPose__fini(msg);
     return false;
   }
@@ -57,7 +58,7 @@ custom_interfaces__msg__PersonPose__fini(custom_interfaces__msg__PersonPose * ms
   // header
   std_msgs__msg__Header__fini(&msg->header);
   // keypoints
-  rosidl_runtime_c__float__Sequence__fini(&msg->keypoints);
+  geometry_msgs__msg__Point__Sequence__fini(&msg->keypoints);
   // kpt_conf
   rosidl_runtime_c__float__Sequence__fini(&msg->kpt_conf);
   // looking
@@ -77,7 +78,7 @@ custom_interfaces__msg__PersonPose__are_equal(const custom_interfaces__msg__Pers
     return false;
   }
   // keypoints
-  if (!rosidl_runtime_c__float__Sequence__are_equal(
+  if (!geometry_msgs__msg__Point__Sequence__are_equal(
       &(lhs->keypoints), &(rhs->keypoints)))
   {
     return false;
@@ -112,7 +113,7 @@ custom_interfaces__msg__PersonPose__copy(
     return false;
   }
   // keypoints
-  if (!rosidl_runtime_c__float__Sequence__copy(
+  if (!geometry_msgs__msg__Point__Sequence__copy(
       &(input->keypoints), &(output->keypoints)))
   {
     return false;

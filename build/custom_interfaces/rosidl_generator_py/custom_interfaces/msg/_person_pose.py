@@ -5,7 +5,6 @@
 
 # Import statements for member types
 
-# Member 'keypoints'
 # Member 'kpt_conf'
 import array  # noqa: E402, I100
 
@@ -48,6 +47,10 @@ class Metaclass_PersonPose(type):
             cls._TYPE_SUPPORT = module.type_support_msg__msg__person_pose
             cls._DESTROY_ROS_MESSAGE = module.destroy_ros_message_msg__msg__person_pose
 
+            from geometry_msgs.msg import Point
+            if Point.__class__._TYPE_SUPPORT is None:
+                Point.__class__.__import_type_support__()
+
             from std_msgs.msg import Header
             if Header.__class__._TYPE_SUPPORT is None:
                 Header.__class__.__import_type_support__()
@@ -73,14 +76,14 @@ class PersonPose(metaclass=Metaclass_PersonPose):
 
     _fields_and_field_types = {
         'header': 'std_msgs/Header',
-        'keypoints': 'sequence<float>',
+        'keypoints': 'sequence<geometry_msgs/Point>',
         'kpt_conf': 'sequence<float>',
         'looking': 'sequence<boolean>',
     }
 
     SLOT_TYPES = (
         rosidl_parser.definition.NamespacedType(['std_msgs', 'msg'], 'Header'),  # noqa: E501
-        rosidl_parser.definition.UnboundedSequence(rosidl_parser.definition.BasicType('float')),  # noqa: E501
+        rosidl_parser.definition.UnboundedSequence(rosidl_parser.definition.NamespacedType(['geometry_msgs', 'msg'], 'Point')),  # noqa: E501
         rosidl_parser.definition.UnboundedSequence(rosidl_parser.definition.BasicType('float')),  # noqa: E501
         rosidl_parser.definition.UnboundedSequence(rosidl_parser.definition.BasicType('boolean')),  # noqa: E501
     )
@@ -91,7 +94,7 @@ class PersonPose(metaclass=Metaclass_PersonPose):
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
         from std_msgs.msg import Header
         self.header = kwargs.get('header', Header())
-        self.keypoints = array.array('f', kwargs.get('keypoints', []))
+        self.keypoints = kwargs.get('keypoints', [])
         self.kpt_conf = array.array('f', kwargs.get('kpt_conf', []))
         self.looking = kwargs.get('looking', [])
 
@@ -160,12 +163,8 @@ class PersonPose(metaclass=Metaclass_PersonPose):
 
     @keypoints.setter
     def keypoints(self, value):
-        if isinstance(value, array.array):
-            assert value.typecode == 'f', \
-                "The 'keypoints' array.array() must have the type code of 'f'"
-            self._keypoints = value
-            return
         if __debug__:
+            from geometry_msgs.msg import Point
             from collections.abc import Sequence
             from collections.abc import Set
             from collections import UserList
@@ -176,10 +175,10 @@ class PersonPose(metaclass=Metaclass_PersonPose):
                   isinstance(value, UserList)) and
                  not isinstance(value, str) and
                  not isinstance(value, UserString) and
-                 all(isinstance(v, float) for v in value) and
-                 all(not (val < -3.402823466e+38 or val > 3.402823466e+38) or math.isinf(val) for val in value)), \
-                "The 'keypoints' field must be a set or sequence and each value of type 'float' and each float in [-340282346600000016151267322115014000640.000000, 340282346600000016151267322115014000640.000000]"
-        self._keypoints = array.array('f', value)
+                 all(isinstance(v, Point) for v in value) and
+                 True), \
+                "The 'keypoints' field must be a set or sequence and each value of type 'Point'"
+        self._keypoints = value
 
     @builtins.property
     def kpt_conf(self):

@@ -2,6 +2,7 @@
 // with input from custom_interfaces/msg/PersonPose.msg
 // generated code does not contain a copyright notice
 
+#include "geometry_msgs/msg/Point.idl"
 #include "std_msgs/msg/Header.idl"
 
 module custom_interfaces {
@@ -14,7 +15,7 @@ module custom_interfaces {
 
       @verbatim (language="comment", text=
         "Positions of the keypoints in the same order than in YOLO-Pose")
-      sequence<float> keypoints;
+      sequence<geometry_msgs::msg::Point> keypoints;
 
       @verbatim (language="comment", text=
         "Confidences of each keypoints")

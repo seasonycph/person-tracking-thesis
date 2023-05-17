@@ -18,6 +18,8 @@
 // Include directives for member types
 // Member 'header'
 #include "std_msgs/msg/detail/header__struct.hpp"
+// Member 'keypoints'
+#include "geometry_msgs/msg/detail/point__struct.hpp"
 
 #ifndef _WIN32
 # define DEPRECATED__custom_interfaces__msg__PersonPose __attribute__((deprecated))
@@ -54,7 +56,7 @@ struct PersonPose_
     std_msgs::msg::Header_<ContainerAllocator>;
   _header_type header;
   using _keypoints_type =
-    std::vector<float, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<float>>;
+    std::vector<geometry_msgs::msg::Point_<ContainerAllocator>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<geometry_msgs::msg::Point_<ContainerAllocator>>>;
   _keypoints_type keypoints;
   using _kpt_conf_type =
     std::vector<float, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<float>>;
@@ -71,7 +73,7 @@ struct PersonPose_
     return *this;
   }
   Type & set__keypoints(
-    const std::vector<float, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<float>> & _arg)
+    const std::vector<geometry_msgs::msg::Point_<ContainerAllocator>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<geometry_msgs::msg::Point_<ContainerAllocator>>> & _arg)
   {
     this->keypoints = _arg;
     return *this;

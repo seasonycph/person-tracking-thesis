@@ -3,7 +3,7 @@
 
 std_msgs/Header header
 
-float32[] keypoints     # Positions of the keypoints in the same order than in YOLO-Pose
+geometry_msgs/Point[] keypoints     # Positions of the keypoints in the same order than in YOLO-Pose
 
 float32[] kpt_conf      # Confidences of each keypoints
 
