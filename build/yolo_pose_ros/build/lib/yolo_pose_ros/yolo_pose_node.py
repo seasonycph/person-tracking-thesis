@@ -24,9 +24,6 @@ from yolo_pose_ros.models.yolo import Model
 class YoloPoseNode(Node):
     def __init__(self):
         super().__init__("yolo_pose_node")
-        
-        # Get parameter to show the video
-        self.declare_parameter('show_video', True)
 
         # Initialize the node
         self.get_logger().info("YOLOPose node initialized.")
@@ -61,14 +58,19 @@ class YoloPoseNode(Node):
         # Create bridge to convert Image msg into jpg image
         self.bridge_ = CvBridge()
 
+        # Initialize the frame count
+        self.frame_count_ = 1
+        self.fps_ = []
+
     def init_communication(self):
         """
         Initialize ROS connection
         """
 
         # Publisher
+        topic="/yolo_pose/detections"
         self.dets_pub_ = self.create_publisher(
-            msg_type=PersonPose, topic="/yolo_pose/detections", qos_profile=10)
+            PersonPose, topic, qos_profile=10)
 
         # Subscriber
         topic = "/lewis_b1/camera_front/rgb/image_raw"
@@ -76,6 +78,11 @@ class YoloPoseNode(Node):
             Image, topic, self.callback_camera_front, qos_profile=10)
 
     def callback_camera_front(self, msg):
+        # Increase frame count
+        self.frame_count_ += 1
+
+        # Calculate the average every 10 fps
+        t = time.time()
 
         # Try converting the msg into a image
         try:
@@ -84,27 +91,34 @@ class YoloPoseNode(Node):
         except CvBridgeError as e:
             self.get_logger().error(e)
 
-        t = time.time()
+        # Run inference every 3 frames
+        if self.frame_count_ % 2 == 0:
+            # Run inference on the converted image
+            output, self.cv2_image_ = run_inference(
+                self.model_, self.cv2_image_, self.device_)
+            
+            self.inf_output = output
+            self.inf_image = self.cv2_image_
+            
+            # Draw keypoints and skeleton on the image
+            nimg, kpts = draw_keypoints(self.model_, output, self.cv2_image_)
+        else:
+            nimg, kpts = draw_keypoints(self.model_, self.inf_output, self.inf_image)
         
-        # Run inference on the converted image
-        output, self.cv2_image_ = run_inference(
-            self.model_, self.cv2_image_, self.device_)
-
-        # Draw keypoints and skeleton on the image
-        nimg, kpts = draw_keypoints(self.model_, output, self.cv2_image_)
-        #print(kpts)
-        
-
         # Convert the detections into PersonPose message
         dets_msg = kpts_to_person_pose(kpts)
         dets_msg.header = msg.header
         self.dets_pub_.publish(dets_msg)
 
-        self.get_logger().info(f"FPS: {1 / (time.time() - t)}")
+        
 
         # Show the inference
-        #if self.get_parameter('show_video') == True:
         display_inference(nimg)
+
+        self.fps_.append(1 / (time.time() - t))
+        if len(self.fps_) > 10:
+            self.fps_ = self.fps_[-10:]
+        self.get_logger().info(f"FPS: {np.mean(self.fps_)}")
 
 
 def load_model(weight_file, device):
@@ -118,7 +132,7 @@ def load_model(weight_file, device):
     # Put model in inference mode
     model.float().eval()
 
-    if torch.cuda.is_available():
+    if device == "cuda:0":
         # half() turns predicitons into float16 tensors,
         # which lowers inference time
         model.half().to(device)
@@ -135,7 +149,7 @@ def run_inference(model, image, device):
     # Apply transforms
     image = transforms.ToTensor()(image)  # torch.Size([3, 567, 960])
     # If GPU is available, run the image there
-    if torch.cuda.is_available():
+    if device == "cuda:0":
         image = image.half().to(device)
     # Turn image into batch
     image = image.unsqueeze(0)  # torch.Size([1, 3, 567, 960])
@@ -148,7 +162,7 @@ def run_inference(model, image, device):
 def draw_keypoints(model, output, image):
     # Apply non-maximum suppression
     output = non_max_suppression_kpt(output,
-                                     0.4,  # Confidence threshold
+                                     0.5,  # Confidence threshold
                                      0.65,  # IoU threshold
                                      # Number of classes (only 1)
                                      nc=model.yaml['nc'],
