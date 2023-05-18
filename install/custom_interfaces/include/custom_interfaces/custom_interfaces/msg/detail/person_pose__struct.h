@@ -21,6 +21,7 @@ extern "C"
 // Member 'header'
 #include "std_msgs/msg/detail/header__struct.h"
 // Member 'keypoints'
+// Member 'person_position'
 #include "geometry_msgs/msg/detail/point__struct.h"
 // Member 'kpt_conf'
 // Member 'looking'
@@ -38,6 +39,8 @@ typedef struct custom_interfaces__msg__PersonPose
   geometry_msgs__msg__Point__Sequence keypoints;
   /// Confidences of each keypoints
   rosidl_runtime_c__float__Sequence kpt_conf;
+  /// Position of the person in the image
+  geometry_msgs__msg__Point__Sequence person_position;
   /// Flag to asses whether the person is looking at the robot or not
   rosidl_runtime_c__boolean__Sequence looking;
 } custom_interfaces__msg__PersonPose;

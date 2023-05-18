@@ -37,16 +37,32 @@ private:
   ::custom_interfaces::msg::PersonPose msg_;
 };
 
+class Init_PersonPose_person_position
+{
+public:
+  explicit Init_PersonPose_person_position(::custom_interfaces::msg::PersonPose & msg)
+  : msg_(msg)
+  {}
+  Init_PersonPose_looking person_position(::custom_interfaces::msg::PersonPose::_person_position_type arg)
+  {
+    msg_.person_position = std::move(arg);
+    return Init_PersonPose_looking(msg_);
+  }
+
+private:
+  ::custom_interfaces::msg::PersonPose msg_;
+};
+
 class Init_PersonPose_kpt_conf
 {
 public:
   explicit Init_PersonPose_kpt_conf(::custom_interfaces::msg::PersonPose & msg)
   : msg_(msg)
   {}
-  Init_PersonPose_looking kpt_conf(::custom_interfaces::msg::PersonPose::_kpt_conf_type arg)
+  Init_PersonPose_person_position kpt_conf(::custom_interfaces::msg::PersonPose::_kpt_conf_type arg)
   {
     msg_.kpt_conf = std::move(arg);
-    return Init_PersonPose_looking(msg_);
+    return Init_PersonPose_person_position(msg_);
   }
 
 private:

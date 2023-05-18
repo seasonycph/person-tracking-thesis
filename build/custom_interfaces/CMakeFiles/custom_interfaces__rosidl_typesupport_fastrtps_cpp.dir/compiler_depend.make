@@ -198,9 +198,7 @@ CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesup
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/message_initialization.h \
   /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__struct.hpp \
   /opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/time__struct.hpp \
-  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose__struct.hpp \
   /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__struct.hpp \
-  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion__struct.hpp \
   /opt/ros/humble/include/fastcdr/fastcdr/Cdr.h \
   /opt/ros/humble/include/fastcdr/fastcdr/fastcdr_dll.h \
   /opt/ros/humble/include/fastcdr/fastcdr/config.h \
@@ -424,8 +422,6 @@ CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesup
 
 /usr/include/x86_64-linux-gnu/sys/types.h:
 
-/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose__struct.hpp:
-
 /usr/include/c++/11/vector:
 
 /usr/include/c++/11/bits/align.h:
@@ -587,8 +583,6 @@ rosidl_typesupport_fastrtps_cpp/custom_interfaces/msg/rosidl_typesupport_fastrtp
 /usr/include/c++/11/tuple:
 
 /usr/include/c++/11/type_traits:
-
-/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion__struct.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 

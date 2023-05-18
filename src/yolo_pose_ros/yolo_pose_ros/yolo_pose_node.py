@@ -68,9 +68,13 @@ class YoloPoseNode(Node):
         """
 
         # Publisher
-        topic="/yolo_pose/detections"
+        topic = "/yolo_pose/detections"
         self.dets_pub_ = self.create_publisher(
             PersonPose, topic, qos_profile=10)
+
+        topic = "/yolo_pose/pose_image"
+        self.image_pub_ = self.create_publisher(
+            Image, topic, qos_profile=10)
 
         # Subscriber
         topic = "/lewis_b1/camera_front/rgb/image_raw"
@@ -96,21 +100,33 @@ class YoloPoseNode(Node):
             # Run inference on the converted image
             output, self.cv2_image_ = run_inference(
                 self.model_, self.cv2_image_, self.device_)
-            
+
             self.inf_output = output
             self.inf_image = self.cv2_image_
-            
+
             # Draw keypoints and skeleton on the image
             nimg, kpts = draw_keypoints(self.model_, output, self.cv2_image_)
         else:
-            nimg, kpts = draw_keypoints(self.model_, self.inf_output, self.inf_image)
-        
+            nimg, kpts = draw_keypoints(
+                self.model_, self.inf_output, self.inf_image)
+
         # Convert the detections into PersonPose message
-        dets_msg = kpts_to_person_pose(kpts)
+        dets_msg, prsn_pose = kpts_to_person_pose(kpts)
         dets_msg.header = msg.header
         self.dets_pub_.publish(dets_msg)
 
-        
+        ####
+        for pose in prsn_pose:
+            nimg = cv2.circle(nimg, pose, 5, (255,0,0), -1)
+        ####
+
+        # Send the resulting image through the topic
+        try:
+            image_msg = self.bridge_.cv2_to_imgmsg(
+                nimg, encoding=msg.encoding, header=msg.header)
+        except CvBridgeError as e:
+            self.get_logger().error(e)
+        self.image_pub_.publish(image_msg)
 
         # Show the inference
         display_inference(nimg)
@@ -118,7 +134,7 @@ class YoloPoseNode(Node):
         self.fps_.append(1 / (time.time() - t))
         if len(self.fps_) > 10:
             self.fps_ = self.fps_[-10:]
-        self.get_logger().info(f"FPS: {np.mean(self.fps_)}")
+        #self.get_logger().info(f"FPS: {np.mean(self.fps_)}")
 
 
 def load_model(weight_file, device):
@@ -188,22 +204,27 @@ def draw_keypoints(model, output, image):
         # since for each keypoint we have 3 elements {x, y, conf.}
         plot_skeleton_kpts(nimg, output[idx].T, 3)
         kpts.append(output[idx])
-        
 
     return nimg, kpts
 
 
 def kpts_to_person_pose(output):
     person_pose = PersonPose()
+    pose = []
 
     # Select the keypoints
-    for kpts in output: # Range through the 17 keypoints
+    for kpts in output:  # Range through the 17 keypoints
         i = 0
+        det_pose = Point()
+        x_pos = []
+        y_pos = []
         for _ in range(17):
             # Define the position of each keypoint
             kpt_pose = Point()
             kpt_pose.x = kpts[i]
+            x_pos.append(kpts[i])
             kpt_pose.y = kpts[i+1]
+            y_pos.append(kpts[i+1])
             kpt_pose.z = 0.0
 
             # Append the positions of the keypoints and the confidence
@@ -212,9 +233,37 @@ def kpts_to_person_pose(output):
 
             # Increase i to the next set of kpt values {x, y, conf.}
             i += 3
+
+        # Position of the person in the image
+        det_pose.x = (np.round(np.mean(x_pos)))
+        det_pose.y = (np.round(np.mean(y_pos)))
+        pose.append((int(det_pose.x), int(det_pose.y)))
+        person_pose.person_position.append(det_pose)
+
+        # Check if person is looking at the camera
+        person_pose.looking.append(person_front(kpts))
+
+    return person_pose, pose
+
+
+def person_front(kpts):
+    # If ALL the keypoints of the face are visible, the person is probably looking at the camera 
     
-    return person_pose
-            
+    # TO DO: If head keypoints are not visible (partial visibility) then consider the hips of the person
+    # x_left_hip > x_right_hip = looking at camera
+
+    # Vore for the visibility of the face
+    vote_front = 0
+    for i in range(5):
+        if kpts[i * 3 + 2] > 0.5:
+            vote_front += 1
+
+    # Check the votes
+    if vote_front >= 4:
+        return True
+    else:
+        return False
+
 
 def display_inference(image):
     # Create a window that sizes itself

@@ -64,6 +64,30 @@ max_serialized_size_Point(
 }  // namespace msg
 }  // namespace geometry_msgs
 
+namespace geometry_msgs
+{
+namespace msg
+{
+namespace typesupport_fastrtps_cpp
+{
+bool cdr_serialize(
+  const geometry_msgs::msg::Point &,
+  eprosima::fastcdr::Cdr &);
+bool cdr_deserialize(
+  eprosima::fastcdr::Cdr &,
+  geometry_msgs::msg::Point &);
+size_t get_serialized_size(
+  const geometry_msgs::msg::Point &,
+  size_t current_alignment);
+size_t
+max_serialized_size_Point(
+  bool & full_bounded,
+  bool & is_plain,
+  size_t current_alignment);
+}  // namespace typesupport_fastrtps_cpp
+}  // namespace msg
+}  // namespace geometry_msgs
+
 
 namespace custom_interfaces
 {
@@ -98,6 +122,16 @@ cdr_serialize(
   {
     cdr << ros_message.kpt_conf;
   }
+  // Member: person_position
+  {
+    size_t size = ros_message.person_position.size();
+    cdr << static_cast<uint32_t>(size);
+    for (size_t i = 0; i < size; i++) {
+      geometry_msgs::msg::typesupport_fastrtps_cpp::cdr_serialize(
+        ros_message.person_position[i],
+        cdr);
+    }
+  }
   // Member: looking
   {
     cdr << ros_message.looking;
@@ -130,6 +164,18 @@ cdr_deserialize(
   // Member: kpt_conf
   {
     cdr >> ros_message.kpt_conf;
+  }
+
+  // Member: person_position
+  {
+    uint32_t cdrSize;
+    cdr >> cdrSize;
+    size_t size = static_cast<size_t>(cdrSize);
+    ros_message.person_position.resize(size);
+    for (size_t i = 0; i < size; i++) {
+      geometry_msgs::msg::typesupport_fastrtps_cpp::cdr_deserialize(
+        cdr, ros_message.person_position[i]);
+    }
   }
 
   // Member: looking
@@ -180,6 +226,19 @@ get_serialized_size(
     size_t item_size = sizeof(ros_message.kpt_conf[0]);
     current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: person_position
+  {
+    size_t array_size = ros_message.person_position.size();
+
+    current_alignment += padding +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
+
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment +=
+        geometry_msgs::msg::typesupport_fastrtps_cpp::get_serialized_size(
+        ros_message.person_position[index], current_alignment);
+    }
   }
   // Member: looking
   {
@@ -259,6 +318,26 @@ max_serialized_size_PersonPose(
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
+  // Member: person_position
+  {
+    size_t array_size = 0;
+    full_bounded = false;
+    is_plain = false;
+    current_alignment += padding +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
+
+
+    for (size_t index = 0; index < array_size; ++index) {
+      bool inner_full_bounded;
+      bool inner_is_plain;
+      current_alignment +=
+        geometry_msgs::msg::typesupport_fastrtps_cpp::max_serialized_size_Point(
+        inner_full_bounded, inner_is_plain, current_alignment);
+      full_bounded &= inner_full_bounded;
+      is_plain &= inner_is_plain;
+    }
   }
 
   // Member: looking

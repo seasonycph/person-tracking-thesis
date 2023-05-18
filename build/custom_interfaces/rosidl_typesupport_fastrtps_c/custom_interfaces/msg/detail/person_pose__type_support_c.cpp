@@ -34,7 +34,7 @@ extern "C"
 {
 #endif
 
-#include "geometry_msgs/msg/detail/point__functions.h"  // keypoints
+#include "geometry_msgs/msg/detail/point__functions.h"  // keypoints, person_position
 #include "rosidl_runtime_c/primitives_sequence.h"  // kpt_conf, looking
 #include "rosidl_runtime_c/primitives_sequence_functions.h"  // kpt_conf, looking
 #include "std_msgs/msg/detail/header__functions.h"  // header
@@ -122,6 +122,25 @@ static bool _PersonPose__cdr_serialize(
     cdr.serializeArray(array_ptr, size);
   }
 
+  // Field name: person_position
+  {
+    const message_type_support_callbacks_t * callbacks =
+      static_cast<const message_type_support_callbacks_t *>(
+      ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
+        rosidl_typesupport_fastrtps_c, geometry_msgs, msg, Point
+      )()->data);
+    size_t size = ros_message->person_position.size;
+    auto array_ptr = ros_message->person_position.data;
+    cdr << static_cast<uint32_t>(size);
+    for (size_t i = 0; i < size; ++i) {
+      if (!callbacks->cdr_serialize(
+          &array_ptr[i], cdr))
+      {
+        return false;
+      }
+    }
+  }
+
   // Field name: looking
   {
     size_t size = ros_message->looking.size;
@@ -199,6 +218,33 @@ static bool _PersonPose__cdr_deserialize(
     cdr.deserializeArray(array_ptr, size);
   }
 
+  // Field name: person_position
+  {
+    const message_type_support_callbacks_t * callbacks =
+      static_cast<const message_type_support_callbacks_t *>(
+      ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
+        rosidl_typesupport_fastrtps_c, geometry_msgs, msg, Point
+      )()->data);
+    uint32_t cdrSize;
+    cdr >> cdrSize;
+    size_t size = static_cast<size_t>(cdrSize);
+    if (ros_message->person_position.data) {
+      geometry_msgs__msg__Point__Sequence__fini(&ros_message->person_position);
+    }
+    if (!geometry_msgs__msg__Point__Sequence__init(&ros_message->person_position, size)) {
+      fprintf(stderr, "failed to create array for field 'person_position'");
+      return false;
+    }
+    auto array_ptr = ros_message->person_position.data;
+    for (size_t i = 0; i < size; ++i) {
+      if (!callbacks->cdr_deserialize(
+          cdr, &array_ptr[i]))
+      {
+        return false;
+      }
+    }
+  }
+
   // Field name: looking
   {
     uint32_t cdrSize;
@@ -262,6 +308,18 @@ size_t get_serialized_size_custom_interfaces__msg__PersonPose(
     size_t item_size = sizeof(array_ptr[0]);
     current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name person_position
+  {
+    size_t array_size = ros_message->person_position.size;
+    auto array_ptr = ros_message->person_position.data;
+    current_alignment += padding +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
+
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment += get_serialized_size_geometry_msgs__msg__Point(
+        &array_ptr[index], current_alignment);
+    }
   }
   // field.name looking
   {
@@ -345,6 +403,25 @@ size_t max_serialized_size_custom_interfaces__msg__PersonPose(
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+  // member: person_position
+  {
+    size_t array_size = 0;
+    full_bounded = false;
+    is_plain = false;
+    current_alignment += padding +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
+
+
+    for (size_t index = 0; index < array_size; ++index) {
+      bool inner_full_bounded;
+      bool inner_is_plain;
+      current_alignment +=
+        max_serialized_size_geometry_msgs__msg__Point(
+        inner_full_bounded, inner_is_plain, current_alignment);
+      full_bounded &= inner_full_bounded;
+      is_plain &= inner_is_plain;
+    }
   }
   // member: looking
   {

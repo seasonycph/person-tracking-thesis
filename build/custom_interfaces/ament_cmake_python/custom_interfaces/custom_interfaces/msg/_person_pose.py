@@ -47,9 +47,9 @@ class Metaclass_PersonPose(type):
             cls._TYPE_SUPPORT = module.type_support_msg__msg__person_pose
             cls._DESTROY_ROS_MESSAGE = module.destroy_ros_message_msg__msg__person_pose
 
-            from geometry_msgs.msg import Pose
-            if Pose.__class__._TYPE_SUPPORT is None:
-                Pose.__class__.__import_type_support__()
+            from geometry_msgs.msg import Point
+            if Point.__class__._TYPE_SUPPORT is None:
+                Point.__class__.__import_type_support__()
 
             from std_msgs.msg import Header
             if Header.__class__._TYPE_SUPPORT is None:
@@ -76,14 +76,14 @@ class PersonPose(metaclass=Metaclass_PersonPose):
 
     _fields_and_field_types = {
         'header': 'std_msgs/Header',
-        'keypoints': 'sequence<geometry_msgs/Pose>',
+        'keypoints': 'sequence<geometry_msgs/Point>',
         'kpt_conf': 'sequence<float>',
         'looking': 'sequence<boolean>',
     }
 
     SLOT_TYPES = (
         rosidl_parser.definition.NamespacedType(['std_msgs', 'msg'], 'Header'),  # noqa: E501
-        rosidl_parser.definition.UnboundedSequence(rosidl_parser.definition.NamespacedType(['geometry_msgs', 'msg'], 'Pose')),  # noqa: E501
+        rosidl_parser.definition.UnboundedSequence(rosidl_parser.definition.NamespacedType(['geometry_msgs', 'msg'], 'Point')),  # noqa: E501
         rosidl_parser.definition.UnboundedSequence(rosidl_parser.definition.BasicType('float')),  # noqa: E501
         rosidl_parser.definition.UnboundedSequence(rosidl_parser.definition.BasicType('boolean')),  # noqa: E501
     )
@@ -164,7 +164,7 @@ class PersonPose(metaclass=Metaclass_PersonPose):
     @keypoints.setter
     def keypoints(self, value):
         if __debug__:
-            from geometry_msgs.msg import Pose
+            from geometry_msgs.msg import Point
             from collections.abc import Sequence
             from collections.abc import Set
             from collections import UserList
@@ -175,9 +175,9 @@ class PersonPose(metaclass=Metaclass_PersonPose):
                   isinstance(value, UserList)) and
                  not isinstance(value, str) and
                  not isinstance(value, UserString) and
-                 all(isinstance(v, Pose) for v in value) and
+                 all(isinstance(v, Point) for v in value) and
                  True), \
-                "The 'keypoints' field must be a set or sequence and each value of type 'Pose'"
+                "The 'keypoints' field must be a set or sequence and each value of type 'Point'"
         self._keypoints = value
 
     @builtins.property

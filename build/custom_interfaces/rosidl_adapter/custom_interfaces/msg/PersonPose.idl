@@ -22,6 +22,10 @@ module custom_interfaces {
       sequence<float> kpt_conf;
 
       @verbatim (language="comment", text=
+        "Position of the person in the image")
+      sequence<geometry_msgs::msg::Point> person_position;
+
+      @verbatim (language="comment", text=
         "Flag to asses whether the person is looking at the robot or not")
       sequence<boolean> looking;
     };

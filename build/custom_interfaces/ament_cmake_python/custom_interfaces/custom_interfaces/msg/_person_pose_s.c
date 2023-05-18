@@ -20,16 +20,16 @@
 #include "rosidl_runtime_c/primitives_sequence_functions.h"
 
 // Nested array functions includes
-#include "geometry_msgs/msg/detail/pose__functions.h"
+#include "geometry_msgs/msg/detail/point__functions.h"
 // end nested array functions include
 ROSIDL_GENERATOR_C_IMPORT
 bool std_msgs__msg__header__convert_from_py(PyObject * _pymsg, void * _ros_message);
 ROSIDL_GENERATOR_C_IMPORT
 PyObject * std_msgs__msg__header__convert_to_py(void * raw_ros_message);
 ROSIDL_GENERATOR_C_IMPORT
-bool geometry_msgs__msg__pose__convert_from_py(PyObject * _pymsg, void * _ros_message);
+bool geometry_msgs__msg__point__convert_from_py(PyObject * _pymsg, void * _ros_message);
 ROSIDL_GENERATOR_C_IMPORT
-PyObject * geometry_msgs__msg__pose__convert_to_py(void * raw_ros_message);
+PyObject * geometry_msgs__msg__point__convert_to_py(void * raw_ros_message);
 
 ROSIDL_GENERATOR_C_EXPORT
 bool custom_interfaces__msg__person_pose__convert_from_py(PyObject * _pymsg, void * _ros_message)
@@ -91,15 +91,15 @@ bool custom_interfaces__msg__person_pose__convert_from_py(PyObject * _pymsg, voi
       Py_DECREF(field);
       return false;
     }
-    if (!geometry_msgs__msg__Pose__Sequence__init(&(ros_message->keypoints), size)) {
-      PyErr_SetString(PyExc_RuntimeError, "unable to create geometry_msgs__msg__Pose__Sequence ros_message");
+    if (!geometry_msgs__msg__Point__Sequence__init(&(ros_message->keypoints), size)) {
+      PyErr_SetString(PyExc_RuntimeError, "unable to create geometry_msgs__msg__Point__Sequence ros_message");
       Py_DECREF(seq_field);
       Py_DECREF(field);
       return false;
     }
-    geometry_msgs__msg__Pose * dest = ros_message->keypoints.data;
+    geometry_msgs__msg__Point * dest = ros_message->keypoints.data;
     for (Py_ssize_t i = 0; i < size; ++i) {
-      if (!geometry_msgs__msg__pose__convert_from_py(PySequence_Fast_GET_ITEM(seq_field, i), &dest[i])) {
+      if (!geometry_msgs__msg__point__convert_from_py(PySequence_Fast_GET_ITEM(seq_field, i), &dest[i])) {
         Py_DECREF(seq_field);
         Py_DECREF(field);
         return false;
@@ -275,10 +275,10 @@ PyObject * custom_interfaces__msg__person_pose__convert_to_py(void * raw_ros_mes
     if (!field) {
       return NULL;
     }
-    geometry_msgs__msg__Pose * item;
+    geometry_msgs__msg__Point * item;
     for (size_t i = 0; i < size; ++i) {
       item = &(ros_message->keypoints.data[i]);
-      PyObject * pyitem = geometry_msgs__msg__pose__convert_to_py(item);
+      PyObject * pyitem = geometry_msgs__msg__point__convert_to_py(item);
       if (!pyitem) {
         Py_DECREF(field);
         return NULL;

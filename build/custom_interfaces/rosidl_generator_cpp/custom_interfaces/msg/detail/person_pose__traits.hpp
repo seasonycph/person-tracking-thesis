@@ -18,6 +18,7 @@
 // Member 'header'
 #include "std_msgs/msg/detail/header__traits.hpp"
 // Member 'keypoints'
+// Member 'person_position'
 #include "geometry_msgs/msg/detail/point__traits.hpp"
 
 namespace custom_interfaces
@@ -65,6 +66,24 @@ inline void to_flow_style_yaml(
       size_t pending_items = msg.kpt_conf.size();
       for (auto item : msg.kpt_conf) {
         rosidl_generator_traits::value_to_yaml(item, out);
+        if (--pending_items > 0) {
+          out << ", ";
+        }
+      }
+      out << "]";
+    }
+    out << ", ";
+  }
+
+  // member: person_position
+  {
+    if (msg.person_position.size() == 0) {
+      out << "person_position: []";
+    } else {
+      out << "person_position: [";
+      size_t pending_items = msg.person_position.size();
+      for (auto item : msg.person_position) {
+        to_flow_style_yaml(item, out);
         if (--pending_items > 0) {
           out << ", ";
         }
@@ -141,6 +160,25 @@ inline void to_block_style_yaml(
         out << "- ";
         rosidl_generator_traits::value_to_yaml(item, out);
         out << "\n";
+      }
+    }
+  }
+
+  // member: person_position
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    if (msg.person_position.size() == 0) {
+      out << "person_position: []\n";
+    } else {
+      out << "person_position:\n";
+      for (auto item : msg.person_position) {
+        if (indentation > 0) {
+          out << std::string(indentation, ' ');
+        }
+        out << "-\n";
+        to_block_style_yaml(item, out, indentation + 2);
       }
     }
   }

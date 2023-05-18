@@ -127,6 +127,51 @@ void resize_function__PersonPose__kpt_conf(void * untyped_member, size_t size)
   member->resize(size);
 }
 
+size_t size_function__PersonPose__person_position(const void * untyped_member)
+{
+  const auto * member = reinterpret_cast<const std::vector<geometry_msgs::msg::Point> *>(untyped_member);
+  return member->size();
+}
+
+const void * get_const_function__PersonPose__person_position(const void * untyped_member, size_t index)
+{
+  const auto & member =
+    *reinterpret_cast<const std::vector<geometry_msgs::msg::Point> *>(untyped_member);
+  return &member[index];
+}
+
+void * get_function__PersonPose__person_position(void * untyped_member, size_t index)
+{
+  auto & member =
+    *reinterpret_cast<std::vector<geometry_msgs::msg::Point> *>(untyped_member);
+  return &member[index];
+}
+
+void fetch_function__PersonPose__person_position(
+  const void * untyped_member, size_t index, void * untyped_value)
+{
+  const auto & item = *reinterpret_cast<const geometry_msgs::msg::Point *>(
+    get_const_function__PersonPose__person_position(untyped_member, index));
+  auto & value = *reinterpret_cast<geometry_msgs::msg::Point *>(untyped_value);
+  value = item;
+}
+
+void assign_function__PersonPose__person_position(
+  void * untyped_member, size_t index, const void * untyped_value)
+{
+  auto & item = *reinterpret_cast<geometry_msgs::msg::Point *>(
+    get_function__PersonPose__person_position(untyped_member, index));
+  const auto & value = *reinterpret_cast<const geometry_msgs::msg::Point *>(untyped_value);
+  item = value;
+}
+
+void resize_function__PersonPose__person_position(void * untyped_member, size_t size)
+{
+  auto * member =
+    reinterpret_cast<std::vector<geometry_msgs::msg::Point> *>(untyped_member);
+  member->resize(size);
+}
+
 size_t size_function__PersonPose__looking(const void * untyped_member)
 {
   const auto * member = reinterpret_cast<const std::vector<bool> *>(untyped_member);
@@ -156,7 +201,7 @@ void resize_function__PersonPose__looking(void * untyped_member, size_t size)
   member->resize(size);
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember PersonPose_message_member_array[4] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember PersonPose_message_member_array[5] = {
   {
     "header",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_MESSAGE,  // type
@@ -209,6 +254,23 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember PersonPose_me
     resize_function__PersonPose__kpt_conf  // resize(index) function pointer
   },
   {
+    "person_position",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_MESSAGE,  // type
+    0,  // upper bound of string
+    ::rosidl_typesupport_introspection_cpp::get_message_type_support_handle<geometry_msgs::msg::Point>(),  // members of sub message
+    true,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(custom_interfaces::msg::PersonPose, person_position),  // bytes offset in struct
+    nullptr,  // default value
+    size_function__PersonPose__person_position,  // size() function pointer
+    get_const_function__PersonPose__person_position,  // get_const(index) function pointer
+    get_function__PersonPose__person_position,  // get(index) function pointer
+    fetch_function__PersonPose__person_position,  // fetch(index, &value) function pointer
+    assign_function__PersonPose__person_position,  // assign(index, value) function pointer
+    resize_function__PersonPose__person_position  // resize(index) function pointer
+  },
+  {
     "looking",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
     0,  // upper bound of string
@@ -230,7 +292,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember PersonPose_me
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers PersonPose_message_members = {
   "custom_interfaces::msg",  // message namespace
   "PersonPose",  // message name
-  4,  // number of fields
+  5,  // number of fields
   sizeof(custom_interfaces::msg::PersonPose),
   PersonPose_message_member_array,  // message members
   PersonPose_init_function,  // function to initialize message memory (memory has to be allocated)

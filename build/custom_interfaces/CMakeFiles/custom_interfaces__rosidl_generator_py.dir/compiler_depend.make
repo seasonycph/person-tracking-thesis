@@ -253,19 +253,15 @@ CMakeFiles/custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/custom
   /opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/time__struct.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence.h \
-  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose__struct.h \
   /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__struct.h \
-  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion__struct.h \
   rosidl_generator_c/custom_interfaces/msg/detail/person_pose__functions.h \
   rosidl_generator_c/custom_interfaces/msg/rosidl_generator_c__visibility_control.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence_functions.h \
-  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose__functions.h \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__functions.h \
   /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/rosidl_generator_c__visibility_control.h
 
 
 /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/rosidl_generator_c__visibility_control.h:
-
-/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose__functions.h:
 
 /usr/include/asm-generic/errno-base.h:
 
@@ -359,15 +355,15 @@ rosidl_generator_c/custom_interfaces/msg/rosidl_generator_c__visibility_control.
 
 /usr/include/python3.10/cpython/compile.h:
 
-/opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence_functions.h:
-
-/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
-
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
 /usr/include/x86_64-linux-gnu/bits/environments.h:
 
 /usr/include/x86_64-linux-gnu/bits/fp-logb.h:
+
+/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
+
+/opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence_functions.h:
 
 /usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
@@ -379,7 +375,7 @@ rosidl_generator_c/custom_interfaces/msg/rosidl_generator_c__visibility_control.
 
 /usr/include/python3.10/cpython/pythonrun.h:
 
-/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion__struct.h:
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__functions.h:
 
 /usr/include/x86_64-linux-gnu/bits/types.h:
 
@@ -628,8 +624,6 @@ rosidl_generator_c/custom_interfaces/msg/detail/person_pose__functions.h:
 /usr/include/python3.10/listobject.h:
 
 /usr/include/wchar.h:
-
-/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose__struct.h:
 
 /usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
 

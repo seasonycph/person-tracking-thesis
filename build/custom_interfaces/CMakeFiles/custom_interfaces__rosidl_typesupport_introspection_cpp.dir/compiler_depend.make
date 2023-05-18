@@ -213,9 +213,7 @@ CMakeFiles/custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_ty
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/message_initialization.h \
   /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__struct.hpp \
   /opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/time__struct.hpp \
-  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose__struct.hpp \
   /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__struct.hpp \
-  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion__struct.hpp \
   /opt/ros/humble/include/rosidl_typesupport_introspection_cpp/rosidl_typesupport_introspection_cpp/field_types.hpp \
   /opt/ros/humble/include/rosidl_typesupport_introspection_c/rosidl_typesupport_introspection_c/field_types.h \
   /opt/ros/humble/include/rosidl_typesupport_introspection_cpp/rosidl_typesupport_introspection_cpp/identifier.hpp \
@@ -283,8 +281,6 @@ CMakeFiles/custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_ty
 /usr/include/c++/11/backward/auto_ptr.h:
 
 /usr/include/c++/11/bits/stl_uninitialized.h:
-
-/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose__struct.hpp:
 
 /usr/include/c++/11/bits/align.h:
 
@@ -547,8 +543,6 @@ rosidl_typesupport_introspection_cpp/custom_interfaces/msg/detail/person_pose__t
 /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
 
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
-
-/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion__struct.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 

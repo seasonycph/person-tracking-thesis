@@ -71,6 +71,7 @@ class PersonPose(metaclass=Metaclass_PersonPose):
         '_header',
         '_keypoints',
         '_kpt_conf',
+        '_person_position',
         '_looking',
     ]
 
@@ -78,6 +79,7 @@ class PersonPose(metaclass=Metaclass_PersonPose):
         'header': 'std_msgs/Header',
         'keypoints': 'sequence<geometry_msgs/Point>',
         'kpt_conf': 'sequence<float>',
+        'person_position': 'sequence<geometry_msgs/Point>',
         'looking': 'sequence<boolean>',
     }
 
@@ -85,6 +87,7 @@ class PersonPose(metaclass=Metaclass_PersonPose):
         rosidl_parser.definition.NamespacedType(['std_msgs', 'msg'], 'Header'),  # noqa: E501
         rosidl_parser.definition.UnboundedSequence(rosidl_parser.definition.NamespacedType(['geometry_msgs', 'msg'], 'Point')),  # noqa: E501
         rosidl_parser.definition.UnboundedSequence(rosidl_parser.definition.BasicType('float')),  # noqa: E501
+        rosidl_parser.definition.UnboundedSequence(rosidl_parser.definition.NamespacedType(['geometry_msgs', 'msg'], 'Point')),  # noqa: E501
         rosidl_parser.definition.UnboundedSequence(rosidl_parser.definition.BasicType('boolean')),  # noqa: E501
     )
 
@@ -96,6 +99,7 @@ class PersonPose(metaclass=Metaclass_PersonPose):
         self.header = kwargs.get('header', Header())
         self.keypoints = kwargs.get('keypoints', [])
         self.kpt_conf = array.array('f', kwargs.get('kpt_conf', []))
+        self.person_position = kwargs.get('person_position', [])
         self.looking = kwargs.get('looking', [])
 
     def __repr__(self):
@@ -132,6 +136,8 @@ class PersonPose(metaclass=Metaclass_PersonPose):
         if self.keypoints != other.keypoints:
             return False
         if self.kpt_conf != other.kpt_conf:
+            return False
+        if self.person_position != other.person_position:
             return False
         if self.looking != other.looking:
             return False
@@ -207,6 +213,30 @@ class PersonPose(metaclass=Metaclass_PersonPose):
                  all(not (val < -3.402823466e+38 or val > 3.402823466e+38) or math.isinf(val) for val in value)), \
                 "The 'kpt_conf' field must be a set or sequence and each value of type 'float' and each float in [-340282346600000016151267322115014000640.000000, 340282346600000016151267322115014000640.000000]"
         self._kpt_conf = array.array('f', value)
+
+    @builtins.property
+    def person_position(self):
+        """Message field 'person_position'."""
+        return self._person_position
+
+    @person_position.setter
+    def person_position(self, value):
+        if __debug__:
+            from geometry_msgs.msg import Point
+            from collections.abc import Sequence
+            from collections.abc import Set
+            from collections import UserList
+            from collections import UserString
+            assert \
+                ((isinstance(value, Sequence) or
+                  isinstance(value, Set) or
+                  isinstance(value, UserList)) and
+                 not isinstance(value, str) and
+                 not isinstance(value, UserString) and
+                 all(isinstance(v, Point) for v in value) and
+                 True), \
+                "The 'person_position' field must be a set or sequence and each value of type 'Point'"
+        self._person_position = value
 
     @builtins.property
     def looking(self):

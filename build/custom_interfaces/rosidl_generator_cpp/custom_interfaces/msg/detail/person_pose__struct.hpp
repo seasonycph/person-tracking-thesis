@@ -19,6 +19,7 @@
 // Member 'header'
 #include "std_msgs/msg/detail/header__struct.hpp"
 // Member 'keypoints'
+// Member 'person_position'
 #include "geometry_msgs/msg/detail/point__struct.hpp"
 
 #ifndef _WIN32
@@ -61,6 +62,9 @@ struct PersonPose_
   using _kpt_conf_type =
     std::vector<float, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<float>>;
   _kpt_conf_type kpt_conf;
+  using _person_position_type =
+    std::vector<geometry_msgs::msg::Point_<ContainerAllocator>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<geometry_msgs::msg::Point_<ContainerAllocator>>>;
+  _person_position_type person_position;
   using _looking_type =
     std::vector<bool, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<bool>>;
   _looking_type looking;
@@ -82,6 +86,12 @@ struct PersonPose_
     const std::vector<float, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<float>> & _arg)
   {
     this->kpt_conf = _arg;
+    return *this;
+  }
+  Type & set__person_position(
+    const std::vector<geometry_msgs::msg::Point_<ContainerAllocator>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<geometry_msgs::msg::Point_<ContainerAllocator>>> & _arg)
+  {
+    this->person_position = _arg;
     return *this;
   }
   Type & set__looking(
@@ -140,6 +150,9 @@ struct PersonPose_
       return false;
     }
     if (this->kpt_conf != other.kpt_conf) {
+      return false;
+    }
+    if (this->person_position != other.person_position) {
       return false;
     }
     if (this->looking != other.looking) {

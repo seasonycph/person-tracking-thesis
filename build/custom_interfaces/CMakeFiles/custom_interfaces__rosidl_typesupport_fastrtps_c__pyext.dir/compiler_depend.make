@@ -249,9 +249,7 @@ CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_ge
   /opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/time__struct.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence.h \
-  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose__struct.h \
   /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__struct.h \
-  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion__struct.h \
   rosidl_generator_c/custom_interfaces/msg/detail/person_pose__functions.h
 
 
@@ -358,8 +356,6 @@ rosidl_generator_c/custom_interfaces/msg/detail/person_pose__type_support.h:
 /usr/include/python3.10/floatobject.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
-
-/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose__struct.h:
 
 /usr/include/wchar.h:
 
@@ -614,8 +610,6 @@ rosidl_generator_py/custom_interfaces/_custom_interfaces_s.ep.rosidl_typesupport
 /usr/include/x86_64-linux-gnu/bits/types.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
-
-/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion__struct.h:
 
 /usr/include/python3.10/cpython/pythonrun.h:
 
