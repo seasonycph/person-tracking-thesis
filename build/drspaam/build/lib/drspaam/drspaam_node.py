@@ -3,6 +3,7 @@
 import numpy as np
 import time
 import rclpy
+import torch
 from rclpy.node import Node
 
 from sensor_msgs.msg import LaserScan
@@ -26,7 +27,8 @@ class DrSpaamNode(Node):
         self._detector = Detector(
             model_name="DR-SPAAM",
             ckpt_file=self.weight_file,
-            gpu=True, stride=self.stride)
+            gpu=torch.cuda.is_available(),
+            stride=self.stride)
 
         # Initialize the comunication
         self.init_communication()
@@ -37,7 +39,7 @@ class DrSpaamNode(Node):
         """
         self.weight_file = "weights/dr-spaam/dr_spaam_e40.pth"
         self.stride = 1
-        self.conf_thresh = 0.5
+        self.conf_thresh = 0.55
 
     def init_communication(self):
         """
@@ -93,15 +95,15 @@ class DrSpaamNode(Node):
 
 def detections_to_pose_array(dets_xy, dets_cls):
     pose_array = PoseArray()
-
+    print(dets_xy)
     for d_xy, d_cls in zip(dets_xy, dets_cls):
         # If the laser is facing front, DR-SPAAM's y-axis aligns with the laser center array,
         # x-axis points to the right and z-axis points upwards
 
         p = Pose()
 
-        p.position.x = d_xy[1]
-        p.position.y = d_xy[0]
+        p.position.x = d_xy[0]
+        p.position.y = d_xy[1]
         p.position.z = 0.0
         pose_array.poses.append(p)
 

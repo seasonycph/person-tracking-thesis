@@ -101,24 +101,26 @@ class YoloPoseNode(Node):
             output, self.cv2_image_ = run_inference(
                 self.model_, self.cv2_image_, self.device_)
 
+            # Save previous inference output and image 
             self.inf_output = output
             self.inf_image = self.cv2_image_
 
             # Draw keypoints and skeleton on the image
             nimg, kpts = draw_keypoints(self.model_, output, self.cv2_image_)
         else:
+            self.cv2_image_ = image_processing(self.cv2_image_, self.device_)
             nimg, kpts = draw_keypoints(
-                self.model_, self.inf_output, self.inf_image)
+                self.model_, self.inf_output, self.cv2_image_)
 
         # Convert the detections into PersonPose message
         dets_msg, prsn_pose = kpts_to_person_pose(kpts)
         dets_msg.header = msg.header
         self.dets_pub_.publish(dets_msg)
 
-        ####
+        # Draw the center of the detected person (temporal feature)
         for pose in prsn_pose:
             nimg = cv2.circle(nimg, pose, 5, (255,0,0), -1)
-        ####
+        
 
         # Send the resulting image through the topic
         try:
@@ -134,7 +136,7 @@ class YoloPoseNode(Node):
         self.fps_.append(1 / (time.time() - t))
         if len(self.fps_) > 10:
             self.fps_ = self.fps_[-10:]
-        #self.get_logger().info(f"FPS: {np.mean(self.fps_)}")
+        self.get_logger().info(f"FPS: {np.mean(self.fps_)}")
 
 
 def load_model(weight_file, device):
@@ -174,6 +176,19 @@ def run_inference(model, image, device):
 
     return output, image
 
+def image_processing(image, device):
+    # Resize and pad the image
+    image = letterbox(image, 960, stride=64, auto=True)[0]
+    # Apply transforms
+    image = transforms.ToTensor()(image)  # torch.Size([3, 567, 960])
+    # If GPU is available, run the image there
+    if device == "cuda:0":
+        image = image.half().to(device)
+    # Turn image into batch
+    image = image.unsqueeze(0)
+
+    return image
+
 
 def draw_keypoints(model, output, image):
     # Apply non-maximum suppression
@@ -188,7 +203,7 @@ def draw_keypoints(model, output, image):
 
     # Disable gradient propagation
     with torch.no_grad():
-        output = output_to_keypoint(output)
+        output, boxes = output_to_keypoint(output)
 
     # Drop the first 7 elements so then we have 51 elements per person
     if len(output) != 0:
@@ -198,6 +213,14 @@ def draw_keypoints(model, output, image):
     nimg = image[0].permute(1, 2, 0) * 255
     nimg = nimg.cpu().numpy().astype(np.uint8)
     nimg = cv2.cvtColor(nimg, cv2.COLOR_RGB2BGR)
+    
+    # Draw the bounding box around the detection
+    if len(boxes) != 0:
+        for box in boxes:
+            nimg = cv2.rectangle(nimg, (int(box[0] - box[2] / 2), int(box[1] - box[3] / 2)),
+                                (int(box[0] + box[2] / 2), int(box[1] + box[3] / 2)),
+                                (0,255,0), 5)
+    
     kpts = []
     for idx in range(output.shape[0]):
         # steps will always have to be 3
@@ -237,7 +260,7 @@ def kpts_to_person_pose(output):
         # Position of the person in the image
         det_pose.x = (np.round(np.mean(x_pos)))
         det_pose.y = (np.round(np.mean(y_pos)))
-        pose.append((int(np.round(det_pose.x)), int(np.round(det_pose.y))))
+        pose.append((int(det_pose.x), int(det_pose.y)))
         person_pose.person_position.append(det_pose)
 
         # Check if person is looking at the camera
