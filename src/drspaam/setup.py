@@ -1,11 +1,12 @@
 from setuptools import setup
 
 package_name = 'drspaam'
+sub_tracker = 'drspaam/drspaam_tracker/'
 
 setup(
     name=package_name,
     version='1.0.0',
-    packages=[package_name],
+    packages=[package_name, sub_tracker],
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),

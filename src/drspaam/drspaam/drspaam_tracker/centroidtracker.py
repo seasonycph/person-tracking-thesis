@@ -1,3 +1,7 @@
+"""
+Centroid tracker in python
+"""
+
 from scipy.spatial import distance as dist
 from collections import OrderedDict
 import numpy as np
@@ -33,6 +37,10 @@ class CentroidTracker():
         del self.disappeared[objectID]
 
     def update(self, rects):
+        # If there are no inputs and no objects, just return
+        if len(rects) == 0 and len(self.objects) == 0:
+            return self.objects
+
         # Check to see if the list of poses is empty
         if len(rects) == 0:
             # Mark existing objects as disappeared
@@ -46,7 +54,7 @@ class CentroidTracker():
             return self.objects
 
         # Initialize an array of input centroids for the current frame
-        inputCentroids = np.zeros((len(rects), 2), dtype="float46")
+        inputCentroids = np.zeros((len(rects), 2), dtype="float64")
 
         # Loop over the recieved poses
         for i, pose in enumerate(rects):
@@ -90,6 +98,39 @@ class CentroidTracker():
 
                 # Grab object ID for current row, set its new centroid and
                 # reset the disappeared counter
+                objectID = objectIDs[row]
+                self.objects[objectID] = inputCentroids[col]
+                self.disappeared[objectID] = 0
+
+                # Check the column and the row as used
+                usedRows.add(row)
+                usedCols.add(col)
+
+                # Compute the rows and cols that have not been used
+                unusedRows = set(range(0, D.shape[0])).difference(usedRows)
+                unusedCols = set(range(0, D.shape[1])).difference(usedCols)
+
+                # If there are more objects than input centroids, check if any has disappeared
+                if D.shape[0] >= D.shape[1]:
+                    for row in unusedRows:
+                        # print(objectIDs[row])
+                        # print(self.disappeared)
+                        if objectIDs[row] not in self.disappeared:
+                            continue
+
+                        # Increase object's disappeared counter
+                        objectID = objectIDs[row]
+                        self.disappeared[objectID] += 1
+
+                        # Check if object should be thrown away
+                        if self.disappeared[objectID] > self.maxDisappeared:
+                            self.deregister(objectID)
+                else:
+                    # If there are more inputs, register the new object
+                    for col in unusedCols:
+                        self.register(inputCentroids[col])
+
+        return self.objects
 
 
 

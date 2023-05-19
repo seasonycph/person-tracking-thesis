@@ -11,6 +11,7 @@ from geometry_msgs.msg import Point, Pose, PoseArray
 from visualization_msgs.msg import Marker
 
 from dr_spaam.detector import Detector
+from .drspaam_tracker.centroidtracker import CentroidTracker
 
 class DrSpaamNode(Node):
 
@@ -29,6 +30,9 @@ class DrSpaamNode(Node):
             ckpt_file=self.weight_file,
             gpu=torch.cuda.is_available(),
             stride=self.stride)
+        
+        # Initialize tracker
+        self.centroid_tracker_ = CentroidTracker()
 
         # Initialize the comunication
         self.init_communication()
@@ -39,7 +43,7 @@ class DrSpaamNode(Node):
         """
         self.weight_file = "weights/dr-spaam/dr_spaam_e40.pth"
         self.stride = 1
-        self.conf_thresh = 0.55
+        self.conf_thresh = 0.6
 
     def init_communication(self):
         """
@@ -71,7 +75,7 @@ class DrSpaamNode(Node):
         # Extract the detections
         # t = time.time()
         dets_xy, dets_cls, _ = self._detector(scan)
-        # self.get_logger().info(f"End-to-end inference time: {time.time() - t}"
+        
 
         # Confidence threshold
         conf_mask = (dets_cls >= self.conf_thresh).reshape(-1)
@@ -81,9 +85,15 @@ class DrSpaamNode(Node):
         dets_cls = dets_cls[conf_mask]
 
         # Convert to pose array
+        objects = self.centroid_tracker_.update(dets_xy)
+
+        dets_xy = np.array(list(objects.values()))
         dets_msg = detections_to_pose_array(dets_xy, dets_cls)
         dets_msg.header = msg.header
         self.dets_pub_.publish(dets_msg)
+
+        # Time until detection message is published
+        # self.get_logger().info(f"End-to-end inference time: {time.time() - t}"
 
         # Convert to rviz markers
         rviz_msg = detections_to_rviz_marker(dets_xy, dets_cls)
