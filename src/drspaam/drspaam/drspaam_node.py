@@ -95,7 +95,6 @@ class DrSpaamNode(Node):
 
 def detections_to_pose_array(dets_xy, dets_cls):
     pose_array = PoseArray()
-    print(dets_xy)
     for d_xy, d_cls in zip(dets_xy, dets_cls):
         # If the laser is facing front, DR-SPAAM's y-axis aligns with the laser center array,
         # x-axis points to the right and z-axis points upwards
