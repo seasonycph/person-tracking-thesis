@@ -1,6 +1,7 @@
 {
   "package_name": "custom_interfaces",
   "non_idl_tuples": [
-    "/home/taras/thesis_ws/src/custom_interfaces:msg/PersonPose.msg"
+    "/home/taras/thesis_ws/src/custom_interfaces:msg/PersonPose.msg",
+    "/home/taras/thesis_ws/src/custom_interfaces:msg/Tracker.msg"
   ]
 }

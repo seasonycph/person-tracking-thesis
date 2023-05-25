@@ -15,6 +15,10 @@ set(CMAKE_MULTIPLE_OUTPUT_PAIRS
   "/home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_cpp/custom_interfaces/msg/detail/person_pose__builder.hpp" "/home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp"
   "/home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_cpp/custom_interfaces/msg/detail/person_pose__struct.hpp" "/home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp"
   "/home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_cpp/custom_interfaces/msg/detail/person_pose__traits.hpp" "/home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp"
+  "/home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_cpp/custom_interfaces/msg/detail/tracker__builder.hpp" "/home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp"
+  "/home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_cpp/custom_interfaces/msg/detail/tracker__struct.hpp" "/home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp"
+  "/home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_cpp/custom_interfaces/msg/detail/tracker__traits.hpp" "/home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp"
+  "/home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_cpp/custom_interfaces/msg/tracker.hpp" "/home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp"
   )
 
 

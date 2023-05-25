@@ -1,4 +1,4 @@
 # generated from rosidl_cmake/cmake/rosidl_cmake-extras.cmake.in
 
-set(custom_interfaces_IDL_FILES "msg/PersonPose.idl")
-set(custom_interfaces_INTERFACE_FILES "msg/PersonPose.msg")
+set(custom_interfaces_IDL_FILES "msg/PersonPose.idl;msg/Tracker.idl")
+set(custom_interfaces_INTERFACE_FILES "msg/PersonPose.msg;msg/Tracker.msg")

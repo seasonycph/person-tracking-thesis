@@ -14,6 +14,7 @@ from collections import OrderedDict
 
 from sensor_msgs.msg import Image
 from custom_interfaces.msg import PersonPose
+from custom_interfaces.msg import Tracker
 from geometry_msgs.msg import Point
 from cv_bridge import CvBridge, CvBridgeError
 
@@ -81,6 +82,10 @@ class YoloPoseNode(Node):
         self.image_pub_ = self.create_publisher(
             Image, topic, qos_profile=10)
 
+        topic = "/yolo_pose/tracker"
+        self.tracker_pub_ = self.create_publisher(
+            Tracker, topic, qos_profile=10)
+
         # Subscriber
         topic = "/lewis_b1/camera_front/rgb/image_raw"
         self.image_sub_ = self.create_subscription(
@@ -118,11 +123,10 @@ class YoloPoseNode(Node):
             nimg, kpts, boxes, confs = draw_keypoints(
                 self.model_, self.inf_output, self.cv2_image_)
 
-        
         # Compute the bounding boxes around the person
         boxes = compute_bbox(kpts)
 
-        #print(boxes)
+        # print(boxes)
 
         # Compute detections
         detections = compute_detections(boxes, confs)
@@ -148,7 +152,7 @@ class YoloPoseNode(Node):
         # for box in track_dict.values():
         #     nimg = cv2.circle(
         #         nimg, (int(box[0]), int(box[1])), 5, (0, 255, 0), -1)
-        #nimg = draw_bbox(track_dict.values(), nimg, (255,0,0))
+        # nimg = draw_bbox(track_dict.values(), nimg, (255,0,0))
 
         # Send the resulting image through the topic
         try:
@@ -158,7 +162,7 @@ class YoloPoseNode(Node):
             self.get_logger().error(e)
         self.image_pub_.publish(image_msg)
 
-        #nimg = draw_bbox(boxes, nimg, (0,255,0))
+        # nimg = draw_bbox(boxes, nimg, (0,255,0))
 
         # Show the inference
         display_inference(nimg)
@@ -246,7 +250,7 @@ def draw_keypoints(model, output, image):
     nimg = cv2.cvtColor(nimg, cv2.COLOR_RGB2BGR)
 
     # Draw the bounding box around the detection
-    #nimg = draw_bbox(boxes, nimg)
+    # nimg = draw_bbox(boxes, nimg)
 
     kpts = []
     for idx in range(output.shape[0]):
@@ -257,13 +261,14 @@ def draw_keypoints(model, output, image):
 
     return nimg, kpts, boxes, confs
 
+
 def draw_bbox(boxes, nimg, color):
     if len(boxes) != 0:
         for box in boxes:
             nimg = cv2.rectangle(nimg, (int(box[0]), int(box[1])),
-                                (int( box[2]), int(box[3])),
-                                color, 5)
-    
+                                 (int(box[2]), int(box[3])),
+                                 color, 5)
+
     return nimg
 
 
@@ -313,6 +318,7 @@ def compute_detections(boxes, confs):
 
     return dets
 
+
 def compute_bbox(kpts):
     boxes = []
     offset = 20
@@ -322,18 +328,16 @@ def compute_bbox(kpts):
         for i, _ in enumerate(kpt):
             if i % 3 != 0 and i != 0:
                 continue
-            if kpt[i+2] > 0.5: # Check that the kpt is visible
+            if kpt[i+2] > 0.5:  # Check that the kpt is visible
                 kpt_x.append(kpt[i])
                 kpt_y.append(kpt[i+1])
-            i =+ 2
+            i = + 2
         if len(kpt_x) == 0 or len(kpt_y) == 0:
             continue
         w = np.max(kpt_x) - np.min(kpt_x) + offset
         h = np.max(kpt_y) - np.min(kpt_y) + offset
         boxes.append([np.min(kpt_x) - offset, np.min(kpt_y) - offset, w, h])
     return boxes
-
-
 
 
 def person_front(kpts):

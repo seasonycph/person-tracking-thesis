@@ -1,0 +1,55 @@
+[0.022s] Invoking command in '/home/taras/thesis_ws/build/custom_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/taras/seasony/lewis/install/robot_navigation:/home/taras/seasony/lewis/install/sensor_stream_pkg:/home/taras/seasony/lewis/install/robot_teleop:/home/taras/seasony/lewis/install/robot_spawner:/home/taras/seasony/lewis/install/robot_data:/home/taras/seasony/lewis/install/robot_agent:/home/taras/seasony/lewis/install/robot_behavior2:/home/taras/seasony/lewis/install/robot_battery:/home/taras/seasony/lewis/install/robot_bag_recorder:/home/taras/seasony/lewis/install/orgb_led_manager:/home/taras/seasony/lewis/install/nav2_simple_commander:/home/taras/seasony/lewis/install/locations:/home/taras/seasony/lewis/install/lewis_sound_manager:/home/taras/seasony/lewis/install/lewis_simple_gui:/home/taras/seasony/lewis/install/lewis_serial_com:/home/taras/seasony/lewis/install/lewis_robot_control:/home/taras/seasony/lewis/install/lewis_remote_emergency:/home/taras/seasony/lewis/install/lewis_managers:/home/taras/seasony/lewis/install/lewis_health:/home/taras/seasony/lewis/install/lewis_b1_description:/home/taras/seasony/lewis/install/lewis_b1_bringup:/home/taras/seasony/lewis/install/esp32_control:/home/taras/seasony/lewis/install/controllino:/home/taras/thesis_ws/install/yolo_pose_ros:/home/taras/thesis_ws/install/drspaam:/opt/ros/humble /usr/bin/cmake --build /home/taras/thesis_ws/build/custom_interfaces -- -j16 -l16
+[0.072s] -- Found ament_cmake: 1.3.4 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.321s] -- Found std_msgs: 4.2.3 (/opt/ros/humble/share/std_msgs/cmake)
+[0.357s] -- Found rosidl_generator_c: 3.1.4 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.359s] -- Found rosidl_adapter: 3.1.4 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.366s] -- Found rosidl_generator_cpp: 3.1.4 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.389s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.407s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.457s] -- Found geometry_msgs: 4.2.3 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.494s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.780s] [31mCMake Error at /opt/ros/humble/share/rosidl_adapter/cmake/rosidl_adapt_interfaces.cmake:59 (message):
+[0.781s]   execute_process(/usr/bin/python3.10 -m rosidl_adapter --package-name
+[0.781s]   custom_interfaces --arguments-file
+[0.781s]   /home/taras/thesis_ws/build/custom_interfaces/rosidl_adapter__arguments__custom_interfaces.json
+[0.781s]   --output-dir
+[0.781s]   /home/taras/thesis_ws/build/custom_interfaces/rosidl_adapter/custom_interfaces
+[0.781s]   --output-file
+[0.781s]   /home/taras/thesis_ws/build/custom_interfaces/rosidl_adapter/custom_interfaces.idls)
+[0.782s]   returned error code 1:
+[0.782s] 
+[0.782s]   Error processing 'int32[] IDs' of 'custom_interfaces/Tracker': ''IDs' is an
+[0.782s]   invalid field name.  It should have the pattern
+[0.782s]   '^(?!.*__)(?!.*_$)[a-z][a-z0-9_]*$''
+[0.782s] 
+[0.782s]   Traceback (most recent call last):
+[0.783s] 
+[0.783s]     File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+[0.783s]       return _run_code(code, main_globals, None,
+[0.783s]     File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+[0.783s]       exec(code, run_globals)
+[0.783s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/__main__.py", line 19, in <module>
+[0.783s]       sys.exit(main())
+[0.783s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/main.py", line 53, in main
+[0.784s]       abs_idl_file = convert_to_idl(
+[0.784s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/__init__.py", line 19, in convert_to_idl
+[0.784s]       return convert_msg_to_idl(
+[0.784s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/msg/__init__.py", line 28, in convert_msg_to_idl
+[0.784s]       msg = parse_message_string(package_name, input_file.stem, content)
+[0.784s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py", line 519, in parse_message_string
+[0.784s]       fields.append(Field(
+[0.785s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py", line 354, in __init__
+[0.785s]       raise NameError(
+[0.785s] 
+[0.785s]   NameError: 'IDs' is an invalid field name.  It should have the pattern
+[0.785s]   '^(?!.*__)(?!.*_$)[a-z][a-z0-9_]*$'
+[0.785s] 
+[0.785s] Call Stack (most recent call first):
+[0.786s]   /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:130 (rosidl_adapt_interfaces)
+[0.786s]   CMakeLists.txt:17 (rosidl_generate_interfaces)
+[0.786s] 
+[0.786s] [0m
+[0.786s] -- Configuring incomplete, errors occurred!
+[0.786s] See also "/home/taras/thesis_ws/build/custom_interfaces/CMakeFiles/CMakeOutput.log".
+[0.790s] gmake: *** [Makefile:747: cmake_check_build_system] Error 1
+[0.793s] Invoked command in '/home/taras/thesis_ws/build/custom_interfaces' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/taras/seasony/lewis/install/robot_navigation:/home/taras/seasony/lewis/install/sensor_stream_pkg:/home/taras/seasony/lewis/install/robot_teleop:/home/taras/seasony/lewis/install/robot_spawner:/home/taras/seasony/lewis/install/robot_data:/home/taras/seasony/lewis/install/robot_agent:/home/taras/seasony/lewis/install/robot_behavior2:/home/taras/seasony/lewis/install/robot_battery:/home/taras/seasony/lewis/install/robot_bag_recorder:/home/taras/seasony/lewis/install/orgb_led_manager:/home/taras/seasony/lewis/install/nav2_simple_commander:/home/taras/seasony/lewis/install/locations:/home/taras/seasony/lewis/install/lewis_sound_manager:/home/taras/seasony/lewis/install/lewis_simple_gui:/home/taras/seasony/lewis/install/lewis_serial_com:/home/taras/seasony/lewis/install/lewis_robot_control:/home/taras/seasony/lewis/install/lewis_remote_emergency:/home/taras/seasony/lewis/install/lewis_managers:/home/taras/seasony/lewis/install/lewis_health:/home/taras/seasony/lewis/install/lewis_b1_description:/home/taras/seasony/lewis/install/lewis_b1_bringup:/home/taras/seasony/lewis/install/esp32_control:/home/taras/seasony/lewis/install/controllino:/home/taras/thesis_ws/install/yolo_pose_ros:/home/taras/thesis_ws/install/drspaam:/opt/ros/humble /usr/bin/cmake --build /home/taras/thesis_ws/build/custom_interfaces -- -j16 -l16

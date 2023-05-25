@@ -1,2 +1,4 @@
 msg/PersonPose.idl
 msg/PersonPose.msg
+msg/Tracker.idl
+msg/Tracker.msg
