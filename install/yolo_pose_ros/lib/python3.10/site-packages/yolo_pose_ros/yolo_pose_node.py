@@ -9,6 +9,8 @@ from torchvision import transforms
 import math
 import cv2
 import numpy as np
+from deep_sort_realtime.deepsort_tracker import DeepSort
+from collections import OrderedDict
 
 from sensor_msgs.msg import Image
 from custom_interfaces.msg import PersonPose
@@ -33,6 +35,9 @@ class YoloPoseNode(Node):
 
         # Initialize the subscriber and the publishers
         self.init_communication()
+
+        # Initialize the tracker
+        self.tracker_ = DeepSort(max_age=5, n_init=2, embedder_gpu=True)
 
     def read_parameters(self):
         # Chack availability of GPU
@@ -101,16 +106,34 @@ class YoloPoseNode(Node):
             output, self.cv2_image_ = run_inference(
                 self.model_, self.cv2_image_, self.device_)
 
-            # Save previous inference output and image 
+            # Save previous inference output and image
             self.inf_output = output
             self.inf_image = self.cv2_image_
 
             # Draw keypoints and skeleton on the image
-            nimg, kpts = draw_keypoints(self.model_, output, self.cv2_image_)
+            nimg, kpts, boxes, confs = draw_keypoints(
+                self.model_, output, self.cv2_image_)
         else:
             self.cv2_image_ = image_processing(self.cv2_image_, self.device_)
-            nimg, kpts = draw_keypoints(
+            nimg, kpts, boxes, confs = draw_keypoints(
                 self.model_, self.inf_output, self.cv2_image_)
+
+        
+        # Compute the bounding boxes around the person
+        boxes = compute_bbox(kpts)
+
+        #print(boxes)
+
+        # Compute detections
+        detections = compute_detections(boxes, confs)
+
+        # # Tracker
+        tracks = self.tracker_.update_tracks(detections, frame=nimg)
+        track_dict = OrderedDict()
+        for track in tracks:
+            if not track.is_confirmed():
+                continue
+            track_dict[track.track_id] = track.to_ltrb()
 
         # Convert the detections into PersonPose message
         dets_msg, prsn_pose = kpts_to_person_pose(kpts)
@@ -118,9 +141,14 @@ class YoloPoseNode(Node):
         self.dets_pub_.publish(dets_msg)
 
         # Draw the center of the detected person (temporal feature)
-        for pose in prsn_pose:
-            nimg = cv2.circle(nimg, pose, 5, (255,0,0), -1)
-        
+        # for pose in prsn_pose:
+        #     nimg = cv2.circle(nimg, pose, 5, (255, 0, 0), -1)
+
+        # Draw a circle in the center of the tracked bounding box
+        # for box in track_dict.values():
+        #     nimg = cv2.circle(
+        #         nimg, (int(box[0]), int(box[1])), 5, (0, 255, 0), -1)
+        #nimg = draw_bbox(track_dict.values(), nimg, (255,0,0))
 
         # Send the resulting image through the topic
         try:
@@ -129,6 +157,8 @@ class YoloPoseNode(Node):
         except CvBridgeError as e:
             self.get_logger().error(e)
         self.image_pub_.publish(image_msg)
+
+        #nimg = draw_bbox(boxes, nimg, (0,255,0))
 
         # Show the inference
         display_inference(nimg)
@@ -176,6 +206,7 @@ def run_inference(model, image, device):
 
     return output, image
 
+
 def image_processing(image, device):
     # Resize and pad the image
     image = letterbox(image, 960, stride=64, auto=True)[0]
@@ -203,7 +234,7 @@ def draw_keypoints(model, output, image):
 
     # Disable gradient propagation
     with torch.no_grad():
-        output, boxes = output_to_keypoint(output)
+        output, boxes, confs = output_to_keypoint(output)
 
     # Drop the first 7 elements so then we have 51 elements per person
     if len(output) != 0:
@@ -213,14 +244,10 @@ def draw_keypoints(model, output, image):
     nimg = image[0].permute(1, 2, 0) * 255
     nimg = nimg.cpu().numpy().astype(np.uint8)
     nimg = cv2.cvtColor(nimg, cv2.COLOR_RGB2BGR)
-    
+
     # Draw the bounding box around the detection
-    if len(boxes) != 0:
-        for box in boxes:
-            nimg = cv2.rectangle(nimg, (int(box[0] - box[2] / 2), int(box[1] - box[3] / 2)),
-                                (int(box[0] + box[2] / 2), int(box[1] + box[3] / 2)),
-                                (0,255,0), 5)
-    
+    #nimg = draw_bbox(boxes, nimg)
+
     kpts = []
     for idx in range(output.shape[0]):
         # steps will always have to be 3
@@ -228,7 +255,16 @@ def draw_keypoints(model, output, image):
         plot_skeleton_kpts(nimg, output[idx].T, 3)
         kpts.append(output[idx])
 
-    return nimg, kpts
+    return nimg, kpts, boxes, confs
+
+def draw_bbox(boxes, nimg, color):
+    if len(boxes) != 0:
+        for box in boxes:
+            nimg = cv2.rectangle(nimg, (int(box[0]), int(box[1])),
+                                (int( box[2]), int(box[3])),
+                                color, 5)
+    
+    return nimg
 
 
 def kpts_to_person_pose(output):
@@ -269,9 +305,40 @@ def kpts_to_person_pose(output):
     return person_pose, pose
 
 
+def compute_detections(boxes, confs):
+    dets = []
+    # The tracker accepts detection input as ([x,y,w,h], conf, class)
+    for box, conf in zip(boxes, confs):
+        dets.append((box, conf, 'person'))
+
+    return dets
+
+def compute_bbox(kpts):
+    boxes = []
+    offset = 20
+    for kpt in kpts:
+        kpt_x = []
+        kpt_y = []
+        for i, _ in enumerate(kpt):
+            if i % 3 != 0 and i != 0:
+                continue
+            if kpt[i+2] > 0.5: # Check that the kpt is visible
+                kpt_x.append(kpt[i])
+                kpt_y.append(kpt[i+1])
+            i =+ 2
+        if len(kpt_x) == 0 or len(kpt_y) == 0:
+            continue
+        w = np.max(kpt_x) - np.min(kpt_x) + offset
+        h = np.max(kpt_y) - np.min(kpt_y) + offset
+        boxes.append([np.min(kpt_x) - offset, np.min(kpt_y) - offset, w, h])
+    return boxes
+
+
+
+
 def person_front(kpts):
-    # If ALL the keypoints of the face are visible, the person is probably looking at the camera 
-    
+    # If ALL the keypoints of the face are visible, the person is probably looking at the camera
+
     # TO DO: If head keypoints are not visible (partial visibility) then consider the hips of the person
     # x_left_hip > x_right_hip = looking at camera
 

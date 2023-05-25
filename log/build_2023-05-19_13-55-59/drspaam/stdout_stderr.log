@@ -1,0 +1,28 @@
+running egg_info
+writing ../../build/drspaam/drspaam.egg-info/PKG-INFO
+writing dependency_links to ../../build/drspaam/drspaam.egg-info/dependency_links.txt
+writing entry points to ../../build/drspaam/drspaam.egg-info/entry_points.txt
+writing requirements to ../../build/drspaam/drspaam.egg-info/requires.txt
+writing top-level names to ../../build/drspaam/drspaam.egg-info/top_level.txt
+reading manifest file '../../build/drspaam/drspaam.egg-info/SOURCES.txt'
+writing manifest file '../../build/drspaam/drspaam.egg-info/SOURCES.txt'
+running build
+running build_py
+copying drspaam/drspaam_node.py -> /home/taras/thesis_ws/build/drspaam/build/lib/drspaam
+copying drspaam/drspaam_tracker/kalmanfilter.py -> /home/taras/thesis_ws/build/drspaam/build/lib/drspaam/drspaam_tracker
+copying drspaam/drspaam_tracker/centroidtracker.py -> /home/taras/thesis_ws/build/drspaam/build/lib/drspaam/drspaam_tracker
+running install
+running install_lib
+copying /home/taras/thesis_ws/build/drspaam/build/lib/drspaam/drspaam_tracker/kalmanfilter.py -> /home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages/drspaam/drspaam_tracker
+copying /home/taras/thesis_ws/build/drspaam/build/lib/drspaam/drspaam_tracker/centroidtracker.py -> /home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages/drspaam/drspaam_tracker
+copying /home/taras/thesis_ws/build/drspaam/build/lib/drspaam/drspaam_node.py -> /home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages/drspaam
+byte-compiling /home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages/drspaam/drspaam_tracker/kalmanfilter.py to kalmanfilter.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages/drspaam/drspaam_tracker/centroidtracker.py to centroidtracker.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages/drspaam/drspaam_node.py to drspaam_node.cpython-310.pyc
+running install_data
+running install_egg_info
+removing '/home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages/drspaam-1.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/drspaam/drspaam.egg-info to /home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages/drspaam-1.0.0-py3.10.egg-info
+running install_scripts
+Installing dr_spaam_node script to /home/taras/thesis_ws/install/drspaam/lib/drspaam
+writing list of installed files to '/home/taras/thesis_ws/build/drspaam/install.log'

@@ -34,6 +34,9 @@ class DrSpaamNode(Node):
         # Initialize tracker
         self.centroid_tracker_ = CentroidTracker()
 
+        # Previous deections
+        self.prev_dets_xy = np.array([0, 0])
+
         # Initialize the comunication
         self.init_communication()
 
@@ -43,7 +46,7 @@ class DrSpaamNode(Node):
         """
         self.weight_file = "weights/dr-spaam/dr_spaam_e40.pth"
         self.stride = 1
-        self.conf_thresh = 0.55
+        self.conf_thresh = 0.6
 
     def init_communication(self):
         """
@@ -84,6 +87,10 @@ class DrSpaamNode(Node):
         dets_xy = dets_xy[conf_mask]
         dets_cls = dets_cls[conf_mask]
 
+        # Velocities
+        vel_xy = np.array([(dets_xy)])
+        self.prev_dets_xy = dets_xy
+
         # Convert to pose array
         objects = self.centroid_tracker_.update(dets_xy)
 
@@ -101,6 +108,12 @@ class DrSpaamNode(Node):
         self.rviz_pub_.publish(rviz_msg)
 
         # self.get_logger().info(f"Detections: {dets_msg}")
+
+
+def compute_velocities(dets_xy):
+    vels_xy = []
+    for dets in dets_xy:
+        vels_xy.append([])
 
 
 def detections_to_pose_array(dets_xy, dets_cls):

@@ -12,6 +12,7 @@ drspaam/__init__.py
 drspaam/drspaam_node.py
 drspaam/drspaam_tracker/__init__.py
 drspaam/drspaam_tracker/centroidtracker.py
+drspaam/drspaam_tracker/kalmanfilter.py
 resource/drspaam
 test/test_copyright.py
 test/test_flake8.py

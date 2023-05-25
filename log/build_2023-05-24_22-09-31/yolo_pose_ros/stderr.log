@@ -1,0 +1,5 @@
+  File "/home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/yolo_pose_node.py", line 149
+    nimg = cv2.circle(
+                     ^
+SyntaxError: '(' was never closed
+
