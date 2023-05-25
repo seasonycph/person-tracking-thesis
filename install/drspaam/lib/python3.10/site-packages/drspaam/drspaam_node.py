@@ -8,10 +8,12 @@ from rclpy.node import Node
 
 from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Point, Pose, PoseArray
+from custom_interfaces.msg import Tracker
 from visualization_msgs.msg import Marker
 
 from dr_spaam.detector import Detector
 from .drspaam_tracker.centroidtracker import CentroidTracker
+
 
 class DrSpaamNode(Node):
 
@@ -30,7 +32,7 @@ class DrSpaamNode(Node):
             ckpt_file=self.weight_file,
             gpu=torch.cuda.is_available(),
             stride=self.stride)
-        
+
         # Initialize tracker
         self.centroid_tracker_ = CentroidTracker()
 
@@ -59,6 +61,9 @@ class DrSpaamNode(Node):
         self.rviz_pub_ = self.create_publisher(
             msg_type=Marker, topic="/dr_spaam/rviz", qos_profile=10)
 
+        self.tracker_pub_ = self.create_publisher(
+            msg_type=Tracker, topic="/dr_spaam/tracker", qos_profile=10)
+
         # Subscriber
         topic = "/lewis_b1/scan_front"
         self.scan_sub_ = self.create_subscription(
@@ -78,7 +83,6 @@ class DrSpaamNode(Node):
         # Extract the detections
         # t = time.time()
         dets_xy, dets_cls, _ = self._detector(scan)
-        
 
         # Confidence threshold
         conf_mask = (dets_cls >= self.conf_thresh).reshape(-1)
@@ -91,13 +95,19 @@ class DrSpaamNode(Node):
         vel_xy = np.array([(dets_xy)])
         self.prev_dets_xy = dets_xy
 
-        # Convert to pose array
-        objects = self.centroid_tracker_.update(dets_xy)
+        # Track the detected objects
+        track_dict = self.centroid_tracker_.update(dets_xy)
 
-        dets_xy = np.array(list(objects.values()))
+        # Convert to pose array
+        dets_xy = np.array(list(track_dict.values()))
         dets_msg = detections_to_pose_array(dets_xy, dets_cls)
         dets_msg.header = msg.header
         self.dets_pub_.publish(dets_msg)
+
+        # Convert to tracker message
+        track_msg = dict_to_tracker(track_dict)
+        track_msg.header = msg.header
+        self.tracker_pub_.publish(track_msg)
 
         # Time until detection message is published
         # self.get_logger().info(f"End-to-end inference time: {time.time() - t}"
@@ -156,7 +166,7 @@ def detections_to_rviz_marker(dets_xy, dets_cls):
     # To msg
     for d_xy, d_cls in zip(dets_xy, dets_cls):
         for i in range(len(xy_offsets) - 1):
-            #print(f"The number it complains about: {i}")
+            # print(f"The number it complains about: {i}")
             # Start point of a segment
             p0 = Point()
             p0.x = d_xy[1] + xy_offsets[i, 0]
@@ -172,6 +182,21 @@ def detections_to_rviz_marker(dets_xy, dets_cls):
             msg.points.append(p1)
 
     return msg
+
+
+def dict_to_tracker(tracker_dict):
+    tracker = Tracker()
+    pos = Point()
+    for key in tracker_dict:
+        # Save the IDs of the tracklets
+        tracker.ids.append(int(key))
+
+        # Save the tracked centroid
+        pos.x = tracker_dict[key][0]
+        pos.y = tracker_dict[key][1]
+        tracker.positions.append(pos)
+
+    return tracker
 
 
 def main(args=None):
