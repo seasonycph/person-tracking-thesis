@@ -250,8 +250,13 @@ CMakeFiles/custom_interfaces__rosidl_typesupport_c__pyext.dir/rosidl_generator_p
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence.h \
   /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__struct.h \
-  rosidl_generator_c/custom_interfaces/msg/detail/person_pose__functions.h
+  rosidl_generator_c/custom_interfaces/msg/detail/person_pose__functions.h \
+  rosidl_generator_c/custom_interfaces/msg/detail/tracker__type_support.h \
+  rosidl_generator_c/custom_interfaces/msg/detail/tracker__struct.h \
+  rosidl_generator_c/custom_interfaces/msg/detail/tracker__functions.h
 
+
+rosidl_generator_c/custom_interfaces/msg/detail/tracker__type_support.h:
 
 /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__struct.h:
 
@@ -360,6 +365,8 @@ rosidl_generator_c/custom_interfaces/msg/detail/person_pose__type_support.h:
 /usr/include/python3.10/listobject.h:
 
 /usr/include/ctype.h:
+
+rosidl_generator_c/custom_interfaces/msg/detail/tracker__struct.h:
 
 /usr/include/python3.10/unicodeobject.h:
 
@@ -642,6 +649,8 @@ rosidl_generator_c/custom_interfaces/msg/detail/person_pose__functions.h:
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
+
+rosidl_generator_c/custom_interfaces/msg/detail/tracker__functions.h:
 
 /usr/include/python3.10/cpython/pyerrors.h:
 

@@ -1,0 +1,24 @@
+[0.685s] Invoking command in '/home/taras/thesis_ws/src/drspaam': PYTHONPATH=/home/taras/thesis_ws/build/drspaam/prefix_override:/home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/drspaam build --build-base /home/taras/thesis_ws/build/drspaam/build install --record /home/taras/thesis_ws/build/drspaam/install.log --single-version-externally-managed
+[0.946s] running egg_info
+[0.946s] writing ../../build/drspaam/drspaam.egg-info/PKG-INFO
+[0.947s] writing dependency_links to ../../build/drspaam/drspaam.egg-info/dependency_links.txt
+[0.947s] writing entry points to ../../build/drspaam/drspaam.egg-info/entry_points.txt
+[0.947s] writing requirements to ../../build/drspaam/drspaam.egg-info/requires.txt
+[0.947s] writing top-level names to ../../build/drspaam/drspaam.egg-info/top_level.txt
+[0.948s] reading manifest file '../../build/drspaam/drspaam.egg-info/SOURCES.txt'
+[0.949s] writing manifest file '../../build/drspaam/drspaam.egg-info/SOURCES.txt'
+[0.949s] running build
+[0.949s] running build_py
+[0.949s] copying drspaam/drspaam_node.py -> /home/taras/thesis_ws/build/drspaam/build/lib/drspaam
+[0.950s] running install
+[0.950s] running install_lib
+[0.950s] copying /home/taras/thesis_ws/build/drspaam/build/lib/drspaam/drspaam_node.py -> /home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages/drspaam
+[0.951s] byte-compiling /home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages/drspaam/drspaam_node.py to drspaam_node.cpython-310.pyc
+[0.952s] running install_data
+[0.953s] running install_egg_info
+[0.954s] removing '/home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages/drspaam-1.0.0-py3.10.egg-info' (and everything under it)
+[0.954s] Copying ../../build/drspaam/drspaam.egg-info to /home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages/drspaam-1.0.0-py3.10.egg-info
+[0.955s] running install_scripts
+[0.973s] Installing dr_spaam_node script to /home/taras/thesis_ws/install/drspaam/lib/drspaam
+[0.973s] writing list of installed files to '/home/taras/thesis_ws/build/drspaam/install.log'
+[1.001s] Invoked command in '/home/taras/thesis_ws/src/drspaam' returned '0': PYTHONPATH=/home/taras/thesis_ws/build/drspaam/prefix_override:/home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/drspaam build --build-base /home/taras/thesis_ws/build/drspaam/build install --record /home/taras/thesis_ws/build/drspaam/install.log --single-version-externally-managed

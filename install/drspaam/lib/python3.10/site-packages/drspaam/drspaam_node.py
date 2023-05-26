@@ -11,7 +11,7 @@ from geometry_msgs.msg import Point, Pose, PoseArray
 from custom_interfaces.msg import Tracker
 from visualization_msgs.msg import Marker
 
-from dr_spaam.detector import Detector
+from dr_spaam.detector import Detector, _TrackingExtension
 from .drspaam_tracker.centroidtracker import CentroidTracker
 
 
@@ -31,7 +31,8 @@ class DrSpaamNode(Node):
             model_name="DR-SPAAM",
             ckpt_file=self.weight_file,
             gpu=torch.cuda.is_available(),
-            stride=self.stride)
+            stride=self.stride,
+            tracking=True)
 
         # Initialize tracker
         self.centroid_tracker_ = CentroidTracker()
@@ -97,6 +98,24 @@ class DrSpaamNode(Node):
 
         # Track the detected objects
         track_dict = self.centroid_tracker_.update(dets_xy)
+
+        # Internal Dr-SPAAM tracker
+        tracks, tracks_cls = self._detector.get_tracklets()
+        trks = []
+        for t, tc in zip(tracks, tracks_cls):
+            if tc >= self.conf_thresh and len(t) > 1:
+                trks.append(t)
+        #print(trks)
+
+        #tracks_cls = np.array([tracks_cls]).T
+       
+        #conf_mask = (tracks_cls >= self.conf_thresh).reshape(-1)
+        
+        #tracks = tracks[conf_mask]
+        #tracks_cls = tracks_cls[conf_mask]
+
+        # print(f"Tracks: {tracks}")
+        # print(f"Tracks Confindence: {tracks_cls}")
 
         # Convert to pose array
         dets_xy = np.array(list(track_dict.values()))
