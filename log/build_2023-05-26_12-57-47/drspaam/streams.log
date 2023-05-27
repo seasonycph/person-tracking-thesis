@@ -1,0 +1,17 @@
+[0.745s] Invoking command in '/home/taras/thesis_ws/build/drspaam': PYTHONPATH=/home/taras/thesis_ws/build/drspaam/prefix_override:/home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/taras/thesis_ws/build/drspaam/build --no-deps install_data
+[1.033s] running develop
+[1.220s] running egg_info
+[1.220s] writing drspaam.egg-info/PKG-INFO
+[1.220s] writing dependency_links to drspaam.egg-info/dependency_links.txt
+[1.220s] writing entry points to drspaam.egg-info/entry_points.txt
+[1.220s] writing requirements to drspaam.egg-info/requires.txt
+[1.220s] writing top-level names to drspaam.egg-info/top_level.txt
+[1.222s] reading manifest file 'drspaam.egg-info/SOURCES.txt'
+[1.222s] writing manifest file 'drspaam.egg-info/SOURCES.txt'
+[1.224s] running build_ext
+[1.224s] Creating /home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages/drspaam.egg-link (link to .)
+[1.225s] Installing dr_spaam_node script to /home/taras/thesis_ws/install/drspaam/lib/drspaam
+[1.225s] 
+[1.225s] Installed /home/taras/thesis_ws/build/drspaam
+[1.225s] running install_data
+[1.271s] Invoked command in '/home/taras/thesis_ws/build/drspaam' returned '0': PYTHONPATH=/home/taras/thesis_ws/build/drspaam/prefix_override:/home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/taras/thesis_ws/build/drspaam/build --no-deps install_data

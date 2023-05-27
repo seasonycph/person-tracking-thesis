@@ -35,7 +35,7 @@ class DrSpaamNode(Node):
             tracking=True)
 
         # Initialize tracker
-        self.centroid_tracker_ = CentroidTracker()
+        self.centroid_tracker_ = CentroidTracker(maxDisappeared=25)
 
         # Previous deections
         self.prev_dets_xy = np.array([0, 0])
@@ -205,14 +205,14 @@ def detections_to_rviz_marker(dets_xy, dets_cls):
 
 def dict_to_tracker(tracker_dict):
     tracker = Tracker()
-    pos = Point()
-    for key in tracker_dict:
+    
+    for key, pose in tracker_dict.items():
         # Save the IDs of the tracklets
         tracker.ids.append(int(key))
-
         # Save the tracked centroid
-        pos.x = tracker_dict[key][0]
-        pos.y = tracker_dict[key][1]
+        pos = Point()
+        pos.x = pose[0]
+        pos.y = pose[1]
         tracker.positions.append(pos)
 
     return tracker

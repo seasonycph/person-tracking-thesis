@@ -69,6 +69,39 @@ class CentroidTracker():
          # Otherwise we need to match the input 
          # centroids with the ones we are tracking 
         else:
+            # Cehck if the new inputs are not already in the objects
+            inputCentroids_copy = inputCentroids.copy()
+            matched_centroids = []
+
+            for centroid in inputCentroids_copy:
+                # Convert the centroid list to a tuple
+                centroid_tuple = tuple(centroid)
+                # Check if the centroid exists in the objects dictionary
+                if centroid_tuple in [tuple(v) for v in self.objects.values()]:
+                    # Find tje object with the same centroid
+                    existing_object_id = None
+                    for object_id, object_centroid in self.objects.items():
+                        if tuple(object_centroid) == centroid_tuple:
+                            existing_object_id = object_id
+                            break
+                    
+                    # Merge the objects by keeping the lowest ID and updating the centroid
+                    if existing_object_id is not None:
+                        min_object_id = min(existing_object_id, self.nextObjectID - 1)
+                        self.objects[min_object_id] = centroid
+                        self.disappeared[min_object_id] = 0
+
+                        # Remoce the merged object with the higher ID
+                        if existing_object_id != min_object_id:
+                            del self.objects[existing_object_id]
+                            del self.disappeared[existing_object_id]
+                        
+                        matched_centroids.append(centroid)
+
+                    # Remove the centroid from inputCentroids
+                    for centroid in matched_centroids:
+                        inputCentroids.remove(centroid)
+
             objectIDs = list(self.objects.keys())
             objectCentroids = list(self.objects.values())
 
@@ -129,6 +162,8 @@ class CentroidTracker():
                     # If there are more inputs, register the new object
                     for col in unusedCols:
                         self.register(inputCentroids[col])
+                
+                
 
         return self.objects
 

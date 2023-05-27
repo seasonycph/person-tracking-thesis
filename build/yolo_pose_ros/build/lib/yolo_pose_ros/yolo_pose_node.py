@@ -353,12 +353,12 @@ def compute_bbox(kpts):
 
 def dict_to_tracker(tracker_dict):
     tracker = Tracker()
-    pos = Point()
     for key in tracker_dict:
         # Save the IDs of the tracklets
         tracker.ids.append(int(key))
 
         # Save the center of the tracked bounding box
+        pos = Point()
         pos.x = (tracker_dict[key][2] - tracker_dict[key][0]) / 2 + tracker_dict[key][0]
         pos.y = (tracker_dict[key][3] - tracker_dict[key][1]) / 2 + tracker_dict[key][1]
         tracker.positions.append(pos)
