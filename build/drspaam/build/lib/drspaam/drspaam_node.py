@@ -175,7 +175,6 @@ def detections_to_rviz_marker(dets_xy, dets_cls):
     # To msg
     for d_xy, d_cls in zip(dets_xy, dets_cls):
         for i in range(len(xy_offsets) - 1):
-            # print(f"The number it complains about: {i}")
             # Start point of a segment
             p0 = Point()
             p0.x = d_xy[1] + xy_offsets[i, 0]

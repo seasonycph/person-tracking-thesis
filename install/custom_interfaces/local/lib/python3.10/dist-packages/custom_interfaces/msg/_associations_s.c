@@ -23,6 +23,10 @@
 #include "geometry_msgs/msg/detail/point__functions.h"
 // end nested array functions include
 ROSIDL_GENERATOR_C_IMPORT
+bool std_msgs__msg__header__convert_from_py(PyObject * _pymsg, void * _ros_message);
+ROSIDL_GENERATOR_C_IMPORT
+PyObject * std_msgs__msg__header__convert_to_py(void * raw_ros_message);
+ROSIDL_GENERATOR_C_IMPORT
 bool geometry_msgs__msg__point__convert_from_py(PyObject * _pymsg, void * _ros_message);
 ROSIDL_GENERATOR_C_IMPORT
 PyObject * geometry_msgs__msg__point__convert_to_py(void * raw_ros_message);
@@ -64,6 +68,17 @@ bool custom_interfaces__msg__associations__convert_from_py(PyObject * _pymsg, vo
     assert(strncmp("custom_interfaces.msg._associations.Associations", full_classname_dest, 48) == 0);
   }
   custom_interfaces__msg__Associations * ros_message = _ros_message;
+  {  // header
+    PyObject * field = PyObject_GetAttrString(_pymsg, "header");
+    if (!field) {
+      return false;
+    }
+    if (!std_msgs__msg__header__convert_from_py(field, &ros_message->header)) {
+      Py_DECREF(field);
+      return false;
+    }
+    Py_DECREF(field);
+  }
   {  // yolo_ids
     PyObject * field = PyObject_GetAttrString(_pymsg, "yolo_ids");
     if (!field) {
@@ -276,6 +291,20 @@ PyObject * custom_interfaces__msg__associations__convert_to_py(void * raw_ros_me
     }
   }
   custom_interfaces__msg__Associations * ros_message = (custom_interfaces__msg__Associations *)raw_ros_message;
+  {  // header
+    PyObject * field = NULL;
+    field = std_msgs__msg__header__convert_to_py(&ros_message->header);
+    if (!field) {
+      return NULL;
+    }
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "header", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
   {  // yolo_ids
     PyObject * field = NULL;
     field = PyObject_GetAttrString(_pymessage, "yolo_ids");

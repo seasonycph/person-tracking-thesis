@@ -33,13 +33,13 @@ class TrackerNode(Node):
             Associations, topic, qos_profile=10)
 
         # Subscriber
-        topic = "/yolo_pose/tracker"
-        self.yolo_subs_ = self.create_subscription(
-            Tracker, topic, self.callback_yolo_tracker, qos_profile=10)
-
         topic = "/dr_spaam/tracker"
         self.drspaam_subs_ = self.create_subscription(
-            Tracker, topic, self.callback_drspaam_tracker, qos_profile=5)
+            Tracker, topic, self.callback_drspaam_tracker, qos_profile=10)
+        
+        topic = "/yolo_pose/tracker"
+        self.yolo_subs_ = self.create_subscription(
+            Tracker, topic, self.callback_yolo_tracker, qos_profile=10)    
 
     def init_parameters(self):
         # Initialize the last known positions
@@ -70,6 +70,9 @@ class TrackerNode(Node):
     def callback_drspaam_tracker(self, msg):
         # Transform the message to dictionary
         self.drspaam_track_ = tracker_to_dict(msg)
+
+        # Take the msg header (needed for yolo marker)
+        self.drspaam_header_ = msg.header
 
         # Compute the angle at which there is a detection
         for key, poses in self.drspaam_track_.items():
@@ -121,6 +124,7 @@ class TrackerNode(Node):
                     x=associated_drspaam_data[0], y=associated_drspaam_data[1], z=associated_drspaam_data[2]))
             
             # Publish the association message
+            associations_msg.header = self.drspaam_header_
             self.associations_pub_.publish(associations_msg)
 
         #print(f"Associated tracklets: {associated_tracklets.items()}")

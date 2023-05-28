@@ -217,7 +217,24 @@ void resize_function__Associations__drspaam_positions(void * untyped_member, siz
   member->resize(size);
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember Associations_message_member_array[4] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember Associations_message_member_array[5] = {
+  {
+    "header",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_MESSAGE,  // type
+    0,  // upper bound of string
+    ::rosidl_typesupport_introspection_cpp::get_message_type_support_handle<std_msgs::msg::Header>(),  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(custom_interfaces::msg::Associations, header),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr,  // fetch(index, &value) function pointer
+    nullptr,  // assign(index, value) function pointer
+    nullptr  // resize(index) function pointer
+  },
   {
     "yolo_ids",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT32,  // type
@@ -291,7 +308,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember Associations_
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers Associations_message_members = {
   "custom_interfaces::msg",  // message namespace
   "Associations",  // message name
-  4,  // number of fields
+  5,  // number of fields
   sizeof(custom_interfaces::msg::Associations),
   Associations_message_member_array,  // message members
   Associations_init_function,  // function to initialize message memory (memory has to be allocated)

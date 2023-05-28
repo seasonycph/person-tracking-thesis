@@ -50,6 +50,10 @@ class Metaclass_Associations(type):
             if Point.__class__._TYPE_SUPPORT is None:
                 Point.__class__.__import_type_support__()
 
+            from std_msgs.msg import Header
+            if Header.__class__._TYPE_SUPPORT is None:
+                Header.__class__.__import_type_support__()
+
     @classmethod
     def __prepare__(cls, name, bases, **kwargs):
         # list constant names here so that they appear in the help text of
@@ -63,6 +67,7 @@ class Associations(metaclass=Metaclass_Associations):
     """Message class 'Associations'."""
 
     __slots__ = [
+        '_header',
         '_yolo_ids',
         '_drspaam_ids',
         '_yolo_positions',
@@ -70,6 +75,7 @@ class Associations(metaclass=Metaclass_Associations):
     ]
 
     _fields_and_field_types = {
+        'header': 'std_msgs/Header',
         'yolo_ids': 'sequence<int32>',
         'drspaam_ids': 'sequence<int32>',
         'yolo_positions': 'sequence<geometry_msgs/Point>',
@@ -77,6 +83,7 @@ class Associations(metaclass=Metaclass_Associations):
     }
 
     SLOT_TYPES = (
+        rosidl_parser.definition.NamespacedType(['std_msgs', 'msg'], 'Header'),  # noqa: E501
         rosidl_parser.definition.UnboundedSequence(rosidl_parser.definition.BasicType('int32')),  # noqa: E501
         rosidl_parser.definition.UnboundedSequence(rosidl_parser.definition.BasicType('int32')),  # noqa: E501
         rosidl_parser.definition.UnboundedSequence(rosidl_parser.definition.NamespacedType(['geometry_msgs', 'msg'], 'Point')),  # noqa: E501
@@ -87,6 +94,8 @@ class Associations(metaclass=Metaclass_Associations):
         assert all('_' + key in self.__slots__ for key in kwargs.keys()), \
             'Invalid arguments passed to constructor: %s' % \
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
+        from std_msgs.msg import Header
+        self.header = kwargs.get('header', Header())
         self.yolo_ids = array.array('i', kwargs.get('yolo_ids', []))
         self.drspaam_ids = array.array('i', kwargs.get('drspaam_ids', []))
         self.yolo_positions = kwargs.get('yolo_positions', [])
@@ -121,6 +130,8 @@ class Associations(metaclass=Metaclass_Associations):
     def __eq__(self, other):
         if not isinstance(other, self.__class__):
             return False
+        if self.header != other.header:
+            return False
         if self.yolo_ids != other.yolo_ids:
             return False
         if self.drspaam_ids != other.drspaam_ids:
@@ -135,6 +146,20 @@ class Associations(metaclass=Metaclass_Associations):
     def get_fields_and_field_types(cls):
         from copy import copy
         return copy(cls._fields_and_field_types)
+
+    @builtins.property
+    def header(self):
+        """Message field 'header'."""
+        return self._header
+
+    @header.setter
+    def header(self, value):
+        if __debug__:
+            from std_msgs.msg import Header
+            assert \
+                isinstance(value, Header), \
+                "The 'header' field must be a sub message of type 'Header'"
+        self._header = value
 
     @builtins.property
     def yolo_ids(self):

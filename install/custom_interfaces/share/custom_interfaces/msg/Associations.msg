@@ -1,5 +1,7 @@
 # Message to publish the associated IDs and their respective positions 
 
+std_msgs/Header header
+
 int32[]                     yolo_ids             # Associated IDs from the YOLO tracker
 
 int32[]                     drspaam_ids          # Associated IDs from the DR-SPAAM tracker

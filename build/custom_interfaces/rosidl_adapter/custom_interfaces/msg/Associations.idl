@@ -3,12 +3,15 @@
 // generated code does not contain a copyright notice
 
 #include "geometry_msgs/msg/Point.idl"
+#include "std_msgs/msg/Header.idl"
 
 module custom_interfaces {
   module msg {
     @verbatim (language="comment", text=
       "Message to publish the associated IDs and their respective positions ")
     struct Associations {
+      std_msgs::msg::Header header;
+
       @verbatim (language="comment", text=
         "Associated IDs from the YOLO tracker")
       sequence<int32> yolo_ids;

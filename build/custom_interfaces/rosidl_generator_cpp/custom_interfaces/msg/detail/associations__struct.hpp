@@ -16,6 +16,8 @@
 
 
 // Include directives for member types
+// Member 'header'
+#include "std_msgs/msg/detail/header__struct.hpp"
 // Member 'yolo_positions'
 // Member 'drspaam_positions'
 #include "geometry_msgs/msg/detail/point__struct.hpp"
@@ -39,17 +41,21 @@ struct Associations_
   using Type = Associations_<ContainerAllocator>;
 
   explicit Associations_(rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+  : header(_init)
   {
     (void)_init;
   }
 
   explicit Associations_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+  : header(_alloc, _init)
   {
     (void)_init;
-    (void)_alloc;
   }
 
   // field types and members
+  using _header_type =
+    std_msgs::msg::Header_<ContainerAllocator>;
+  _header_type header;
   using _yolo_ids_type =
     std::vector<int32_t, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<int32_t>>;
   _yolo_ids_type yolo_ids;
@@ -64,6 +70,12 @@ struct Associations_
   _drspaam_positions_type drspaam_positions;
 
   // setters for named parameter idiom
+  Type & set__header(
+    const std_msgs::msg::Header_<ContainerAllocator> & _arg)
+  {
+    this->header = _arg;
+    return *this;
+  }
   Type & set__yolo_ids(
     const std::vector<int32_t, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<int32_t>> & _arg)
   {
@@ -131,6 +143,9 @@ struct Associations_
   // comparison operators
   bool operator==(const Associations_ & other) const
   {
+    if (this->header != other.header) {
+      return false;
+    }
     if (this->yolo_ids != other.yolo_ids) {
       return false;
     }

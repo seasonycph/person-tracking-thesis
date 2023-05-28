@@ -16,6 +16,30 @@
 
 
 // forward declaration of message dependencies and their conversion functions
+namespace std_msgs
+{
+namespace msg
+{
+namespace typesupport_fastrtps_cpp
+{
+bool cdr_serialize(
+  const std_msgs::msg::Header &,
+  eprosima::fastcdr::Cdr &);
+bool cdr_deserialize(
+  eprosima::fastcdr::Cdr &,
+  std_msgs::msg::Header &);
+size_t get_serialized_size(
+  const std_msgs::msg::Header &,
+  size_t current_alignment);
+size_t
+max_serialized_size_Header(
+  bool & full_bounded,
+  bool & is_plain,
+  size_t current_alignment);
+}  // namespace typesupport_fastrtps_cpp
+}  // namespace msg
+}  // namespace std_msgs
+
 namespace geometry_msgs
 {
 namespace msg
@@ -80,6 +104,10 @@ cdr_serialize(
   const custom_interfaces::msg::Associations & ros_message,
   eprosima::fastcdr::Cdr & cdr)
 {
+  // Member: header
+  std_msgs::msg::typesupport_fastrtps_cpp::cdr_serialize(
+    ros_message.header,
+    cdr);
   // Member: yolo_ids
   {
     cdr << ros_message.yolo_ids;
@@ -117,6 +145,10 @@ cdr_deserialize(
   eprosima::fastcdr::Cdr & cdr,
   custom_interfaces::msg::Associations & ros_message)
 {
+  // Member: header
+  std_msgs::msg::typesupport_fastrtps_cpp::cdr_deserialize(
+    cdr, ros_message.header);
+
   // Member: yolo_ids
   {
     cdr >> ros_message.yolo_ids;
@@ -167,6 +199,11 @@ get_serialized_size(
   (void)padding;
   (void)wchar_size;
 
+  // Member: header
+
+  current_alignment +=
+    std_msgs::msg::typesupport_fastrtps_cpp::get_serialized_size(
+    ros_message.header, current_alignment);
   // Member: yolo_ids
   {
     size_t array_size = ros_message.yolo_ids.size();
@@ -234,6 +271,22 @@ max_serialized_size_Associations(
   full_bounded = true;
   is_plain = true;
 
+
+  // Member: header
+  {
+    size_t array_size = 1;
+
+
+    for (size_t index = 0; index < array_size; ++index) {
+      bool inner_full_bounded;
+      bool inner_is_plain;
+      current_alignment +=
+        std_msgs::msg::typesupport_fastrtps_cpp::max_serialized_size_Header(
+        inner_full_bounded, inner_is_plain, current_alignment);
+      full_bounded &= inner_full_bounded;
+      is_plain &= inner_is_plain;
+    }
+  }
 
   // Member: yolo_ids
   {

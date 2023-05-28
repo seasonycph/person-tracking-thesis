@@ -18,6 +18,8 @@ extern "C"
 // Constants defined in the message
 
 // Include directives for member types
+// Member 'header'
+#include "std_msgs/msg/detail/header__struct.h"
 // Member 'yolo_ids'
 // Member 'drspaam_ids'
 #include "rosidl_runtime_c/primitives_sequence.h"
@@ -31,6 +33,7 @@ extern "C"
  */
 typedef struct custom_interfaces__msg__Associations
 {
+  std_msgs__msg__Header header;
   /// Associated IDs from the YOLO tracker
   rosidl_runtime_c__int32__Sequence yolo_ids;
   /// Associated IDs from the DR-SPAAM tracker

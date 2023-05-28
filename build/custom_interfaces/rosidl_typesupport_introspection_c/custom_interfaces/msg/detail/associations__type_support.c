@@ -13,6 +13,10 @@
 
 
 // Include directives for member types
+// Member `header`
+#include "std_msgs/msg/header.h"
+// Member `header`
+#include "std_msgs/msg/detail/header__rosidl_typesupport_introspection_c.h"
 // Member `yolo_ids`
 // Member `drspaam_ids`
 #include "rosidl_runtime_c/primitives_sequence_functions.h"
@@ -262,7 +266,24 @@ bool custom_interfaces__msg__Associations__rosidl_typesupport_introspection_c__r
   return geometry_msgs__msg__Point__Sequence__init(member, size);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember custom_interfaces__msg__Associations__rosidl_typesupport_introspection_c__Associations_message_member_array[4] = {
+static rosidl_typesupport_introspection_c__MessageMember custom_interfaces__msg__Associations__rosidl_typesupport_introspection_c__Associations_message_member_array[5] = {
+  {
+    "header",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_MESSAGE,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message (initialized later)
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(custom_interfaces__msg__Associations, header),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL,  // fetch(index, &value) function pointer
+    NULL,  // assign(index, value) function pointer
+    NULL  // resize(index) function pointer
+  },
   {
     "yolo_ids",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_INT32,  // type
@@ -336,7 +357,7 @@ static rosidl_typesupport_introspection_c__MessageMember custom_interfaces__msg_
 static const rosidl_typesupport_introspection_c__MessageMembers custom_interfaces__msg__Associations__rosidl_typesupport_introspection_c__Associations_message_members = {
   "custom_interfaces__msg",  // message namespace
   "Associations",  // message name
-  4,  // number of fields
+  5,  // number of fields
   sizeof(custom_interfaces__msg__Associations),
   custom_interfaces__msg__Associations__rosidl_typesupport_introspection_c__Associations_message_member_array,  // message members
   custom_interfaces__msg__Associations__rosidl_typesupport_introspection_c__Associations_init_function,  // function to initialize message memory (memory has to be allocated)
@@ -354,9 +375,11 @@ static rosidl_message_type_support_t custom_interfaces__msg__Associations__rosid
 ROSIDL_TYPESUPPORT_INTROSPECTION_C_EXPORT_custom_interfaces
 const rosidl_message_type_support_t *
 ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, custom_interfaces, msg, Associations)() {
-  custom_interfaces__msg__Associations__rosidl_typesupport_introspection_c__Associations_message_member_array[2].members_ =
-    ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, geometry_msgs, msg, Point)();
+  custom_interfaces__msg__Associations__rosidl_typesupport_introspection_c__Associations_message_member_array[0].members_ =
+    ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, std_msgs, msg, Header)();
   custom_interfaces__msg__Associations__rosidl_typesupport_introspection_c__Associations_message_member_array[3].members_ =
+    ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, geometry_msgs, msg, Point)();
+  custom_interfaces__msg__Associations__rosidl_typesupport_introspection_c__Associations_message_member_array[4].members_ =
     ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, geometry_msgs, msg, Point)();
   if (!custom_interfaces__msg__Associations__rosidl_typesupport_introspection_c__Associations_message_type_support_handle.typesupport_identifier) {
     custom_interfaces__msg__Associations__rosidl_typesupport_introspection_c__Associations_message_type_support_handle.typesupport_identifier =

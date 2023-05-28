@@ -12,6 +12,8 @@
 
 
 // Include directives for member types
+// Member `header`
+#include "std_msgs/msg/detail/header__functions.h"
 // Member `yolo_ids`
 // Member `drspaam_ids`
 #include "rosidl_runtime_c/primitives_sequence_functions.h"
@@ -23,6 +25,11 @@ bool
 custom_interfaces__msg__Associations__init(custom_interfaces__msg__Associations * msg)
 {
   if (!msg) {
+    return false;
+  }
+  // header
+  if (!std_msgs__msg__Header__init(&msg->header)) {
+    custom_interfaces__msg__Associations__fini(msg);
     return false;
   }
   // yolo_ids
@@ -54,6 +61,8 @@ custom_interfaces__msg__Associations__fini(custom_interfaces__msg__Associations 
   if (!msg) {
     return;
   }
+  // header
+  std_msgs__msg__Header__fini(&msg->header);
   // yolo_ids
   rosidl_runtime_c__int32__Sequence__fini(&msg->yolo_ids);
   // drspaam_ids
@@ -68,6 +77,12 @@ bool
 custom_interfaces__msg__Associations__are_equal(const custom_interfaces__msg__Associations * lhs, const custom_interfaces__msg__Associations * rhs)
 {
   if (!lhs || !rhs) {
+    return false;
+  }
+  // header
+  if (!std_msgs__msg__Header__are_equal(
+      &(lhs->header), &(rhs->header)))
+  {
     return false;
   }
   // yolo_ids
@@ -103,6 +118,12 @@ custom_interfaces__msg__Associations__copy(
   custom_interfaces__msg__Associations * output)
 {
   if (!input || !output) {
+    return false;
+  }
+  // header
+  if (!std_msgs__msg__Header__copy(
+      &(input->header), &(output->header)))
+  {
     return false;
   }
   // yolo_ids
