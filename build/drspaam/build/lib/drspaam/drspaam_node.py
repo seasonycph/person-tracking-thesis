@@ -92,10 +92,6 @@ class DrSpaamNode(Node):
         dets_xy = dets_xy[conf_mask]
         dets_cls = dets_cls[conf_mask]
 
-        # Velocities
-        vel_xy = np.array([(dets_xy)])
-        self.prev_dets_xy = dets_xy
-
         # Track the detected objects
         track_dict = self.centroid_tracker_.update(dets_xy)
 
@@ -117,16 +113,16 @@ class DrSpaamNode(Node):
         # print(f"Tracks: {tracks}")
         # print(f"Tracks Confindence: {tracks_cls}")
 
-        # Convert to pose array
-        dets_xy = np.array(list(track_dict.values()))
-        dets_msg = detections_to_pose_array(dets_xy, dets_cls)
-        dets_msg.header = msg.header
-        self.dets_pub_.publish(dets_msg)
-
         # Convert to tracker message
         track_msg = dict_to_tracker(track_dict)
         track_msg.header = msg.header
         self.tracker_pub_.publish(track_msg)
+
+        # Convert to pose array
+        dets_xy = np.array(list(track_dict.values()))
+        dets_msg = detections_to_pose_array(dets_xy, dets_cls)
+        dets_msg.header = msg.header
+        self.dets_pub_.publish(dets_msg)        
 
         # Time until detection message is published
         # self.get_logger().info(f"End-to-end inference time: {time.time() - t}"
@@ -137,12 +133,6 @@ class DrSpaamNode(Node):
         self.rviz_pub_.publish(rviz_msg)
 
         # self.get_logger().info(f"Detections: {dets_msg}")
-
-
-def compute_velocities(dets_xy):
-    vels_xy = []
-    for dets in dets_xy:
-        vels_xy.append([])
 
 
 def detections_to_pose_array(dets_xy, dets_cls):

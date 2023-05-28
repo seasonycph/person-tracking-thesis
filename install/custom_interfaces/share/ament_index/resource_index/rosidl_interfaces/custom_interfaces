@@ -1,3 +1,5 @@
+msg/Associations.idl
+msg/Associations.msg
 msg/PersonPose.idl
 msg/PersonPose.msg
 msg/Tracker.idl

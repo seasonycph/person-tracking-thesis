@@ -68,6 +68,7 @@ include CMakeFiles/custom_interfaces.dir/progress.make
 
 CMakeFiles/custom_interfaces: /home/taras/thesis_ws/src/custom_interfaces/msg/PersonPose.msg
 CMakeFiles/custom_interfaces: /home/taras/thesis_ws/src/custom_interfaces/msg/Tracker.msg
+CMakeFiles/custom_interfaces: /home/taras/thesis_ws/src/custom_interfaces/msg/Associations.msg
 CMakeFiles/custom_interfaces: /opt/ros/humble/share/builtin_interfaces/msg/Duration.idl
 CMakeFiles/custom_interfaces: /opt/ros/humble/share/builtin_interfaces/msg/Time.idl
 CMakeFiles/custom_interfaces: /opt/ros/humble/share/std_msgs/msg/Bool.idl

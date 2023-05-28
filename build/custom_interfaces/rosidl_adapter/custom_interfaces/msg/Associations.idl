@@ -1,0 +1,32 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from custom_interfaces/msg/Associations.msg
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/Point.idl"
+
+module custom_interfaces {
+  module msg {
+    @verbatim (language="comment", text=
+      "Message to publish the associated IDs and their respective positions ")
+    struct Associations {
+      @verbatim (language="comment", text=
+        "Associated IDs from the YOLO tracker")
+      sequence<int32> yolo_ids;
+
+      @verbatim (language="comment", text=
+        "Associated IDs from the DR-SPAAM tracker")
+      sequence<int32> drspaam_ids;
+
+      @verbatim (language="comment", text=
+        "Positions of the associated IDs of YOLO tracklets")
+      sequence<geometry_msgs::msg::Point> yolo_positions;
+
+      @verbatim (language="comment", text=
+        " Positions of the associated IDs of DR-SPAAM tracklets" "\n"
+        "- Point.x: x-axis position" "\n"
+        "- Point.y: y-axis position" "\n"
+        "- Point.z: relative angle in the FOV of each sensor")
+      sequence<geometry_msgs::msg::Point> drspaam_positions;
+    };
+  };
+};

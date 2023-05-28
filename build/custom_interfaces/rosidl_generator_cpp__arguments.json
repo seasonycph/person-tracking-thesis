@@ -4,7 +4,8 @@
   "template_dir": "/opt/ros/humble/share/rosidl_generator_cpp/cmake/../resource",
   "idl_tuples": [
     "/home/taras/thesis_ws/build/custom_interfaces/rosidl_adapter/custom_interfaces:msg/PersonPose.idl",
-    "/home/taras/thesis_ws/build/custom_interfaces/rosidl_adapter/custom_interfaces:msg/Tracker.idl"
+    "/home/taras/thesis_ws/build/custom_interfaces/rosidl_adapter/custom_interfaces:msg/Tracker.idl",
+    "/home/taras/thesis_ws/build/custom_interfaces/rosidl_adapter/custom_interfaces:msg/Associations.idl"
   ],
   "ros_interface_dependencies": [
     "builtin_interfaces:/opt/ros/humble/share/builtin_interfaces/msg/Duration.idl",
@@ -87,6 +88,7 @@
     "/opt/ros/humble/share/rosidl_generator_cpp/cmake/../resource/srv__traits.hpp.em",
     "/home/taras/thesis_ws/build/custom_interfaces/rosidl_adapter/custom_interfaces/msg/PersonPose.idl",
     "/home/taras/thesis_ws/build/custom_interfaces/rosidl_adapter/custom_interfaces/msg/Tracker.idl",
+    "/home/taras/thesis_ws/build/custom_interfaces/rosidl_adapter/custom_interfaces/msg/Associations.idl",
     "/opt/ros/humble/share/builtin_interfaces/msg/Duration.idl",
     "/opt/ros/humble/share/builtin_interfaces/msg/Time.idl",
     "/opt/ros/humble/share/std_msgs/msg/Bool.idl",

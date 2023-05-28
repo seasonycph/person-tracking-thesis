@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "../rosidl_generator_py/custom_interfaces/_custom_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c"
   "../rosidl_generator_py/custom_interfaces/_custom_interfaces_s.ep.rosidl_typesupport_introspection_c.c"
   "../rosidl_generator_py/custom_interfaces/msg/__init__.py"
+  "../rosidl_generator_py/custom_interfaces/msg/_associations.py"
+  "../rosidl_generator_py/custom_interfaces/msg/_associations_s.c"
   "../rosidl_generator_py/custom_interfaces/msg/_person_pose.py"
   "../rosidl_generator_py/custom_interfaces/msg/_person_pose_s.c"
   "../rosidl_generator_py/custom_interfaces/msg/_tracker.py"

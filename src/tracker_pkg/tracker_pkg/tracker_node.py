@@ -4,7 +4,8 @@ from rclpy.node import Node
 
 import numpy as np
 
-from custom_interfaces.msg import Tracker
+from custom_interfaces.msg import Tracker, Associations
+from geometry_msgs.msg import Point
 from collections import OrderedDict
 
 
@@ -18,12 +19,18 @@ class TrackerNode(Node):
         # Initialize the subscriber and the publisher
         self.init_communication()
 
+        # Initialize the needed attributes
+        self.init_parameters()
+
     def init_communication(self):
         """
         Initialize ROS2 communications
         """
 
         # Publisher
+        topic = "/tracker/associations"
+        self.associations_pub_ = self.create_publisher(
+            Associations, topic, qos_profile=10)
 
         # Subscriber
         topic = "/yolo_pose/tracker"
@@ -33,6 +40,13 @@ class TrackerNode(Node):
         topic = "/dr_spaam/tracker"
         self.drspaam_subs_ = self.create_subscription(
             Tracker, topic, self.callback_drspaam_tracker, qos_profile=5)
+
+    def init_parameters(self):
+        # Initialize the last known positions
+        self.last_known_positions = OrderedDict()
+
+        # Initialize the lost detections counter
+        self.lost_detection_counter = OrderedDict()
 
     def callback_yolo_tracker(self, msg):
         # Transform the message to dictionary
@@ -66,6 +80,7 @@ class TrackerNode(Node):
 
     def tracklets_association(self):
         associated_tracklets = OrderedDict()
+        associations_msg = Associations()
 
         # Iterate over the YOLO tracklets
         for yolo_id, yolo_data in self.yolo_track_.items():
@@ -73,7 +88,7 @@ class TrackerNode(Node):
             min_angle_diff = float('inf')
             associated_drspaam_id = None
 
-            print(f"YOLO tracklet {yolo_id} with angle {yolo_angle}")
+            # print(f"YOLO tracklet {yolo_id} with angle {yolo_angle}")
 
             for drspaam_id, drspaam_data in self.drspaam_track_.items():
                 # Check that the ID is not already associated
@@ -83,7 +98,7 @@ class TrackerNode(Node):
                 drspaam_angle = drspaam_data[2]
                 angle_diff = abs(yolo_angle - drspaam_angle)
 
-                print(f"DR-SPAAM tracklet {drspaam_id} with angle {drspaam_angle}")
+                # print(f"DR-SPAAM tracklet {drspaam_id} with angle {drspaam_angle}")
 
                 # Check if it is the closes angle so far
                 if angle_diff < min_angle_diff:
@@ -94,8 +109,21 @@ class TrackerNode(Node):
             if associated_drspaam_id is not None:
                 # self.drspaam_track_[associated_drspaam_id]
                 associated_tracklets[yolo_id] = associated_drspaam_id
+                # Save the drspaam data corresponding with the associated id
+                associated_drspaam_data = self.drspaam_track_[
+                    associated_drspaam_id]
+                # Create the association message
+                associations_msg.yolo_ids.append(yolo_id)
+                associations_msg.drspaam_ids.append(associated_drspaam_id)
+                associations_msg.yolo_positions.append(
+                    Point(x=yolo_data[0], y=yolo_data[1], z=yolo_data[2]))
+                associations_msg.drspaam_positions.append(Point(
+                    x=associated_drspaam_data[0], y=associated_drspaam_data[1], z=associated_drspaam_data[2]))
+            
+            # Publish the association message
+            self.associations_pub_.publish(associations_msg)
 
-        print(f"Associated tracklets: {associated_tracklets.items()}")
+        #print(f"Associated tracklets: {associated_tracklets.items()}")
 
 
 def tracker_to_dict(tracker_msg):

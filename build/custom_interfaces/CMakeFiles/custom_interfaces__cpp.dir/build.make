@@ -74,6 +74,10 @@ CMakeFiles/custom_interfaces__cpp: rosidl_generator_cpp/custom_interfaces/msg/tr
 CMakeFiles/custom_interfaces__cpp: rosidl_generator_cpp/custom_interfaces/msg/detail/tracker__builder.hpp
 CMakeFiles/custom_interfaces__cpp: rosidl_generator_cpp/custom_interfaces/msg/detail/tracker__struct.hpp
 CMakeFiles/custom_interfaces__cpp: rosidl_generator_cpp/custom_interfaces/msg/detail/tracker__traits.hpp
+CMakeFiles/custom_interfaces__cpp: rosidl_generator_cpp/custom_interfaces/msg/associations.hpp
+CMakeFiles/custom_interfaces__cpp: rosidl_generator_cpp/custom_interfaces/msg/detail/associations__builder.hpp
+CMakeFiles/custom_interfaces__cpp: rosidl_generator_cpp/custom_interfaces/msg/detail/associations__struct.hpp
+CMakeFiles/custom_interfaces__cpp: rosidl_generator_cpp/custom_interfaces/msg/detail/associations__traits.hpp
 
 rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp: /opt/ros/humble/lib/rosidl_generator_cpp/rosidl_generator_cpp
 rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp: /opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_generator_cpp/__init__.py
@@ -92,6 +96,7 @@ rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp: /opt/ros/humble/shar
 rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp: /opt/ros/humble/share/rosidl_generator_cpp/resource/srv__traits.hpp.em
 rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp: rosidl_adapter/custom_interfaces/msg/PersonPose.idl
 rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp: rosidl_adapter/custom_interfaces/msg/Tracker.idl
+rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp: rosidl_adapter/custom_interfaces/msg/Associations.idl
 rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp: /opt/ros/humble/share/builtin_interfaces/msg/Duration.idl
 rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp: /opt/ros/humble/share/builtin_interfaces/msg/Time.idl
 rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp: /opt/ros/humble/share/std_msgs/msg/Bool.idl
@@ -177,7 +182,23 @@ rosidl_generator_cpp/custom_interfaces/msg/detail/tracker__struct.hpp: rosidl_ge
 rosidl_generator_cpp/custom_interfaces/msg/detail/tracker__traits.hpp: rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/custom_interfaces/msg/detail/tracker__traits.hpp
 
+rosidl_generator_cpp/custom_interfaces/msg/associations.hpp: rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/custom_interfaces/msg/associations.hpp
+
+rosidl_generator_cpp/custom_interfaces/msg/detail/associations__builder.hpp: rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/custom_interfaces/msg/detail/associations__builder.hpp
+
+rosidl_generator_cpp/custom_interfaces/msg/detail/associations__struct.hpp: rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/custom_interfaces/msg/detail/associations__struct.hpp
+
+rosidl_generator_cpp/custom_interfaces/msg/detail/associations__traits.hpp: rosidl_generator_cpp/custom_interfaces/msg/person_pose.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/custom_interfaces/msg/detail/associations__traits.hpp
+
 custom_interfaces__cpp: CMakeFiles/custom_interfaces__cpp
+custom_interfaces__cpp: rosidl_generator_cpp/custom_interfaces/msg/associations.hpp
+custom_interfaces__cpp: rosidl_generator_cpp/custom_interfaces/msg/detail/associations__builder.hpp
+custom_interfaces__cpp: rosidl_generator_cpp/custom_interfaces/msg/detail/associations__struct.hpp
+custom_interfaces__cpp: rosidl_generator_cpp/custom_interfaces/msg/detail/associations__traits.hpp
 custom_interfaces__cpp: rosidl_generator_cpp/custom_interfaces/msg/detail/person_pose__builder.hpp
 custom_interfaces__cpp: rosidl_generator_cpp/custom_interfaces/msg/detail/person_pose__struct.hpp
 custom_interfaces__cpp: rosidl_generator_cpp/custom_interfaces/msg/detail/person_pose__traits.hpp
