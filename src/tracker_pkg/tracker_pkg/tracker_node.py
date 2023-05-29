@@ -16,11 +16,12 @@ class TrackerNode(Node):
         # Initialize the node
         self.get_logger().info("Tracker node initialized")
 
+        # Initialize the needed attributes
+        self.init_parameters()
+
         # Initialize the subscriber and the publisher
         self.init_communication()
 
-        # Initialize the needed attributes
-        self.init_parameters()
 
     def init_communication(self):
         """
@@ -42,6 +43,12 @@ class TrackerNode(Node):
             Tracker, topic, self.callback_yolo_tracker, qos_profile=10)    
 
     def init_parameters(self):
+        # Initialize YOLO tracker
+        self.yolo_track_ = None
+
+        # Initialize DR-SPAAM tracker
+        self.drspaam_track_ = None
+
         # Initialize the last known positions
         self.last_known_positions = OrderedDict()
 
@@ -66,6 +73,7 @@ class TrackerNode(Node):
         # Call the association then new YOLO data arrives bc the drspaam is faster
         # so it would mean we would have redundant calculations
         self.tracklets_association()
+             
 
     def callback_drspaam_tracker(self, msg):
         # Transform the message to dictionary
@@ -80,8 +88,14 @@ class TrackerNode(Node):
                 np.rad2deg(np.arctan(poses[0] / poses[1])))
 
         # print(f"Angles from dr-spaam: {self.drspaam_track_.items()}")
+        
+        
 
     def tracklets_association(self):
+        # Do not do anything if there are no messages
+        if self.yolo_track_ is None or self.drspaam_track_ is None:
+            return
+
         associated_tracklets = OrderedDict()
         associations_msg = Associations()
 

@@ -140,16 +140,23 @@ class DrSpaamNode(Node):
         # self.get_logger().info(f"End-to-end inference time: {time.time() - t}"
 
         # Convert to rviz markers
-        rviz_msg = detections_to_rviz_marker(dets_xy, dets_cls)
-        rviz_msg.header = msg.header
-        self.rviz_pub_.publish(rviz_msg)
+        # rviz_msg = detections_to_rviz_marker(dets_xy)
+        # rviz_msg.header = msg.header
+        # self.rviz_pub_.publish(rviz_msg)
           
 
     def some_random_function(self):
-        # Here to test if its better to do everything in a sepparate function and not in callback
-        #print(f"Detections from test method: {self}")
-        #print(f"Associations seen from dr-spaam: {self.associations_msg.yolo_ids}")
-        pass
+        # We will use the associations only to draw the rviz tracklets
+        
+        # Extract the dr-spaam detections from the association message
+        dets_xy = []
+        for pose in self.associations_msg.drspaam_positions:
+            dets_xy.append([pose.x, pose.y])
+
+        # Convert the detections into rviz message
+        rviz_msg = detections_to_rviz_marker(dets_xy)
+        rviz_msg.header = self.associations_msg.header
+        self.rviz_pub_.publish(rviz_msg) 
 
 
 def detections_to_pose_array(dets_xy, dets_cls):
@@ -168,7 +175,7 @@ def detections_to_pose_array(dets_xy, dets_cls):
     return pose_array
 
 
-def detections_to_rviz_marker(dets_xy, dets_cls):
+def detections_to_rviz_marker(dets_xy):
     """
     Convert detection to RViz marker msg. Each detection is marked as a circle approximated by line segments.
     """
@@ -190,7 +197,7 @@ def detections_to_rviz_marker(dets_xy, dets_cls):
     xy_offsets = r * np.stack((np.cos(ang), np.sin(ang)), axis=1)
 
     # To msg
-    for d_xy, d_cls in zip(dets_xy, dets_cls):
+    for d_xy in dets_xy:
         for i in range(len(xy_offsets) - 1):
             # Start point of a segment
             p0 = Point()

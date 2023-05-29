@@ -32,6 +32,8 @@ class YOLOMarkerNode(Node):
         topic = "tracker/associations"
         self.associations_sub_ = self.create_subscription(Associations, topic, self.callback_associations, qos_profile=10)
 
+        topic = "/dr_spaam/tracker"
+
     def callback_associations(self, msg):
         # Take the associated IDs
         yolo_ids = msg.yolo_ids
