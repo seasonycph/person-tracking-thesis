@@ -8,7 +8,7 @@ from rclpy.node import Node
 
 from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Point, Pose, PoseArray
-from custom_interfaces.msg import Tracker
+from custom_interfaces.msg import Tracker, Associations
 from visualization_msgs.msg import Marker
 
 from dr_spaam.detector import Detector, _TrackingExtension
@@ -32,7 +32,7 @@ class DrSpaamNode(Node):
             ckpt_file=self.weight_file,
             gpu=torch.cuda.is_available(),
             stride=self.stride,
-            tracking=True)
+            tracking=False )
 
         # Initialize tracker
         self.centroid_tracker_ = CentroidTracker(maxDisappeared=25)
@@ -66,9 +66,20 @@ class DrSpaamNode(Node):
             msg_type=Tracker, topic="/dr_spaam/tracker", qos_profile=10)
 
         # Subscriber
+        topic = "/tracker/associations"
+        self.associations_sub_ = self.create_subscription(
+            Associations, topic, self.callback_associations, qos_profile=10)
+        
         topic = "/lewis_b1/scan_front"
         self.scan_sub_ = self.create_subscription(
             LaserScan, topic, self.callback_scan_front, qos_profile=10)
+
+    def callback_associations(self, msg):
+        # Save the message into a class attribute to use it in the scanner callback 
+        self.associations_msg = msg
+
+        # Function called from this callback because from the scan it does not work
+        self.some_random_function()
 
     def callback_scan_front(self, msg):
         # Check if laser specifications have been set
@@ -94,21 +105,22 @@ class DrSpaamNode(Node):
 
         # Track the detected objects
         track_dict = self.centroid_tracker_.update(dets_xy)
+        self.tracker = track_dict
 
         # Internal Dr-SPAAM tracker
-        tracks, tracks_cls = self._detector.get_tracklets()
-        trks = []
-        for t, tc in zip(tracks, tracks_cls):
-            if tc >= self.conf_thresh and len(t) > 1:
-                trks.append(t)
-        #print(trks)
+        # tracks, tracks_cls = self._detector.get_tracklets()
+        # trks = []
+        # for t, tc in zip(tracks, tracks_cls):
+        #     if tc >= self.conf_thresh and len(t) > 1:
+        #         trks.append(t)
+        # print(trks)
 
-        #tracks_cls = np.array([tracks_cls]).T
-       
-        #conf_mask = (tracks_cls >= self.conf_thresh).reshape(-1)
-        
-        #tracks = tracks[conf_mask]
-        #tracks_cls = tracks_cls[conf_mask]
+        # tracks_cls = np.array([tracks_cls]).T
+
+        # conf_mask = (tracks_cls >= self.conf_thresh).reshape(-1)
+
+        # tracks = tracks[conf_mask]
+        # tracks_cls = tracks_cls[conf_mask]
 
         # print(f"Tracks: {tracks}")
         # print(f"Tracks Confindence: {tracks_cls}")
@@ -122,7 +134,7 @@ class DrSpaamNode(Node):
         dets_xy = np.array(list(track_dict.values()))
         dets_msg = detections_to_pose_array(dets_xy, dets_cls)
         dets_msg.header = msg.header
-        self.dets_pub_.publish(dets_msg)        
+        self.dets_pub_.publish(dets_msg)
 
         # Time until detection message is published
         # self.get_logger().info(f"End-to-end inference time: {time.time() - t}"
@@ -131,8 +143,13 @@ class DrSpaamNode(Node):
         rviz_msg = detections_to_rviz_marker(dets_xy, dets_cls)
         rviz_msg.header = msg.header
         self.rviz_pub_.publish(rviz_msg)
+          
 
-        # self.get_logger().info(f"Detections: {dets_msg}")
+    def some_random_function(self):
+        # Here to test if its better to do everything in a sepparate function and not in callback
+        #print(f"Detections from test method: {self}")
+        #print(f"Associations seen from dr-spaam: {self.associations_msg.yolo_ids}")
+        pass
 
 
 def detections_to_pose_array(dets_xy, dets_cls):
@@ -194,7 +211,7 @@ def detections_to_rviz_marker(dets_xy, dets_cls):
 
 def dict_to_tracker(tracker_dict):
     tracker = Tracker()
-    
+
     for key, pose in tracker_dict.items():
         # Save the IDs of the tracklets
         tracker.ids.append(int(key))

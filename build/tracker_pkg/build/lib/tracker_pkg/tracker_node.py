@@ -86,14 +86,19 @@ class TrackerNode(Node):
         associations_msg = Associations()
 
         # Iterate over the YOLO tracklets
-        for yolo_id, yolo_data in self.yolo_track_.items():
+        if len(list(self.yolo_track_.keys())) == 0:
+            tracklets = self.drspaam_track_
+            other_tracklets = self.yolo_track_
+        else:
+            tracklets = self.yolo_track_
+            other_tracklets = self.drspaam_track_
+        for yolo_id, yolo_data in tracklets.items():
             yolo_angle = yolo_data[2]
             min_angle_diff = float('inf')
             associated_drspaam_id = None
 
             # print(f"YOLO tracklet {yolo_id} with angle {yolo_angle}")
-
-            for drspaam_id, drspaam_data in self.drspaam_track_.items():
+            for drspaam_id, drspaam_data in other_tracklets.items():
                 # Check that the ID is not already associated
                 if drspaam_id in associated_tracklets.values():
                     continue
