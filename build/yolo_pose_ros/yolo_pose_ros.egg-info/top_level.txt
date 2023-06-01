@@ -1,3 +1,4 @@
 yolo_pose_ros
+yolo_pose_ros/centroid_tracker
 yolo_pose_ros/models/
 yolo_pose_ros/utils/

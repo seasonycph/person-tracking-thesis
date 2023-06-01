@@ -12,7 +12,7 @@ from custom_interfaces.msg import Tracker, Associations
 from visualization_msgs.msg import Marker
 
 from dr_spaam.detector import Detector, _TrackingExtension
-from .drspaam_tracker.centroidtracker import CentroidTracker
+from .centroid_tracker.centroidtracker import CentroidTracker
 
 
 class DrSpaamNode(Node):

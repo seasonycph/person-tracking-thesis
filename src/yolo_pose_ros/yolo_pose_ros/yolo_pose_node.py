@@ -10,6 +10,7 @@ import math
 import cv2
 import numpy as np
 from deep_sort_realtime.deepsort_tracker import DeepSort
+from .centroid_tracker.centroidtracker import CentroidTracker
 from collections import OrderedDict
 
 from sensor_msgs.msg import Image
@@ -37,9 +38,6 @@ class YoloPoseNode(Node):
         # Initialize the subscriber and the publishers
         self.init_communication()
 
-        # Initialize the tracker
-        self.tracker_ = DeepSort(max_age=5, n_init=2, embedder_gpu=True)
-
     def read_parameters(self):
         # Chack availability of GPU
         if torch.cuda.is_available():
@@ -63,6 +61,12 @@ class YoloPoseNode(Node):
 
         # Create bridge to convert Image msg into jpg image
         self.bridge_ = CvBridge()
+
+        # Initialize the DeepSort tracker
+        self.tracker_ = DeepSort(max_age=5, n_init=2, embedder_gpu=True)
+
+        # Initialize the centroid tracker
+        self.centroid_tracker_ = CentroidTracker(maxDisappeared=25)
 
         # Initialize the frame count
         self.frame_count_ = 1
@@ -119,6 +123,7 @@ class YoloPoseNode(Node):
             # Draw keypoints and skeleton on the image
             nimg, kpts, boxes, confs = draw_keypoints(
                 self.model_, output, self.cv2_image_)
+            
         else:
             self.cv2_image_ = image_processing(self.cv2_image_, self.device_)
             nimg, kpts, boxes, confs = draw_keypoints(
@@ -130,21 +135,30 @@ class YoloPoseNode(Node):
         # Compute detections
         detections = compute_detections(boxes, confs)
 
-        # # Tracker
-        tracks = self.tracker_.update_tracks(detections, frame=nimg)
+        # DeepSort Tracker
+        #tracks = self.tracker_.update_tracks(detections, frame=nimg)
         track_dict = OrderedDict()
-        for track in tracks:
-            if not track.is_confirmed():
-                continue
-            track_dict[track.track_id] = track.to_ltrb()
+        # for track in tracks:
+        #     if not track.is_confirmed():
+        #         continue
+        #     track_dict[track.track_id] = track.to_ltrb()
 
         # Convert the detections into PersonPose message
         dets_msg, prsn_pose = kpts_to_person_pose(kpts)
         dets_msg.header = msg.header
         self.dets_pub_.publish(dets_msg)
 
+        # Centroid Tracker
+        #print((prsn_pose))
+        if self.frame_count_ % 2 == 0:
+            track_dict = self.centroid_tracker_.update(prsn_pose)
+            self.tmp_dict = track_dict
+        else:
+            track_dict = self.tmp_dict
+
         # Convert tracker dictionary to Tracker message
-        track_msg = dict_to_tracker(track_dict)
+        tracker_type = "centroid"
+        track_msg = dict_to_tracker(track_dict, tracker_type)
         track_msg.header = msg.header
         self.tracker_pub_.publish(track_msg)
 
@@ -167,7 +181,7 @@ class YoloPoseNode(Node):
         #                             (0,255,0), 5)
 
         # Show the inference
-        display_inference(nimg)
+        #display_inference(nimg)
 
         # Send the resulting image through the topic
         try:
@@ -313,13 +327,13 @@ def kpts_to_person_pose(output):
         # Position of the person in the image
         det_pose.x = (np.round(np.mean(x_pos)))
         det_pose.y = (np.round(np.mean(y_pos)))
-        pose.append((int(det_pose.x), int(det_pose.y)))
+        pose.append([int(det_pose.x), int(det_pose.y)])
         person_pose.person_position.append(det_pose)
 
         # Check if person is looking at the camera
         person_pose.looking.append(person_front(kpts))
 
-    return person_pose, pose
+    return person_pose, np.array(pose, dtype=object)
 
 
 def compute_detections(boxes, confs):
@@ -352,19 +366,30 @@ def compute_bbox(kpts):
     return boxes
 
 
-def dict_to_tracker(tracker_dict):
+def dict_to_tracker(tracker_dict, tracker_type):
     tracker = Tracker()
-    for key in tracker_dict:
-        # Save the IDs of the tracklets
-        tracker.ids.append(int(key))
+    if tracker_type == "deepsort":
+        for key in tracker_dict:
+            # Save the IDs of the tracklets
+            tracker.ids.append(int(key))
 
-        # Save the center of the tracked bounding box
-        pos = Point()
-        pos.x = (tracker_dict[key][2] - tracker_dict[key]
-                 [0]) / 2 + tracker_dict[key][0]
-        pos.y = (tracker_dict[key][3] - tracker_dict[key]
-                 [1]) / 2 + tracker_dict[key][1]
-        tracker.positions.append(pos)
+            # Save the center of the tracked bounding box
+            pos = Point()
+            pos.x = (tracker_dict[key][2] - tracker_dict[key]
+                    [0]) / 2 + tracker_dict[key][0]
+            pos.y = (tracker_dict[key][3] - tracker_dict[key]
+                    [1]) / 2 + tracker_dict[key][1]
+            tracker.positions.append(pos)
+    elif tracker_type == "centroid":
+        for key, position in tracker_dict.items():
+            # Save the IDs of the tracklets
+            tracker.ids.append(key)
+
+            # Save the point
+            pos = Point()
+            pos.x = float(position[0])
+            pos.y = float(position[1])
+            tracker.positions.append(pos)
 
     return tracker
 

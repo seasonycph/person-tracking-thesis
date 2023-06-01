@@ -3,11 +3,12 @@ from setuptools import setup
 package_name = 'yolo_pose_ros'
 sub_utils = "yolo_pose_ros/utils/"
 sub_models = "yolo_pose_ros/models/"
+sub_tracker = "yolo_pose_ros/centroid_tracker"
 
 setup(
     name=package_name,
     version='1.0.0',
-    packages=[package_name, sub_utils, sub_models],
+    packages=[package_name, sub_utils, sub_models, sub_tracker],
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),

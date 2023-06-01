@@ -15,6 +15,9 @@ test/test_pep257.py
 yolo_pose_ros/__init__.py
 yolo_pose_ros/yolo_marker_node.py
 yolo_pose_ros/yolo_pose_node.py
+yolo_pose_ros/centroid_tracker/__init__.py
+yolo_pose_ros/centroid_tracker/centroidtracker.py
+yolo_pose_ros/centroid_tracker/kalmanfilter.py
 yolo_pose_ros/models/__init__.py
 yolo_pose_ros/models/common.py
 yolo_pose_ros/models/experimental.py

@@ -1,2 +1,2 @@
 drspaam
-drspaam/drspaam_tracker/
+drspaam/centroid_tracker/

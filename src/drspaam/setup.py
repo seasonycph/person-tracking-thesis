@@ -1,7 +1,7 @@
 from setuptools import setup
 
 package_name = 'drspaam'
-sub_tracker = 'drspaam/drspaam_tracker/'
+sub_tracker = 'drspaam/centroid_tracker/'
 
 setup(
     name=package_name,

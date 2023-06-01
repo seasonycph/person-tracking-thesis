@@ -1,0 +1,5 @@
+  File "/home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/centroid_tracker/centroidtracker.py", line 109
+    print(np.array(inputCentroids)
+         ^
+SyntaxError: '(' was never closed
+

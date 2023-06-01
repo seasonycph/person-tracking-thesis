@@ -10,9 +10,9 @@ setup.py
 ../../build/drspaam/drspaam.egg-info/zip-safe
 drspaam/__init__.py
 drspaam/drspaam_node.py
-drspaam/drspaam_tracker/__init__.py
-drspaam/drspaam_tracker/centroidtracker.py
-drspaam/drspaam_tracker/kalmanfilter.py
+drspaam/centroid_tracker/__init__.py
+drspaam/centroid_tracker/centroidtracker.py
+drspaam/centroid_tracker/kalmanfilter.py
 resource/drspaam
 test/test_copyright.py
 test/test_flake8.py

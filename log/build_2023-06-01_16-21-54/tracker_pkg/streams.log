@@ -1,0 +1,21 @@
+[1.053s] Invoking command in '/home/taras/thesis_ws/src/tracker_pkg': PYTHONPATH=/home/taras/thesis_ws/build/tracker_pkg/prefix_override:/home/taras/thesis_ws/install/tracker_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/tracker_pkg build --build-base /home/taras/thesis_ws/build/tracker_pkg/build install --record /home/taras/thesis_ws/build/tracker_pkg/install.log --single-version-externally-managed
+[1.318s] running egg_info
+[1.319s] writing ../../build/tracker_pkg/tracker_pkg.egg-info/PKG-INFO
+[1.319s] writing dependency_links to ../../build/tracker_pkg/tracker_pkg.egg-info/dependency_links.txt
+[1.319s] writing entry points to ../../build/tracker_pkg/tracker_pkg.egg-info/entry_points.txt
+[1.319s] writing requirements to ../../build/tracker_pkg/tracker_pkg.egg-info/requires.txt
+[1.320s] writing top-level names to ../../build/tracker_pkg/tracker_pkg.egg-info/top_level.txt
+[1.321s] reading manifest file '../../build/tracker_pkg/tracker_pkg.egg-info/SOURCES.txt'
+[1.322s] writing manifest file '../../build/tracker_pkg/tracker_pkg.egg-info/SOURCES.txt'
+[1.322s] running build
+[1.322s] running build_py
+[1.322s] running install
+[1.322s] running install_lib
+[1.324s] running install_data
+[1.325s] running install_egg_info
+[1.326s] removing '/home/taras/thesis_ws/install/tracker_pkg/lib/python3.10/site-packages/tracker_pkg-0.1.0-py3.10.egg-info' (and everything under it)
+[1.327s] Copying ../../build/tracker_pkg/tracker_pkg.egg-info to /home/taras/thesis_ws/install/tracker_pkg/lib/python3.10/site-packages/tracker_pkg-0.1.0-py3.10.egg-info
+[1.327s] running install_scripts
+[1.346s] Installing tracker_node script to /home/taras/thesis_ws/install/tracker_pkg/lib/tracker_pkg
+[1.346s] writing list of installed files to '/home/taras/thesis_ws/build/tracker_pkg/install.log'
+[1.633s] Invoked command in '/home/taras/thesis_ws/src/tracker_pkg' returned '0': PYTHONPATH=/home/taras/thesis_ws/build/tracker_pkg/prefix_override:/home/taras/thesis_ws/install/tracker_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/tracker_pkg build --build-base /home/taras/thesis_ws/build/tracker_pkg/build install --record /home/taras/thesis_ws/build/tracker_pkg/install.log --single-version-externally-managed
