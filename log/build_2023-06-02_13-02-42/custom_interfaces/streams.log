@@ -1,0 +1,180 @@
+[0.041s] Invoking command in '/home/taras/thesis_ws/build/custom_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/taras/seasony/lewis/install/robot_navigation:/home/taras/seasony/lewis/install/sensor_stream_pkg:/home/taras/seasony/lewis/install/robot_teleop:/home/taras/seasony/lewis/install/robot_spawner:/home/taras/seasony/lewis/install/robot_data:/home/taras/seasony/lewis/install/robot_agent:/home/taras/seasony/lewis/install/robot_behavior2:/home/taras/seasony/lewis/install/robot_battery:/home/taras/seasony/lewis/install/robot_bag_recorder:/home/taras/seasony/lewis/install/orgb_led_manager:/home/taras/seasony/lewis/install/nav2_simple_commander:/home/taras/seasony/lewis/install/locations:/home/taras/seasony/lewis/install/lewis_sound_manager:/home/taras/seasony/lewis/install/lewis_simple_gui:/home/taras/seasony/lewis/install/lewis_serial_com:/home/taras/seasony/lewis/install/lewis_robot_control:/home/taras/seasony/lewis/install/lewis_remote_emergency:/home/taras/seasony/lewis/install/lewis_managers:/home/taras/seasony/lewis/install/lewis_health:/home/taras/seasony/lewis/install/lewis_b1_description:/home/taras/seasony/lewis/install/lewis_b1_bringup:/home/taras/seasony/lewis/install/esp32_control:/home/taras/seasony/lewis/install/controllino:/home/taras/thesis_ws/install/yolo_pose_ros:/home/taras/thesis_ws/install/tracker_pkg:/home/taras/thesis_ws/install/drspaam:/opt/ros/humble /usr/bin/cmake --build /home/taras/thesis_ws/build/custom_interfaces -- -j16 -l16
+[0.352s] [  2%] Built target custom_interfaces__cpp
+[0.352s] [ 12%] Built target custom_interfaces__rosidl_generator_c
+[0.352s] [ 12%] Built target ament_cmake_python_copy_custom_interfaces
+[0.352s] [ 23%] Built target custom_interfaces__rosidl_typesupport_cpp
+[0.353s] [ 34%] Built target custom_interfaces__rosidl_typesupport_fastrtps_cpp
+[0.353s] [ 63%] Built target custom_interfaces__rosidl_typesupport_fastrtps_c
+[0.353s] [ 63%] Built target custom_interfaces__rosidl_typesupport_introspection_cpp
+[0.353s] [ 65%] Built target custom_interfaces__rosidl_typesupport_introspection_c
+[0.354s] [ 76%] Built target custom_interfaces__rosidl_typesupport_c
+[0.354s] [ 76%] Built target custom_interfaces
+[0.354s] [ 78%] Built target custom_interfaces__py
+[0.354s] [ 87%] Built target custom_interfaces__rosidl_generator_py
+[0.354s] [ 95%] Built target custom_interfaces__rosidl_typesupport_c__pyext
+[0.354s] [ 95%] Built target custom_interfaces__rosidl_typesupport_fastrtps_c__pyext
+[0.354s] [100%] Built target custom_interfaces__rosidl_typesupport_introspection_c__pyext
+[0.421s] running egg_info
+[0.421s] writing custom_interfaces.egg-info/PKG-INFO
+[0.421s] writing dependency_links to custom_interfaces.egg-info/dependency_links.txt
+[0.422s] writing top-level names to custom_interfaces.egg-info/top_level.txt
+[0.425s] reading manifest file 'custom_interfaces.egg-info/SOURCES.txt'
+[0.425s] writing manifest file 'custom_interfaces.egg-info/SOURCES.txt'
+[0.457s] [100%] Built target ament_cmake_python_build_custom_interfaces_egg
+[0.671s] Invoked command in '/home/taras/thesis_ws/build/custom_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/taras/seasony/lewis/install/robot_navigation:/home/taras/seasony/lewis/install/sensor_stream_pkg:/home/taras/seasony/lewis/install/robot_teleop:/home/taras/seasony/lewis/install/robot_spawner:/home/taras/seasony/lewis/install/robot_data:/home/taras/seasony/lewis/install/robot_agent:/home/taras/seasony/lewis/install/robot_behavior2:/home/taras/seasony/lewis/install/robot_battery:/home/taras/seasony/lewis/install/robot_bag_recorder:/home/taras/seasony/lewis/install/orgb_led_manager:/home/taras/seasony/lewis/install/nav2_simple_commander:/home/taras/seasony/lewis/install/locations:/home/taras/seasony/lewis/install/lewis_sound_manager:/home/taras/seasony/lewis/install/lewis_simple_gui:/home/taras/seasony/lewis/install/lewis_serial_com:/home/taras/seasony/lewis/install/lewis_robot_control:/home/taras/seasony/lewis/install/lewis_remote_emergency:/home/taras/seasony/lewis/install/lewis_managers:/home/taras/seasony/lewis/install/lewis_health:/home/taras/seasony/lewis/install/lewis_b1_description:/home/taras/seasony/lewis/install/lewis_b1_bringup:/home/taras/seasony/lewis/install/esp32_control:/home/taras/seasony/lewis/install/controllino:/home/taras/thesis_ws/install/yolo_pose_ros:/home/taras/thesis_ws/install/tracker_pkg:/home/taras/thesis_ws/install/drspaam:/opt/ros/humble /usr/bin/cmake --build /home/taras/thesis_ws/build/custom_interfaces -- -j16 -l16
+[0.918s] Invoking command in '/home/taras/thesis_ws/build/custom_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/taras/seasony/lewis/install/robot_navigation:/home/taras/seasony/lewis/install/sensor_stream_pkg:/home/taras/seasony/lewis/install/robot_teleop:/home/taras/seasony/lewis/install/robot_spawner:/home/taras/seasony/lewis/install/robot_data:/home/taras/seasony/lewis/install/robot_agent:/home/taras/seasony/lewis/install/robot_behavior2:/home/taras/seasony/lewis/install/robot_battery:/home/taras/seasony/lewis/install/robot_bag_recorder:/home/taras/seasony/lewis/install/orgb_led_manager:/home/taras/seasony/lewis/install/nav2_simple_commander:/home/taras/seasony/lewis/install/locations:/home/taras/seasony/lewis/install/lewis_sound_manager:/home/taras/seasony/lewis/install/lewis_simple_gui:/home/taras/seasony/lewis/install/lewis_serial_com:/home/taras/seasony/lewis/install/lewis_robot_control:/home/taras/seasony/lewis/install/lewis_remote_emergency:/home/taras/seasony/lewis/install/lewis_managers:/home/taras/seasony/lewis/install/lewis_health:/home/taras/seasony/lewis/install/lewis_b1_description:/home/taras/seasony/lewis/install/lewis_b1_bringup:/home/taras/seasony/lewis/install/esp32_control:/home/taras/seasony/lewis/install/controllino:/home/taras/thesis_ws/install/yolo_pose_ros:/home/taras/thesis_ws/install/tracker_pkg:/home/taras/thesis_ws/install/drspaam:/opt/ros/humble /usr/bin/cmake --install /home/taras/thesis_ws/build/custom_interfaces
+[0.934s] -- Install configuration: ""
+[0.934s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/ament_index/resource_index/rosidl_interfaces/custom_interfaces
+[0.934s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces
+[0.934s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg
+[0.934s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail
+[0.934s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__functions.h
+[0.934s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__struct.h
+[0.935s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__functions.c
+[0.935s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__struct.h
+[0.935s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__type_support.h
+[0.935s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__type_support.h
+[0.935s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__functions.c
+[0.935s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__functions.h
+[0.935s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__type_support.h
+[0.935s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__functions.h
+[0.935s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__functions.c
+[0.935s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__struct.h
+[0.935s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/rosidl_generator_c__visibility_control.h
+[0.935s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/tracker.h
+[0.935s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/person_pose.h
+[0.936s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/associations.h
+[0.936s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/environment/library_path.sh
+[0.936s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/environment/library_path.dsv
+[0.936s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_generator_c.so
+[0.936s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces
+[0.936s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg
+[0.936s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail
+[0.936s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__rosidl_typesupport_fastrtps_c.h
+[0.936s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__rosidl_typesupport_fastrtps_c.h
+[0.936s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__rosidl_typesupport_fastrtps_c.h
+[0.936s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[0.936s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_fastrtps_c.so
+[0.937s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces
+[0.937s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg
+[0.937s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail
+[0.937s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__struct.hpp
+[0.937s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__builder.hpp
+[0.937s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__traits.hpp
+[0.937s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__struct.hpp
+[0.937s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__traits.hpp
+[0.937s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__builder.hpp
+[0.937s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__builder.hpp
+[0.937s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__traits.hpp
+[0.937s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__struct.hpp
+[0.938s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/person_pose.hpp
+[0.938s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/associations.hpp
+[0.938s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/tracker.hpp
+[0.938s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces
+[0.938s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg
+[0.938s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail
+[0.938s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__rosidl_typesupport_fastrtps_cpp.hpp
+[0.938s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__rosidl_typesupport_fastrtps_cpp.hpp
+[0.938s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/dds_fastrtps
+[0.938s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__rosidl_typesupport_fastrtps_cpp.hpp
+[0.938s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[0.938s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_fastrtps_cpp.so
+[0.938s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces
+[0.939s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg
+[0.939s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail
+[0.939s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__type_support.c
+[0.939s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__rosidl_typesupport_introspection_c.h
+[0.939s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__rosidl_typesupport_introspection_c.h
+[0.939s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__type_support.c
+[0.939s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__type_support.c
+[0.939s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__rosidl_typesupport_introspection_c.h
+[0.939s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[0.939s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_introspection_c.so
+[0.939s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_c.so
+[0.939s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces
+[0.940s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg
+[0.940s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail
+[0.940s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__rosidl_typesupport_introspection_cpp.hpp
+[0.940s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__type_support.cpp
+[0.940s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__rosidl_typesupport_introspection_cpp.hpp
+[0.940s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__type_support.cpp
+[0.940s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__rosidl_typesupport_introspection_cpp.hpp
+[0.940s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__type_support.cpp
+[0.941s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_introspection_cpp.so
+[0.941s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_cpp.so
+[0.941s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/environment/pythonpath.sh
+[0.941s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/environment/pythonpath.dsv
+[0.941s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces-0.0.0-py3.10.egg-info
+[0.941s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces-0.0.0-py3.10.egg-info/dependency_links.txt
+[0.941s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces-0.0.0-py3.10.egg-info/PKG-INFO
+[0.942s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces-0.0.0-py3.10.egg-info/top_level.txt
+[0.942s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces-0.0.0-py3.10.egg-info/SOURCES.txt
+[0.942s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces
+[0.942s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[0.942s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/_custom_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+[0.942s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[0.942s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[0.942s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/libcustom_interfaces__rosidl_generator_py.so
+[0.942s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/_custom_interfaces_s.ep.rosidl_typesupport_introspection_c.c
+[0.942s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/__init__.py
+[0.942s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/_custom_interfaces_s.ep.rosidl_typesupport_c.c
+[0.942s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg
+[0.942s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/_person_pose.py
+[0.943s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/_tracker_s.c
+[0.943s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/__init__.py
+[0.943s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/_tracker.py
+[0.943s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/_person_pose_s.c
+[0.943s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/_associations.py
+[0.943s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/_associations_s.c
+[0.990s] Listing '/home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces'...
+[0.991s] Listing '/home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg'...
+[0.997s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[0.998s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[0.998s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[0.999s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_generator_py.so
+[0.999s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/msg/PersonPose.idl
+[1.000s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/msg/Tracker.idl
+[1.000s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/msg/Associations.idl
+[1.000s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/msg/PersonPose.msg
+[1.000s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/msg/Tracker.msg
+[1.000s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/msg/Associations.msg
+[1.000s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/ament_index/resource_index/package_run_dependencies/custom_interfaces
+[1.000s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/ament_index/resource_index/parent_prefix_path/custom_interfaces
+[1.001s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/environment/ament_prefix_path.sh
+[1.001s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/environment/ament_prefix_path.dsv
+[1.001s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/environment/path.sh
+[1.001s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/environment/path.dsv
+[1.001s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/local_setup.bash
+[1.001s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/local_setup.sh
+[1.001s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/local_setup.zsh
+[1.001s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/local_setup.dsv
+[1.001s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/package.dsv
+[1.002s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/ament_index/resource_index/packages/custom_interfaces
+[1.002s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_cExport.cmake
+[1.002s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_cExport-noconfig.cmake
+[1.002s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_typesupport_fastrtps_cExport.cmake
+[1.002s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[1.002s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_cppExport.cmake
+[1.002s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake
+[1.002s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[1.003s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_introspection_cExport.cmake
+[1.003s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[1.003s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_cExport.cmake
+[1.003s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_cExport-noconfig.cmake
+[1.003s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_introspection_cppExport.cmake
+[1.003s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[1.004s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_cppExport.cmake
+[1.004s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_cppExport-noconfig.cmake
+[1.004s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_pyExport.cmake
+[1.004s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_pyExport-noconfig.cmake
+[1.004s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/rosidl_cmake-extras.cmake
+[1.004s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake
+[1.005s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake
+[1.005s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/ament_cmake_export_libraries-extras.cmake
+[1.005s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/ament_cmake_export_targets-extras.cmake
+[1.005s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[1.005s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[1.005s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfacesConfig.cmake
+[1.006s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfacesConfig-version.cmake
+[1.006s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/package.xml
+[1.006s] Invoked command in '/home/taras/thesis_ws/build/custom_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/taras/seasony/lewis/install/robot_navigation:/home/taras/seasony/lewis/install/sensor_stream_pkg:/home/taras/seasony/lewis/install/robot_teleop:/home/taras/seasony/lewis/install/robot_spawner:/home/taras/seasony/lewis/install/robot_data:/home/taras/seasony/lewis/install/robot_agent:/home/taras/seasony/lewis/install/robot_behavior2:/home/taras/seasony/lewis/install/robot_battery:/home/taras/seasony/lewis/install/robot_bag_recorder:/home/taras/seasony/lewis/install/orgb_led_manager:/home/taras/seasony/lewis/install/nav2_simple_commander:/home/taras/seasony/lewis/install/locations:/home/taras/seasony/lewis/install/lewis_sound_manager:/home/taras/seasony/lewis/install/lewis_simple_gui:/home/taras/seasony/lewis/install/lewis_serial_com:/home/taras/seasony/lewis/install/lewis_robot_control:/home/taras/seasony/lewis/install/lewis_remote_emergency:/home/taras/seasony/lewis/install/lewis_managers:/home/taras/seasony/lewis/install/lewis_health:/home/taras/seasony/lewis/install/lewis_b1_description:/home/taras/seasony/lewis/install/lewis_b1_bringup:/home/taras/seasony/lewis/install/esp32_control:/home/taras/seasony/lewis/install/controllino:/home/taras/thesis_ws/install/yolo_pose_ros:/home/taras/thesis_ws/install/tracker_pkg:/home/taras/thesis_ws/install/drspaam:/opt/ros/humble /usr/bin/cmake --install /home/taras/thesis_ws/build/custom_interfaces

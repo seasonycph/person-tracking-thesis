@@ -128,7 +128,8 @@ class TrackerNode(Node):
 
                 # Check if it is the closes angle so far
                 if angle_diff < min_angle_diff:
-                    associated_drspaam_id = drspaam_id
+                    if angle_diff < 35:
+                        associated_drspaam_id = drspaam_id
                     min_angle_diff = angle_diff
 
             # Associate the YOLO tracklet with the closes DR-SPAAM tracklet
