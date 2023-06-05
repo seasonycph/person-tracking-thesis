@@ -181,7 +181,7 @@ class YoloPoseNode(Node):
         #                             (0,255,0), 5)
 
         # Show the inference
-        #display_inference(nimg)
+        display_inference(nimg)
 
         # Send the resulting image through the topic
         try:

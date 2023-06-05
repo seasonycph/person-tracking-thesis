@@ -1,0 +1,99 @@
+running egg_info
+creating ../../build/yolo_pose_ros/yolo_pose_ros.egg-info
+writing ../../build/yolo_pose_ros/yolo_pose_ros.egg-info/PKG-INFO
+writing dependency_links to ../../build/yolo_pose_ros/yolo_pose_ros.egg-info/dependency_links.txt
+writing entry points to ../../build/yolo_pose_ros/yolo_pose_ros.egg-info/entry_points.txt
+writing requirements to ../../build/yolo_pose_ros/yolo_pose_ros.egg-info/requires.txt
+writing top-level names to ../../build/yolo_pose_ros/yolo_pose_ros.egg-info/top_level.txt
+writing manifest file '../../build/yolo_pose_ros/yolo_pose_ros.egg-info/SOURCES.txt'
+reading manifest file '../../build/yolo_pose_ros/yolo_pose_ros.egg-info/SOURCES.txt'
+writing manifest file '../../build/yolo_pose_ros/yolo_pose_ros.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/taras/thesis_ws/build/yolo_pose_ros/build
+creating /home/taras/thesis_ws/build/yolo_pose_ros/build/lib
+creating /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros
+copying yolo_pose_ros/__init__.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros
+copying yolo_pose_ros/yolo_marker_node.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros
+copying yolo_pose_ros/yolo_pose_node.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros
+creating /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+copying yolo_pose_ros/utils/google_utils.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+copying yolo_pose_ros/utils/autoanchor.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+copying yolo_pose_ros/utils/datasets.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+copying yolo_pose_ros/utils/general.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+copying yolo_pose_ros/utils/add_nms.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+copying yolo_pose_ros/utils/metrics.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+copying yolo_pose_ros/utils/loss.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+copying yolo_pose_ros/utils/__init__.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+copying yolo_pose_ros/utils/plots.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+copying yolo_pose_ros/utils/activations.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+copying yolo_pose_ros/utils/torch_utils.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils
+creating /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/models
+copying yolo_pose_ros/models/common.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/models
+copying yolo_pose_ros/models/__init__.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/models
+copying yolo_pose_ros/models/experimental.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/models
+copying yolo_pose_ros/models/yolo.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/models
+creating /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/centroid_tracker
+copying yolo_pose_ros/centroid_tracker/kalmanfilter.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/centroid_tracker
+copying yolo_pose_ros/centroid_tracker/centroidtracker.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/centroid_tracker
+copying yolo_pose_ros/centroid_tracker/__init__.py -> /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/centroid_tracker
+running install
+running install_lib
+creating /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros
+creating /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/google_utils.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/autoanchor.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/datasets.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/general.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/add_nms.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/metrics.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/loss.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/__init__.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/plots.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/activations.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/utils/torch_utils.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils
+creating /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/models
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/models/common.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/models
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/models/__init__.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/models
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/models/experimental.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/models
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/models/yolo.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/models
+creating /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/centroid_tracker
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/centroid_tracker/kalmanfilter.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/centroid_tracker
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/centroid_tracker/centroidtracker.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/centroid_tracker
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/centroid_tracker/__init__.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/centroid_tracker
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/__init__.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/yolo_marker_node.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros
+copying /home/taras/thesis_ws/build/yolo_pose_ros/build/lib/yolo_pose_ros/yolo_pose_node.py -> /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/google_utils.py to google_utils.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/autoanchor.py to autoanchor.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/datasets.py to datasets.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/general.py to general.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/add_nms.py to add_nms.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/metrics.py to metrics.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/loss.py to loss.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/plots.py to plots.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/activations.py to activations.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/torch_utils.py to torch_utils.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/models/common.py to common.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/models/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/models/experimental.py to experimental.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/models/yolo.py to yolo.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/centroid_tracker/kalmanfilter.py to kalmanfilter.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/centroid_tracker/centroidtracker.py to centroidtracker.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/centroid_tracker/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/yolo_marker_node.py to yolo_marker_node.cpython-310.pyc
+byte-compiling /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/yolo_pose_node.py to yolo_pose_node.cpython-310.pyc
+running install_data
+creating /home/taras/thesis_ws/install/yolo_pose_ros/share/ament_index
+creating /home/taras/thesis_ws/install/yolo_pose_ros/share/ament_index/resource_index
+creating /home/taras/thesis_ws/install/yolo_pose_ros/share/ament_index/resource_index/packages
+copying resource/yolo_pose_ros -> /home/taras/thesis_ws/install/yolo_pose_ros/share/ament_index/resource_index/packages
+copying package.xml -> /home/taras/thesis_ws/install/yolo_pose_ros/share/yolo_pose_ros
+running install_egg_info
+Copying ../../build/yolo_pose_ros/yolo_pose_ros.egg-info to /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros-1.0.0-py3.10.egg-info
+running install_scripts
+Installing yolo_marker_node script to /home/taras/thesis_ws/install/yolo_pose_ros/lib/yolo_pose_ros
+Installing yolo_pose_node script to /home/taras/thesis_ws/install/yolo_pose_ros/lib/yolo_pose_ros
+writing list of installed files to '/home/taras/thesis_ws/build/yolo_pose_ros/install.log'

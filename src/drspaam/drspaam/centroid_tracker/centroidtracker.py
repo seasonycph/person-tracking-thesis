@@ -4,6 +4,7 @@ Centroid tracker in python
 
 from scipy.spatial import distance as dist
 from collections import OrderedDict
+from .kalmanfilter import KalmanFilter
 import numpy as np
 
 class CentroidTracker():
@@ -15,6 +16,7 @@ class CentroidTracker():
         self.nextObjectID = 0
         self.objects = OrderedDict()
         self.disappeared = OrderedDict()
+        self.predictions = OrderedDict()
 
         # Store the num. of maximim consecutive scans an object is allowed to be marked as 
         # "disappeared" until we need to deregister the object from tracking
@@ -22,8 +24,13 @@ class CentroidTracker():
     
     def register(self, centroid):
         # When registering an object we use the next available object
-        # ID t ostore the centroid
+        # ID to store the centroid
         self.objects[self.nextObjectID] = centroid
+
+        # Initialize the centroid for the Kalman Filter
+        self.predictions[self.nextObjectID] = KalmanFilter()
+        self.predictions[self.nextObjectID].predict()
+        self.predictions[self.nextObjectID].update(np.matrix(centroid).reshape(2,1))
 
         # Initialize object's disappearence to 0
         self.disappeared[self.nextObjectID] = 0
@@ -34,24 +41,27 @@ class CentroidTracker():
     def deregister(self, objectID):
         # Delete object from both of respective dictionaries
         del self.objects[objectID]
+        del self.predictions[objectID]
         del self.disappeared[objectID]
 
     def update(self, rects):
         # If there are no inputs and no objects, just return
         if len(rects) == 0 and len(self.objects) == 0:
-            return self.objects
+            return self.objects, self.predictions
 
         # Check to see if the list of poses is empty
         if len(rects) == 0:
             # Mark existing objects as disappeared
             for objectID in list(self.disappeared.keys()):
                 self.disappeared[objectID] += 1
+                x, y = self.predictions[objectID].predict()
+                self.predictions[objectID].update(np.matrix([x, y]).reshape(2,1))
             
             # Deregister the objects that reached the maximum of allowed frames
             if self.disappeared[objectID] > self.maxDisappeared:
                 self.deregister(objectID)
         
-            return self.objects
+            return self.objects, self.predictions
 
         # Initialize an array of input centroids for the current frame
         inputCentroids = np.zeros((len(rects), 2), dtype="float64")
@@ -91,10 +101,9 @@ class CentroidTracker():
                         self.objects[min_object_id] = centroid
                         self.disappeared[min_object_id] = 0
 
-                        # Remoce the merged object with the higher ID
+                        # Remove the merged object with the higher ID
                         if existing_object_id != min_object_id:
-                            del self.objects[existing_object_id]
-                            del self.disappeared[existing_object_id]
+                            self.deregister(existing_object_id)
                         
                         matched_centroids.append(centroid)
 
@@ -135,6 +144,10 @@ class CentroidTracker():
                 self.objects[objectID] = inputCentroids[col]
                 self.disappeared[objectID] = 0
 
+                # Perform the prediction on the objects
+                self.predictions[objectID].predict()
+                self.predictions[objectID].update(np.matrix(inputCentroids[col]).reshape(2,1))
+
                 # Check the column and the row as used
                 usedRows.add(row)
                 usedCols.add(col)
@@ -154,6 +167,8 @@ class CentroidTracker():
                         # Increase object's disappeared counter
                         objectID = objectIDs[row]
                         self.disappeared[objectID] += 1
+                        x, y = self.predictions[objectID].predict()
+                        self.predictions[objectID].update(np.matrix([x,y]).reshape(2,1))
 
                         # Check if object should be thrown away
                         if self.disappeared[objectID] > self.maxDisappeared:
@@ -162,18 +177,13 @@ class CentroidTracker():
                     # If there are more inputs, register the new object
                     for col in unusedCols:
                         self.register(inputCentroids[col])
-                
-                
 
-        return self.objects
+        # print(f"Objects: {self.objects.items()}", "\n")
+        # print("Kalman predictions:")
+        # for id, pred_obj in self.predictions.items():
+        #     print(f"{id} : {pred_obj}")
+        # print()
+        # print(f"Disappeared: {self.disappeared.items()}")
+        # print()
 
-
-
-
-
-        
-
-
-
-
-
+        return self.objects, self.predictions

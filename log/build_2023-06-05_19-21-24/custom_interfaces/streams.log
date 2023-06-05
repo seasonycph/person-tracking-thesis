@@ -1,0 +1,282 @@
+[0.038s] Invoking command in '/home/taras/thesis_ws/build/custom_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/taras/seasony/lewis/install/robot_navigation:/home/taras/seasony/lewis/install/sensor_stream_pkg:/home/taras/seasony/lewis/install/robot_teleop:/home/taras/seasony/lewis/install/robot_spawner:/home/taras/seasony/lewis/install/robot_data:/home/taras/seasony/lewis/install/robot_agent:/home/taras/seasony/lewis/install/robot_behavior2:/home/taras/seasony/lewis/install/robot_battery:/home/taras/seasony/lewis/install/robot_bag_recorder:/home/taras/seasony/lewis/install/orgb_led_manager:/home/taras/seasony/lewis/install/nav2_simple_commander:/home/taras/seasony/lewis/install/locations:/home/taras/seasony/lewis/install/lewis_sound_manager:/home/taras/seasony/lewis/install/lewis_simple_gui:/home/taras/seasony/lewis/install/lewis_serial_com:/home/taras/seasony/lewis/install/lewis_robot_control:/home/taras/seasony/lewis/install/lewis_remote_emergency:/home/taras/seasony/lewis/install/lewis_managers:/home/taras/seasony/lewis/install/lewis_health:/home/taras/seasony/lewis/install/lewis_b1_description:/home/taras/seasony/lewis/install/lewis_b1_bringup:/home/taras/seasony/lewis/install/esp32_control:/home/taras/seasony/lewis/install/controllino:/opt/ros/humble /usr/bin/cmake /home/taras/thesis_ws/src/custom_interfaces -DCMAKE_INSTALL_PREFIX=/home/taras/thesis_ws/install/custom_interfaces
+[0.350s] -- The C compiler identification is GNU 11.3.0
+[0.351s] -- The CXX compiler identification is GNU 11.3.0
+[0.351s] -- Detecting C compiler ABI info
+[0.351s] -- Detecting C compiler ABI info - done
+[0.351s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.352s] -- Detecting C compile features
+[0.352s] -- Detecting C compile features - done
+[0.354s] -- Detecting CXX compiler ABI info
+[0.468s] -- Detecting CXX compiler ABI info - done
+[0.476s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.476s] -- Detecting CXX compile features
+[0.476s] -- Detecting CXX compile features - done
+[0.485s] -- Found ament_cmake: 1.3.4 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.762s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.6") found components: Interpreter 
+[0.947s] -- Found std_msgs: 4.2.3 (/opt/ros/humble/share/std_msgs/cmake)
+[1.030s] -- Found rosidl_generator_c: 3.1.4 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[1.045s] -- Found rosidl_adapter: 3.1.4 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.068s] -- Found rosidl_generator_cpp: 3.1.4 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.092s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.129s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.199s] -- Found geometry_msgs: 4.2.3 (/opt/ros/humble/share/geometry_msgs/cmake)
+[1.244s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[1.748s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[2.555s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.877s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.921s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.6", minimum required is "3.6") 
+[2.928s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[2.990s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.6", minimum required is "3.5") 
+[2.990s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[2.990s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[2.991s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[3.018s] -- Found PythonExtra: .so  
+[3.211s] -- Configuring done
+[3.239s] -- Generating done
+[3.242s] -- Build files have been written to: /home/taras/thesis_ws/build/custom_interfaces
+[3.248s] Invoked command in '/home/taras/thesis_ws/build/custom_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/taras/seasony/lewis/install/robot_navigation:/home/taras/seasony/lewis/install/sensor_stream_pkg:/home/taras/seasony/lewis/install/robot_teleop:/home/taras/seasony/lewis/install/robot_spawner:/home/taras/seasony/lewis/install/robot_data:/home/taras/seasony/lewis/install/robot_agent:/home/taras/seasony/lewis/install/robot_behavior2:/home/taras/seasony/lewis/install/robot_battery:/home/taras/seasony/lewis/install/robot_bag_recorder:/home/taras/seasony/lewis/install/orgb_led_manager:/home/taras/seasony/lewis/install/nav2_simple_commander:/home/taras/seasony/lewis/install/locations:/home/taras/seasony/lewis/install/lewis_sound_manager:/home/taras/seasony/lewis/install/lewis_simple_gui:/home/taras/seasony/lewis/install/lewis_serial_com:/home/taras/seasony/lewis/install/lewis_robot_control:/home/taras/seasony/lewis/install/lewis_remote_emergency:/home/taras/seasony/lewis/install/lewis_managers:/home/taras/seasony/lewis/install/lewis_health:/home/taras/seasony/lewis/install/lewis_b1_description:/home/taras/seasony/lewis/install/lewis_b1_bringup:/home/taras/seasony/lewis/install/esp32_control:/home/taras/seasony/lewis/install/controllino:/opt/ros/humble /usr/bin/cmake /home/taras/thesis_ws/src/custom_interfaces -DCMAKE_INSTALL_PREFIX=/home/taras/thesis_ws/install/custom_interfaces
+[3.250s] Invoking command in '/home/taras/thesis_ws/build/custom_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/taras/seasony/lewis/install/robot_navigation:/home/taras/seasony/lewis/install/sensor_stream_pkg:/home/taras/seasony/lewis/install/robot_teleop:/home/taras/seasony/lewis/install/robot_spawner:/home/taras/seasony/lewis/install/robot_data:/home/taras/seasony/lewis/install/robot_agent:/home/taras/seasony/lewis/install/robot_behavior2:/home/taras/seasony/lewis/install/robot_battery:/home/taras/seasony/lewis/install/robot_bag_recorder:/home/taras/seasony/lewis/install/orgb_led_manager:/home/taras/seasony/lewis/install/nav2_simple_commander:/home/taras/seasony/lewis/install/locations:/home/taras/seasony/lewis/install/lewis_sound_manager:/home/taras/seasony/lewis/install/lewis_simple_gui:/home/taras/seasony/lewis/install/lewis_serial_com:/home/taras/seasony/lewis/install/lewis_robot_control:/home/taras/seasony/lewis/install/lewis_remote_emergency:/home/taras/seasony/lewis/install/lewis_managers:/home/taras/seasony/lewis/install/lewis_health:/home/taras/seasony/lewis/install/lewis_b1_description:/home/taras/seasony/lewis/install/lewis_b1_bringup:/home/taras/seasony/lewis/install/esp32_control:/home/taras/seasony/lewis/install/controllino:/opt/ros/humble /usr/bin/cmake --build /home/taras/thesis_ws/build/custom_interfaces -- -j16 -l16
+[3.304s] [  2%] [34m[1mGenerating C code for ROS interfaces[0m
+[3.323s] [  4%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[3.329s] [  4%] Built target ament_cmake_python_copy_custom_interfaces
+[3.612s] running egg_info
+[3.613s] creating custom_interfaces.egg-info
+[3.613s] writing custom_interfaces.egg-info/PKG-INFO
+[3.613s] writing dependency_links to custom_interfaces.egg-info/dependency_links.txt
+[3.613s] writing top-level names to custom_interfaces.egg-info/top_level.txt
+[3.613s] writing manifest file 'custom_interfaces.egg-info/SOURCES.txt'
+[3.615s] reading manifest file 'custom_interfaces.egg-info/SOURCES.txt'
+[3.615s] writing manifest file 'custom_interfaces.egg-info/SOURCES.txt'
+[3.644s] [  4%] Built target ament_cmake_python_build_custom_interfaces_egg
+[3.748s] [  6%] [32mBuilding C object CMakeFiles/custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/custom_interfaces/msg/detail/associations__functions.c.o[0m
+[3.748s] [  8%] [32mBuilding C object CMakeFiles/custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/custom_interfaces/msg/detail/person_pose__functions.c.o[0m
+[3.755s] [ 10%] [32mBuilding C object CMakeFiles/custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/custom_interfaces/msg/detail/tracker__functions.c.o[0m
+[3.765s] [ 10%] Built target custom_interfaces__cpp
+[3.777s] [ 12%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[3.779s] [ 14%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[3.781s] [ 17%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[3.827s] [ 19%] [32m[1mLinking C shared library libcustom_interfaces__rosidl_generator_c.so[0m
+[3.874s] [ 19%] Built target custom_interfaces__rosidl_generator_c
+[3.887s] [ 23%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[3.887s] [ 23%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[3.892s] [ 25%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[4.153s] [ 27%] [32mBuilding CXX object CMakeFiles/custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/custom_interfaces/msg/associations__type_support.cpp.o[0m
+[4.156s] [ 31%] [32mBuilding CXX object CMakeFiles/custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/custom_interfaces/msg/tracker__type_support.cpp.o[0m
+[4.156s] [ 31%] [32mBuilding CXX object CMakeFiles/custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/custom_interfaces/msg/person_pose__type_support.cpp.o[0m
+[4.183s] [ 34%] [32mBuilding CXX object CMakeFiles/custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/custom_interfaces/msg/detail/tracker__type_support.cpp.o[0m
+[4.185s] [ 36%] [32mBuilding CXX object CMakeFiles/custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/custom_interfaces/msg/detail/associations__type_support.cpp.o[0m
+[4.186s] [ 38%] [32mBuilding CXX object CMakeFiles/custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/custom_interfaces/msg/detail/person_pose__type_support.cpp.o[0m
+[4.205s] [ 40%] [32mBuilding CXX object CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/custom_interfaces/msg/detail/dds_fastrtps/associations__type_support.cpp.o[0m
+[4.206s] [ 44%] [32mBuilding CXX object CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/custom_interfaces/msg/detail/dds_fastrtps/person_pose__type_support.cpp.o[0m
+[4.206s] [ 44%] [32mBuilding CXX object CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/custom_interfaces/msg/detail/dds_fastrtps/tracker__type_support.cpp.o[0m
+[4.290s] [ 46%] [32mBuilding CXX object CMakeFiles/custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/custom_interfaces/msg/associations__type_support.cpp.o[0m
+[4.291s] [ 48%] [32mBuilding CXX object CMakeFiles/custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/custom_interfaces/msg/tracker__type_support.cpp.o[0m
+[4.292s] [ 51%] [32mBuilding CXX object CMakeFiles/custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/custom_interfaces/msg/person_pose__type_support.cpp.o[0m
+[4.332s] [ 53%] [32m[1mLinking CXX shared library libcustom_interfaces__rosidl_typesupport_c.so[0m
+[4.388s] [ 53%] Built target custom_interfaces__rosidl_typesupport_c
+[4.410s] [ 55%] [32mBuilding C object CMakeFiles/custom_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_interfaces/msg/detail/tracker__type_support.c.o[0m
+[4.411s] [ 57%] [32mBuilding C object CMakeFiles/custom_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_interfaces/msg/detail/person_pose__type_support.c.o[0m
+[4.414s] [ 59%] [32mBuilding C object CMakeFiles/custom_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_interfaces/msg/detail/associations__type_support.c.o[0m
+[4.421s] [ 65%] [32mBuilding CXX object CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/custom_interfaces/msg/detail/tracker__type_support_c.cpp.o[0m
+[4.421s] [ 65%] [32mBuilding CXX object CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/custom_interfaces/msg/detail/person_pose__type_support_c.cpp.o[0m
+[4.421s] [ 65%] [32mBuilding CXX object CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/custom_interfaces/msg/detail/associations__type_support_c.cpp.o[0m
+[4.475s] [ 68%] [32m[1mLinking C shared library libcustom_interfaces__rosidl_typesupport_introspection_c.so[0m
+[4.516s] [ 68%] Built target custom_interfaces__rosidl_typesupport_introspection_c
+[4.527s] [ 70%] [32m[1mLinking CXX shared library libcustom_interfaces__rosidl_typesupport_cpp.so[0m
+[4.594s] [ 70%] Built target custom_interfaces__rosidl_typesupport_cpp
+[4.750s] [ 72%] [32m[1mLinking CXX shared library libcustom_interfaces__rosidl_typesupport_fastrtps_c.so[0m
+[4.768s] [ 74%] [32m[1mLinking CXX shared library libcustom_interfaces__rosidl_typesupport_introspection_cpp.so[0m
+[4.782s] [ 76%] [32m[1mLinking CXX shared library libcustom_interfaces__rosidl_typesupport_fastrtps_cpp.so[0m
+[4.846s] [ 76%] Built target custom_interfaces__rosidl_typesupport_fastrtps_c
+[4.861s] [ 76%] Built target custom_interfaces__rosidl_typesupport_introspection_cpp
+[4.874s] [ 76%] Built target custom_interfaces__rosidl_typesupport_fastrtps_cpp
+[4.898s] [ 76%] Built target custom_interfaces
+[4.922s] [ 78%] [34m[1mGenerating Python code for ROS interfaces[0m
+[5.552s] [ 78%] Built target custom_interfaces__py
+[5.589s] [ 82%] [32mBuilding C object CMakeFiles/custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/custom_interfaces/msg/_associations_s.c.o[0m
+[5.589s] [ 82%] [32mBuilding C object CMakeFiles/custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/custom_interfaces/msg/_tracker_s.c.o[0m
+[5.594s] [ 85%] [32mBuilding C object CMakeFiles/custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/custom_interfaces/msg/_person_pose_s.c.o[0m
+[5.708s] [ 87%] [32m[1mLinking C shared library rosidl_generator_py/custom_interfaces/libcustom_interfaces__rosidl_generator_py.so[0m
+[5.764s] [ 87%] Built target custom_interfaces__rosidl_generator_py
+[5.786s] [ 89%] [32mBuilding C object CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/custom_interfaces/_custom_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[5.796s] [ 91%] [32mBuilding C object CMakeFiles/custom_interfaces__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/custom_interfaces/_custom_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[5.800s] [ 93%] [32mBuilding C object CMakeFiles/custom_interfaces__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/custom_interfaces/_custom_interfaces_s.ep.rosidl_typesupport_c.c.o[0m
+[5.870s] [ 95%] [32m[1mLinking C shared library rosidl_generator_py/custom_interfaces/custom_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[5.879s] [ 97%] [32m[1mLinking C shared library rosidl_generator_py/custom_interfaces/custom_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[5.894s] [100%] [32m[1mLinking C shared library rosidl_generator_py/custom_interfaces/custom_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[5.918s] [100%] Built target custom_interfaces__rosidl_typesupport_fastrtps_c__pyext
+[5.920s] [100%] Built target custom_interfaces__rosidl_typesupport_introspection_c__pyext
+[5.963s] [100%] Built target custom_interfaces__rosidl_typesupport_c__pyext
+[5.986s] Invoked command in '/home/taras/thesis_ws/build/custom_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/taras/seasony/lewis/install/robot_navigation:/home/taras/seasony/lewis/install/sensor_stream_pkg:/home/taras/seasony/lewis/install/robot_teleop:/home/taras/seasony/lewis/install/robot_spawner:/home/taras/seasony/lewis/install/robot_data:/home/taras/seasony/lewis/install/robot_agent:/home/taras/seasony/lewis/install/robot_behavior2:/home/taras/seasony/lewis/install/robot_battery:/home/taras/seasony/lewis/install/robot_bag_recorder:/home/taras/seasony/lewis/install/orgb_led_manager:/home/taras/seasony/lewis/install/nav2_simple_commander:/home/taras/seasony/lewis/install/locations:/home/taras/seasony/lewis/install/lewis_sound_manager:/home/taras/seasony/lewis/install/lewis_simple_gui:/home/taras/seasony/lewis/install/lewis_serial_com:/home/taras/seasony/lewis/install/lewis_robot_control:/home/taras/seasony/lewis/install/lewis_remote_emergency:/home/taras/seasony/lewis/install/lewis_managers:/home/taras/seasony/lewis/install/lewis_health:/home/taras/seasony/lewis/install/lewis_b1_description:/home/taras/seasony/lewis/install/lewis_b1_bringup:/home/taras/seasony/lewis/install/esp32_control:/home/taras/seasony/lewis/install/controllino:/opt/ros/humble /usr/bin/cmake --build /home/taras/thesis_ws/build/custom_interfaces -- -j16 -l16
+[6.133s] Invoking command in '/home/taras/thesis_ws/build/custom_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/taras/seasony/lewis/install/robot_navigation:/home/taras/seasony/lewis/install/sensor_stream_pkg:/home/taras/seasony/lewis/install/robot_teleop:/home/taras/seasony/lewis/install/robot_spawner:/home/taras/seasony/lewis/install/robot_data:/home/taras/seasony/lewis/install/robot_agent:/home/taras/seasony/lewis/install/robot_behavior2:/home/taras/seasony/lewis/install/robot_battery:/home/taras/seasony/lewis/install/robot_bag_recorder:/home/taras/seasony/lewis/install/orgb_led_manager:/home/taras/seasony/lewis/install/nav2_simple_commander:/home/taras/seasony/lewis/install/locations:/home/taras/seasony/lewis/install/lewis_sound_manager:/home/taras/seasony/lewis/install/lewis_simple_gui:/home/taras/seasony/lewis/install/lewis_serial_com:/home/taras/seasony/lewis/install/lewis_robot_control:/home/taras/seasony/lewis/install/lewis_remote_emergency:/home/taras/seasony/lewis/install/lewis_managers:/home/taras/seasony/lewis/install/lewis_health:/home/taras/seasony/lewis/install/lewis_b1_description:/home/taras/seasony/lewis/install/lewis_b1_bringup:/home/taras/seasony/lewis/install/esp32_control:/home/taras/seasony/lewis/install/controllino:/opt/ros/humble /usr/bin/cmake --install /home/taras/thesis_ws/build/custom_interfaces
+[6.151s] -- Install configuration: ""
+[6.151s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/ament_index/resource_index/rosidl_interfaces/custom_interfaces
+[6.152s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces
+[6.152s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg
+[6.152s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail
+[6.152s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__functions.h
+[6.152s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__struct.h
+[6.153s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__functions.c
+[6.153s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__struct.h
+[6.153s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__type_support.h
+[6.153s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__type_support.h
+[6.153s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__functions.c
+[6.153s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__functions.h
+[6.153s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__type_support.h
+[6.153s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__functions.h
+[6.153s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__functions.c
+[6.154s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__struct.h
+[6.154s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/rosidl_generator_c__visibility_control.h
+[6.154s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/tracker.h
+[6.154s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/person_pose.h
+[6.154s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/associations.h
+[6.154s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/environment/library_path.sh
+[6.155s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/environment/library_path.dsv
+[6.155s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_generator_c.so
+[6.156s] -- Set runtime path of "/home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_generator_c.so" to ""
+[6.156s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces
+[6.156s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg
+[6.156s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail
+[6.156s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__rosidl_typesupport_fastrtps_c.h
+[6.156s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__rosidl_typesupport_fastrtps_c.h
+[6.156s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__rosidl_typesupport_fastrtps_c.h
+[6.156s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[6.156s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_fastrtps_c.so
+[6.157s] -- Set runtime path of "/home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_fastrtps_c.so" to ""
+[6.157s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces
+[6.157s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg
+[6.157s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail
+[6.157s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__struct.hpp
+[6.157s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__builder.hpp
+[6.157s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__traits.hpp
+[6.158s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__struct.hpp
+[6.158s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__traits.hpp
+[6.158s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__builder.hpp
+[6.158s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__builder.hpp
+[6.158s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__traits.hpp
+[6.158s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__struct.hpp
+[6.158s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/person_pose.hpp
+[6.158s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/associations.hpp
+[6.159s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/tracker.hpp
+[6.159s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces
+[6.159s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg
+[6.159s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail
+[6.159s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__rosidl_typesupport_fastrtps_cpp.hpp
+[6.159s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__rosidl_typesupport_fastrtps_cpp.hpp
+[6.159s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/dds_fastrtps
+[6.159s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__rosidl_typesupport_fastrtps_cpp.hpp
+[6.159s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[6.160s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_fastrtps_cpp.so
+[6.160s] -- Set runtime path of "/home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_fastrtps_cpp.so" to ""
+[6.160s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces
+[6.160s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg
+[6.161s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail
+[6.161s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__type_support.c
+[6.161s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__rosidl_typesupport_introspection_c.h
+[6.161s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__rosidl_typesupport_introspection_c.h
+[6.161s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__type_support.c
+[6.161s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__type_support.c
+[6.161s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__rosidl_typesupport_introspection_c.h
+[6.161s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[6.161s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_introspection_c.so
+[6.162s] -- Set runtime path of "/home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_introspection_c.so" to ""
+[6.162s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_c.so
+[6.162s] -- Set runtime path of "/home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_c.so" to ""
+[6.163s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces
+[6.163s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg
+[6.163s] -- Up-to-date: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail
+[6.163s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__rosidl_typesupport_introspection_cpp.hpp
+[6.163s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/person_pose__type_support.cpp
+[6.163s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__rosidl_typesupport_introspection_cpp.hpp
+[6.163s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/tracker__type_support.cpp
+[6.163s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__rosidl_typesupport_introspection_cpp.hpp
+[6.163s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/include/custom_interfaces/custom_interfaces/msg/detail/associations__type_support.cpp
+[6.164s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_introspection_cpp.so
+[6.164s] -- Set runtime path of "/home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_introspection_cpp.so" to ""
+[6.164s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_cpp.so
+[6.165s] -- Set runtime path of "/home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_typesupport_cpp.so" to ""
+[6.165s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/environment/pythonpath.sh
+[6.165s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/environment/pythonpath.dsv
+[6.165s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces-0.0.0-py3.10.egg-info
+[6.165s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces-0.0.0-py3.10.egg-info/dependency_links.txt
+[6.166s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces-0.0.0-py3.10.egg-info/PKG-INFO
+[6.166s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces-0.0.0-py3.10.egg-info/top_level.txt
+[6.166s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces-0.0.0-py3.10.egg-info/SOURCES.txt
+[6.166s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces
+[6.166s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[6.166s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/_custom_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+[6.166s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[6.167s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[6.167s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/libcustom_interfaces__rosidl_generator_py.so
+[6.167s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/_custom_interfaces_s.ep.rosidl_typesupport_introspection_c.c
+[6.167s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/__init__.py
+[6.167s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/_custom_interfaces_s.ep.rosidl_typesupport_c.c
+[6.167s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg
+[6.167s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/_person_pose.py
+[6.168s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/_tracker_s.c
+[6.168s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/__init__.py
+[6.168s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/_tracker.py
+[6.168s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/_person_pose_s.c
+[6.168s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/_associations.py
+[6.168s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/_associations_s.c
+[6.216s] Listing '/home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces'...
+[6.216s] Compiling '/home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/__init__.py'...
+[6.216s] Listing '/home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg'...
+[6.216s] Compiling '/home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/__init__.py'...
+[6.216s] Compiling '/home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/_associations.py'...
+[6.216s] Compiling '/home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/_person_pose.py'...
+[6.216s] Compiling '/home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/msg/_tracker.py'...
+[6.220s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[6.221s] -- Set runtime path of "/home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+[6.221s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[6.221s] -- Set runtime path of "/home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+[6.222s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[6.222s] -- Set runtime path of "/home/taras/thesis_ws/install/custom_interfaces/local/lib/python3.10/dist-packages/custom_interfaces/custom_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+[6.222s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_generator_py.so
+[6.223s] -- Set runtime path of "/home/taras/thesis_ws/install/custom_interfaces/lib/libcustom_interfaces__rosidl_generator_py.so" to ""
+[6.223s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/msg/PersonPose.idl
+[6.223s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/msg/Tracker.idl
+[6.223s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/msg/Associations.idl
+[6.223s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/msg/PersonPose.msg
+[6.223s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/msg/Tracker.msg
+[6.224s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/msg/Associations.msg
+[6.224s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/ament_index/resource_index/package_run_dependencies/custom_interfaces
+[6.224s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/ament_index/resource_index/parent_prefix_path/custom_interfaces
+[6.224s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/environment/ament_prefix_path.sh
+[6.224s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/environment/ament_prefix_path.dsv
+[6.225s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/environment/path.sh
+[6.225s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/environment/path.dsv
+[6.225s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/local_setup.bash
+[6.225s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/local_setup.sh
+[6.225s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/local_setup.zsh
+[6.225s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/local_setup.dsv
+[6.226s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/package.dsv
+[6.226s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/ament_index/resource_index/packages/custom_interfaces
+[6.226s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_cExport.cmake
+[6.226s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_cExport-noconfig.cmake
+[6.226s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_typesupport_fastrtps_cExport.cmake
+[6.227s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[6.227s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_cppExport.cmake
+[6.227s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake
+[6.227s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[6.227s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_introspection_cExport.cmake
+[6.228s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[6.228s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_cExport.cmake
+[6.228s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_cExport-noconfig.cmake
+[6.228s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_introspection_cppExport.cmake
+[6.228s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[6.228s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_cppExport.cmake
+[6.229s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfaces__rosidl_typesupport_cppExport-noconfig.cmake
+[6.229s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_pyExport.cmake
+[6.229s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/export_custom_interfaces__rosidl_generator_pyExport-noconfig.cmake
+[6.229s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/rosidl_cmake-extras.cmake
+[6.229s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake
+[6.230s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake
+[6.230s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/ament_cmake_export_libraries-extras.cmake
+[6.230s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/ament_cmake_export_targets-extras.cmake
+[6.230s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[6.230s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[6.231s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfacesConfig.cmake
+[6.231s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/cmake/custom_interfacesConfig-version.cmake
+[6.231s] -- Installing: /home/taras/thesis_ws/install/custom_interfaces/share/custom_interfaces/package.xml
+[6.236s] Invoked command in '/home/taras/thesis_ws/build/custom_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/taras/seasony/lewis/install/robot_navigation:/home/taras/seasony/lewis/install/sensor_stream_pkg:/home/taras/seasony/lewis/install/robot_teleop:/home/taras/seasony/lewis/install/robot_spawner:/home/taras/seasony/lewis/install/robot_data:/home/taras/seasony/lewis/install/robot_agent:/home/taras/seasony/lewis/install/robot_behavior2:/home/taras/seasony/lewis/install/robot_battery:/home/taras/seasony/lewis/install/robot_bag_recorder:/home/taras/seasony/lewis/install/orgb_led_manager:/home/taras/seasony/lewis/install/nav2_simple_commander:/home/taras/seasony/lewis/install/locations:/home/taras/seasony/lewis/install/lewis_sound_manager:/home/taras/seasony/lewis/install/lewis_simple_gui:/home/taras/seasony/lewis/install/lewis_serial_com:/home/taras/seasony/lewis/install/lewis_robot_control:/home/taras/seasony/lewis/install/lewis_remote_emergency:/home/taras/seasony/lewis/install/lewis_managers:/home/taras/seasony/lewis/install/lewis_health:/home/taras/seasony/lewis/install/lewis_b1_description:/home/taras/seasony/lewis/install/lewis_b1_bringup:/home/taras/seasony/lewis/install/esp32_control:/home/taras/seasony/lewis/install/controllino:/opt/ros/humble /usr/bin/cmake --install /home/taras/thesis_ws/build/custom_interfaces
