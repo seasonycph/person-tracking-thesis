@@ -15,6 +15,7 @@ class CentroidTracker():
 
         self.nextObjectID = 0
         self.objects = OrderedDict()
+        #self.objectsPresence = OrderedDict()
         self.disappeared = OrderedDict()
         self.predictions = OrderedDict()
 

@@ -10,6 +10,7 @@ from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Point, Pose, PoseArray
 from custom_interfaces.msg import Tracker, Associations
 from visualization_msgs.msg import Marker
+from collections import OrderedDict
 
 from dr_spaam.detector import Detector, _TrackingExtension
 from .centroid_tracker.centroidtracker import CentroidTracker
@@ -49,7 +50,7 @@ class DrSpaamNode(Node):
         """
         self.weight_file = "weights/dr-spaam/dr_spaam_e40.pth"
         self.stride = 1
-        self.conf_thresh = 0.6
+        self.conf_thresh = 0.7
 
     def init_communication(self):
         """
@@ -79,7 +80,7 @@ class DrSpaamNode(Node):
         self.associations_msg = msg
 
         # Function called from this callback because from the scan it does not work
-        self.some_random_function()
+        self.associations_to_rviz_marker()
 
     def callback_scan_front(self, msg):
         # Check if laser specifications have been set
@@ -104,26 +105,9 @@ class DrSpaamNode(Node):
         dets_cls = dets_cls[conf_mask]
 
         # Track the detected objects
-        track_dict = self.centroid_tracker_.update(dets_xy)
+        track_dict, prediction_dict = self.centroid_tracker_.update(dets_xy)
+        self.predictions = process_predictions(prediction_dict)
         self.tracker = track_dict
-
-        # Internal Dr-SPAAM tracker
-        # tracks, tracks_cls = self._detector.get_tracklets()
-        # trks = []
-        # for t, tc in zip(tracks, tracks_cls):
-        #     if tc >= self.conf_thresh and len(t) > 1:
-        #         trks.append(t)
-        # print(trks)
-
-        # tracks_cls = np.array([tracks_cls]).T
-
-        # conf_mask = (tracks_cls >= self.conf_thresh).reshape(-1)
-
-        # tracks = tracks[conf_mask]
-        # tracks_cls = tracks_cls[conf_mask]
-
-        # print(f"Tracks: {tracks}")
-        # print(f"Tracks Confindence: {tracks_cls}")
 
         # Convert to tracker message
         track_msg = dict_to_tracker(track_dict)
@@ -140,12 +124,13 @@ class DrSpaamNode(Node):
         # self.get_logger().info(f"End-to-end inference time: {time.time() - t}"
 
         # Convert to rviz markers
-        # rviz_msg = detections_to_rviz_marker(dets_xy)
-        # rviz_msg.header = msg.header
-        # self.rviz_pub_.publish(rviz_msg)
+        dets_xy = np.array(list(self.predictions.values()))
+        rviz_msg = detections_to_rviz_marker(dets_xy)
+        rviz_msg.header = msg.header
+        self.rviz_pub_.publish(rviz_msg)
           
 
-    def some_random_function(self):
+    def associations_to_rviz_marker(self):
         # We will use the associations only to draw the rviz tracklets
         
         # Extract the dr-spaam detections from the association message
@@ -158,6 +143,13 @@ class DrSpaamNode(Node):
         rviz_msg.header = self.associations_msg.header
         self.rviz_pub_.publish(rviz_msg) 
 
+def process_predictions(prediction_dict):
+    predictions = OrderedDict()
+
+    for key, pred_obj in prediction_dict.items():
+        predictions[key] = [pred_obj.state[0].item(), pred_obj.state[2].item()]
+
+    return predictions
 
 def detections_to_pose_array(dets_xy, dets_cls):
     pose_array = PoseArray()
