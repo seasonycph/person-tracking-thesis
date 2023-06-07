@@ -1,5 +1,4 @@
 /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/__init__.py
-/home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/yolo_marker_node.py
 /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/yolo_pose_node.py
 /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/google_utils.py
 /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/autoanchor.py
@@ -20,7 +19,6 @@
 /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/centroid_tracker/centroidtracker.py
 /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/centroid_tracker/__init__.py
 /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/__pycache__/__init__.cpython-310.pyc
-/home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/__pycache__/yolo_marker_node.cpython-310.pyc
 /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/__pycache__/yolo_pose_node.cpython-310.pyc
 /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/__pycache__/google_utils.cpython-310.pyc
 /home/taras/thesis_ws/install/yolo_pose_ros/lib/python3.10/site-packages/yolo_pose_ros/utils/__pycache__/autoanchor.cpython-310.pyc
