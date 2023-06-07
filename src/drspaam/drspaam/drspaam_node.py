@@ -50,7 +50,7 @@ class DrSpaamNode(Node):
         """
         self.weight_file = "weights/dr-spaam/dr_spaam_e40.pth"
         self.stride = 1
-        self.conf_thresh = 0.7
+        self.conf_thresh = 0.6
 
     def init_communication(self):
         """
@@ -94,7 +94,7 @@ class DrSpaamNode(Node):
         scan[np.isnan(scan)] = 39.99
 
         # Extract the detections
-        # t = time.time()
+        t = time.time()
         dets_xy, dets_cls, _ = self._detector(scan)
 
         # Confidence threshold
@@ -110,7 +110,7 @@ class DrSpaamNode(Node):
         self.tracker = track_dict
 
         # Convert to tracker message
-        track_msg = dict_to_tracker(track_dict)
+        track_msg = dict_to_tracker(self.predictions)#(track_dict)
         track_msg.header = msg.header
         self.tracker_pub_.publish(track_msg)
 
@@ -121,13 +121,13 @@ class DrSpaamNode(Node):
         self.dets_pub_.publish(dets_msg)
 
         # Time until detection message is published
-        # self.get_logger().info(f"End-to-end inference time: {time.time() - t}"
+        self.get_logger().info(f"End-to-end inference time: {time.time() - t}")
 
         # Convert to rviz markers
-        dets_xy = np.array(list(self.predictions.values()))
-        rviz_msg = detections_to_rviz_marker(dets_xy)
-        rviz_msg.header = msg.header
-        self.rviz_pub_.publish(rviz_msg)
+        # dets_xy = np.array(list(self.predictions.values()))
+        # rviz_msg = detections_to_rviz_marker(dets_xy)
+        # rviz_msg.header = msg.header
+        # self.rviz_pub_.publish(rviz_msg)
           
 
     def associations_to_rviz_marker(self):
@@ -184,7 +184,7 @@ def detections_to_rviz_marker(dets_xy):
     msg.color.a = 1.0
 
     # Circle
-    r = 0.2
+    r = 0.3
     ang = np.linspace(0, 2 * np.pi, 20)
     xy_offsets = r * np.stack((np.cos(ang), np.sin(ang)), axis=1)
 

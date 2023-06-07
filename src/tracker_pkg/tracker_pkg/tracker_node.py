@@ -5,6 +5,7 @@ from rclpy.node import Node
 import numpy as np
 
 from custom_interfaces.msg import Tracker, Associations
+from visualization_msgs.msg import Marker
 from geometry_msgs.msg import Point
 from collections import OrderedDict
 
@@ -22,7 +23,6 @@ class TrackerNode(Node):
         # Initialize the subscriber and the publisher
         self.init_communication()
 
-
     def init_communication(self):
         """
         Initialize ROS2 communications
@@ -33,14 +33,22 @@ class TrackerNode(Node):
         self.associations_pub_ = self.create_publisher(
             Associations, topic, qos_profile=10)
 
+        topic = "/tracker/rviz"
+        self.associations_rviz_pub_ = self.create_publisher(
+            Marker, topic, qos_profile=10)
+
+        topic = "/yolo_pose/rviz"
+        self.yolo_rviz_pub_ = self.create_publisher(
+            Marker, topic, qos_profile=10)
+
         # Subscriber
         topic = "/dr_spaam/tracker"
         self.drspaam_subs_ = self.create_subscription(
             Tracker, topic, self.callback_drspaam_tracker, qos_profile=10)
-        
+
         topic = "/yolo_pose/tracker"
         self.yolo_subs_ = self.create_subscription(
-            Tracker, topic, self.callback_yolo_tracker, qos_profile=10)    
+            Tracker, topic, self.callback_yolo_tracker, qos_profile=10)
 
     def init_parameters(self):
         # Initialize YOLO tracker
@@ -73,7 +81,6 @@ class TrackerNode(Node):
         # Call the association then new YOLO data arrives bc the drspaam is faster
         # so it would mean we would have redundant calculations
         self.tracklets_association()
-             
 
     def callback_drspaam_tracker(self, msg):
         # Transform the message to dictionary
@@ -88,8 +95,6 @@ class TrackerNode(Node):
                 np.rad2deg(np.arctan(poses[0] / poses[1])))
 
         # print(f"Angles from dr-spaam: {self.drspaam_track_.items()}")
-        
-        
 
     def tracklets_association(self):
         # Do not do anything if there are no messages
@@ -97,18 +102,18 @@ class TrackerNode(Node):
             return
 
         associated_tracklets = OrderedDict()
-        associations_msg = Associations()
+        self.associations_msg = Associations()
 
         # Choose which tracklets will be used
-            # If yolo tracklets are empty, there will be no associations and same if drspaam's are e,pty
-            # Otherwise use yolo's as a base
+        # If yolo tracklets are empty, there will be no associations and same if drspaam's are e,pty
+        # Otherwise use yolo's as a base
         if len(list(self.yolo_track_.keys())) == 0:
             tracklets = self.drspaam_track_
             other_tracklets = self.yolo_track_
         else:
             tracklets = self.yolo_track_
             other_tracklets = self.drspaam_track_
-        
+
         # Iterate over the tracklets
         for yolo_id, yolo_data in tracklets.items():
             yolo_angle = yolo_data[2]
@@ -140,18 +145,113 @@ class TrackerNode(Node):
                 associated_drspaam_data = self.drspaam_track_[
                     associated_drspaam_id]
                 # Create the association message
-                associations_msg.yolo_ids.append(yolo_id)
-                associations_msg.drspaam_ids.append(associated_drspaam_id)
-                associations_msg.yolo_positions.append(
+                self.associations_msg.yolo_ids.append(yolo_id)
+                self.associations_msg.drspaam_ids.append(associated_drspaam_id)
+                self.associations_msg.yolo_positions.append(
                     Point(x=yolo_data[0], y=yolo_data[1], z=yolo_data[2]))
-                associations_msg.drspaam_positions.append(Point(
+                self.associations_msg.drspaam_positions.append(Point(
                     x=associated_drspaam_data[0], y=associated_drspaam_data[1], z=associated_drspaam_data[2]))
-            
-            # Publish the association message
-            associations_msg.header = self.drspaam_header_
-            self.associations_pub_.publish(associations_msg)
 
-        #print(f"Associated tracklets: {associated_tracklets.items()}")
+            # Publish the association message
+            self.associations_msg.header = self.drspaam_header_
+            self.associations_pub_.publish(self.associations_msg)
+
+        # Create and publish the message for YOLO marker
+        self.yolo_marker_msg()
+
+        # Create and publish the message for association marker
+        self.association_marker_msg()
+        # print(f"Associated tracklets: {associated_tracklets.items()}")
+
+    def association_marker_msg(self):
+        """
+        Create a marker that representes the association between DR-SPAAM and YOLO
+        """
+
+        # Take the average of the positions
+        av_pos = []
+        yolo_positions = compute_yolo_detections(self.associations_msg)
+        for i, position in enumerate(self.associations_msg.drspaam_positions):
+            av_pos.append([(yolo_positions[i][0] + position.x) / 2,
+                          (yolo_positions[i][1] + position.y) / 2])
+
+        # Convert detections to rviz marker
+        rviz_msg = position_to_rviz_marker(av_pos, [0.0, 0.0, 1.0, 1.0], self.associations_rviz_pub_.topic)
+        rviz_msg.header = self.associations_msg.header
+        self.associations_rviz_pub_.publish(rviz_msg)
+
+    def yolo_marker_msg(self):
+        """
+        Transform YOLO associacion to be represented in the DR-SPAAM coordinates
+        """
+
+        # Convert the YOLO detections into the same space as DR-SPAAM
+        yolo_dets_xy = compute_yolo_detections(self.associations_msg)
+
+        # Convert the detections to rvis marker
+        rviz_msg = position_to_rviz_marker(
+            yolo_dets_xy, [0.0, 1.0, 0.0, 1.0], self.yolo_rviz_pub_.topic)
+        rviz_msg.header = self.associations_msg.header
+        self.yolo_rviz_pub_.publish(rviz_msg)
+
+
+def compute_yolo_detections(associations):
+
+    # Convert the YOLO detections into the same space as DR-SPAAM
+    yolo_dets_xy = []
+    yolo_positions = associations.yolo_positions
+    drspaam_positions = associations.drspaam_positions
+    for i, yolo_pos in enumerate(yolo_positions):
+        alpha = np.deg2rad(yolo_pos.z)
+        y_dr = drspaam_positions[i].y
+        x_yolo = y_dr * np.tan(alpha)
+
+        yolo_dets_xy.append([x_yolo, y_dr])
+
+    return yolo_dets_xy
+
+
+def position_to_rviz_marker(dets_xy, color, topic):
+    """
+    Convert detections to RViz marker msg. Each detection is marked as a cirlce approximated by line segments.
+    """
+
+    msg = Marker()
+    msg.action = Marker.ADD
+    msg.ns = topic
+    msg.id = 0
+    msg.type = Marker.LINE_LIST
+
+    msg.scale.x = 0.03  # Line width
+    # Selected color
+    msg.color.r = color[0]
+    msg.color.g = color[1]
+    msg.color.b = color[2]
+    msg.color.a = color[3]
+
+    # Circle
+    r = 0.3
+    ang = np.linspace(0, 2 * np.pi, 20)
+    xy_offsets = r * np.stack((np.cos(ang), np.sin(ang)), axis=1)
+
+    # To msg
+    for d_xy in dets_xy:
+        for i in range(len(xy_offsets) - 1):
+            # Start point of a segment
+            p0 = Point()
+            p0.x = d_xy[1] + xy_offsets[i, 0]
+            p0.y = d_xy[0] + xy_offsets[i, 1]
+            p0.z = 0.0
+            msg.points.append(p0)
+
+            # End point
+            p1 = Point()
+            p1.x = d_xy[1] + xy_offsets[i + 1, 0]
+            p1.y = d_xy[0] + xy_offsets[i + 1, 1]
+            p1.z = 0.0
+            msg.points.append(p1)
+
+    return msg
 
 
 def tracker_to_dict(tracker_msg):

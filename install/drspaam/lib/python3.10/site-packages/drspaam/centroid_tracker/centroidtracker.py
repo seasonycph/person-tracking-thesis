@@ -15,6 +15,7 @@ class CentroidTracker():
 
         self.nextObjectID = 0
         self.objects = OrderedDict()
+        self.objectsPresence = OrderedDict()
         self.disappeared = OrderedDict()
         self.predictions = OrderedDict()
 
@@ -26,6 +27,9 @@ class CentroidTracker():
         # When registering an object we use the next available object
         # ID to store the centroid
         self.objects[self.nextObjectID] = centroid
+
+        # Initialize ID in the presence dictionary
+        self.objectsPresence[self.nextObjectID] = 1
 
         # Initialize the centroid for the Kalman Filter
         self.predictions[self.nextObjectID] = KalmanFilter()
@@ -41,10 +45,14 @@ class CentroidTracker():
     def deregister(self, objectID):
         # Delete object from both of respective dictionaries
         del self.objects[objectID]
+        del self.objectsPresence[objectID]
         del self.predictions[objectID]
         del self.disappeared[objectID]
 
     def update(self, rects):
+        # Minimum scans to be accepted as object
+        minScans = 10
+
         # If there are no inputs and no objects, just return
         if len(rects) == 0 and len(self.objects) == 0:
             return self.objects, self.predictions
@@ -61,7 +69,7 @@ class CentroidTracker():
             if self.disappeared[objectID] > self.maxDisappeared:
                 self.deregister(objectID)
         
-            return self.objects, self.predictions
+            return self.filter_objects_by_presence(minScans)
 
         # Initialize an array of input centroids for the current frame
         inputCentroids = np.zeros((len(rects), 2), dtype="float64")
@@ -142,11 +150,14 @@ class CentroidTracker():
                 # reset the disappeared counter
                 objectID = objectIDs[row]
                 self.objects[objectID] = inputCentroids[col]
+                if objectID in self.objectsPresence.keys():
+                    self.objectsPresence[objectID] += 1
                 self.disappeared[objectID] = 0
 
                 # Perform the prediction on the objects
-                self.predictions[objectID].predict()
-                self.predictions[objectID].update(np.matrix(inputCentroids[col]).reshape(2,1))
+                if objectID in self.predictions.keys():
+                    self.predictions[objectID].predict()
+                    self.predictions[objectID].update(np.matrix(inputCentroids[col]).reshape(2,1))
 
                 # Check the column and the row as used
                 usedRows.add(row)
@@ -186,4 +197,22 @@ class CentroidTracker():
         # print(f"Disappeared: {self.disappeared.items()}")
         # print()
 
-        return self.objects, self.predictions
+        # print(f"Objects with presence filter: {objects.items()}")
+        # print(f"Objects without presence filter: {self.objects.items()}")
+        # print(f"The presence of each ID: {self.objectsPresence.items()}")
+
+        return self.filter_objects_by_presence(minScans)
+    
+
+    def filter_objects_by_presence(self, minScans):
+        # Declare the filtered objects variable
+        filteredObjects = OrderedDict()
+        filteredPredictions = OrderedDict()
+
+        for id, centroid in self.objects.items():
+            if self.objectsPresence[id] >= minScans:
+                filteredObjects[id] = centroid
+                filteredPredictions[id] = self.predictions[id]
+
+        return filteredObjects, filteredPredictions
+        

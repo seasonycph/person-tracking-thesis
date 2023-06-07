@@ -30,9 +30,8 @@ class YOLOMarkerNode(Node):
 
         # Subscriber
         topic = "tracker/associations"
-        self.associations_sub_ = self.create_subscription(Associations, topic, self.callback_associations, qos_profile=10)
-
-        topic = "/dr_spaam/tracker"
+        self.associations_sub_ = self.create_subscription(
+            Associations, topic, self.callback_associations, qos_profile=10)
 
     def callback_associations(self, msg):
         # Take the associated IDs
@@ -57,18 +56,19 @@ class YOLOMarkerNode(Node):
         rviz_msg.header = msg.header
         self.rviz_pub_.publish(rviz_msg)
 
+
 def position_to_rviz_marker(dets_xy):
     """
     Convert detection to RViz marker msg. Each detection is marked as a circle approximated by line segments.
     """
 
     msg = Marker()
-    msg.action  = Marker.ADD
+    msg.action = Marker.ADD
     msg.ns = "yolo_pose"
     msg.id = 0
     msg.type = Marker.LINE_LIST
 
-    msg.scale.x = 0.03 # Line width
+    msg.scale.x = 0.03  # Line width
     # Green color
     msg.color.g = 1.0
     msg.color.a = 1.0
@@ -96,9 +96,6 @@ def position_to_rviz_marker(dets_xy):
             msg.points.append(p1)
 
     return msg
-
-
-
 
 
 def main(args=None):
