@@ -87,40 +87,40 @@ class CentroidTracker():
          # Otherwise we need to match the input 
          # centroids with the ones we are tracking 
         else:
-            # Cehck if the new inputs are not already in the objects
-            inputCentroids_copy = inputCentroids.copy()
-            matched_centroids = []
+            # # Cehck if the new inputs are not already in the objects
+            # inputCentroids_copy = inputCentroids.copy()
+            # matched_centroids = []
 
-            for centroid in inputCentroids_copy:
-                # Convert the centroid list to a tuple
-                centroid_tuple = tuple(centroid)
-                # Check if the centroid exists in the objects dictionary
-                if centroid_tuple in [tuple(v) for v in self.objects.values()]:
-                    # Find tje object with the same centroid
-                    existing_object_id = None
-                    for object_id, object_centroid in self.objects.items():
-                        if tuple(object_centroid) == centroid_tuple:
-                            existing_object_id = object_id
-                            break
+            # for centroid in inputCentroids_copy:
+            #     # Convert the centroid list to a tuple
+            #     centroid_tuple = tuple(centroid)
+            #     # Check if the centroid exists in the objects dictionary
+            #     if centroid_tuple in [tuple(v) for v in self.objects.values()]:
+            #         # Find tje object with the same centroid
+            #         existing_object_id = None
+            #         for object_id, object_centroid in self.objects.items():
+            #             if tuple(object_centroid) == centroid_tuple:
+            #                 existing_object_id = object_id
+            #                 break
                     
-                    # Merge the objects by keeping the lowest ID and updating the centroid
-                    if existing_object_id is not None:
-                        min_object_id = min(existing_object_id, self.nextObjectID - 1)
-                        self.objects[min_object_id] = centroid
-                        self.disappeared[min_object_id] = 0
+            #         # Merge the objects by keeping the lowest ID and updating the centroid
+            #         if existing_object_id is not None:
+            #             min_object_id = min(existing_object_id, self.nextObjectID - 1)
+            #             self.objects[min_object_id] = centroid
+            #             self.disappeared[min_object_id] = 0
 
-                        # Remove the merged object with the higher ID
-                        if existing_object_id != min_object_id:
-                            self.deregister(existing_object_id)
+            #             # Remove the merged object with the higher ID
+            #             if existing_object_id != min_object_id:
+            #                 self.deregister(existing_object_id)
                         
-                        matched_centroids.append(centroid)
+            #             matched_centroids.append(centroid)
 
-                    # Remove the centroid from inputCentroids
-                    for centroid in matched_centroids:
-                        inputCentroids.remove(centroid)
-
-            objectIDs = list(self.objects.keys())
-            objectCentroids = list(self.objects.values())
+            #         # Remove the centroid from inputCentroids
+            #         for centroid in matched_centroids:
+            #             inputCentroids.remove(centroid)
+            filteredObjects, _ = self.filter_objects_by_presence(minScans)
+            objectIDs = list(filteredObjects.keys())
+            objectCentroids = list(filteredObjects.values())
 
             # Compute the Euclidean distance between each pair of centroids
             D = dist.cdist(np.array(objectCentroids), inputCentroids)
@@ -178,8 +178,9 @@ class CentroidTracker():
                         # Increase object's disappeared counter
                         objectID = objectIDs[row]
                         self.disappeared[objectID] += 1
-                        x, y = self.predictions[objectID].predict()
-                        self.predictions[objectID].update(np.matrix([x,y]).reshape(2,1))
+                        if objectID in self.predictions.keys():
+                            x, y = self.predictions[objectID].predict()
+                            self.predictions[objectID].update(np.matrix([x,y]).reshape(2,1))
 
                         # Check if object should be thrown away
                         if self.disappeared[objectID] > self.maxDisappeared:
@@ -188,18 +189,6 @@ class CentroidTracker():
                     # If there are more inputs, register the new object
                     for col in unusedCols:
                         self.register(inputCentroids[col])
-
-        # print(f"Objects: {self.objects.items()}", "\n")
-        # print("Kalman predictions:")
-        # for id, pred_obj in self.predictions.items():
-        #     print(f"{id} : {pred_obj}")
-        # print()
-        # print(f"Disappeared: {self.disappeared.items()}")
-        # print()
-
-        # print(f"Objects with presence filter: {objects.items()}")
-        # print(f"Objects without presence filter: {self.objects.items()}")
-        # print(f"The presence of each ID: {self.objectsPresence.items()}")
 
         return self.filter_objects_by_presence(minScans)
     
@@ -210,9 +199,10 @@ class CentroidTracker():
         filteredPredictions = OrderedDict()
 
         for id, centroid in self.objects.items():
-            if self.objectsPresence[id] >= minScans:
-                filteredObjects[id] = centroid
-                filteredPredictions[id] = self.predictions[id]
+            if id in self.objectsPresence.keys():
+                if self.objectsPresence[id] >= minScans:
+                    filteredObjects[id] = centroid
+                    filteredPredictions[id] = self.predictions[id]
 
         return filteredObjects, filteredPredictions
         

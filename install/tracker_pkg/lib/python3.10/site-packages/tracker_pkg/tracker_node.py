@@ -137,13 +137,15 @@ class TrackerNode(Node):
                         associated_drspaam_id = drspaam_id
                     min_angle_diff = angle_diff
 
-            # Associate the YOLO tracklet with the closes DR-SPAAM tracklet
+            # Associate the YOLO tracklet with the closest DR-SPAAM tracklet
             if associated_drspaam_id is not None:
                 # self.drspaam_track_[associated_drspaam_id]
                 associated_tracklets[yolo_id] = associated_drspaam_id
+
                 # Save the drspaam data corresponding with the associated id
                 associated_drspaam_data = self.drspaam_track_[
                     associated_drspaam_id]
+                
                 # Create the association message
                 self.associations_msg.yolo_ids.append(yolo_id)
                 self.associations_msg.drspaam_ids.append(associated_drspaam_id)
@@ -230,7 +232,7 @@ def position_to_rviz_marker(dets_xy, color, topic):
     msg.color.a = color[3]
 
     # Circle
-    r = 0.2
+    r = 0.3
     ang = np.linspace(0, 2 * np.pi, 20)
     xy_offsets = r * np.stack((np.cos(ang), np.sin(ang)), axis=1)
 
