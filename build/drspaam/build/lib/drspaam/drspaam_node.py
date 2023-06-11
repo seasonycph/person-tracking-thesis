@@ -50,7 +50,7 @@ class DrSpaamNode(Node):
         """
         self.weight_file = "weights/dr-spaam/dr_spaam_e40.pth"
         self.stride = 1
-        self.conf_thresh = 0.65
+        self.conf_thresh = 0.75
 
     def init_communication(self):
         """
@@ -105,7 +105,7 @@ class DrSpaamNode(Node):
         scan[np.isnan(scan)] = 39.99
 
         # Extract the detections
-        t = time.time()
+        #t = time.time()
         dets_xy, dets_cls, _ = self._detector(scan)
 
         # Confidence threshold
@@ -151,7 +151,7 @@ class DrSpaamNode(Node):
         self.tracker_id_tviz_pub_.publish(tracker_ids_msg)
 
         # Time until detection message is published
-        self.get_logger().info(f"End-to-end inference time: {time.time() - t}")
+        #self.get_logger().info(f"End-to-end inference time: {time.time() - t}")
 
     def associations_to_rviz_marker(self):
         # We will use the associations only to draw the rviz tracklets

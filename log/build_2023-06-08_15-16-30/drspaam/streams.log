@@ -1,0 +1,27 @@
+[0.772s] Invoking command in '/home/taras/thesis_ws/build/drspaam': PYTHONPATH=/home/taras/thesis_ws/build/drspaam/prefix_override:/home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --uninstall --editable --build-directory /home/taras/thesis_ws/build/drspaam/build
+[1.056s] running develop
+[1.266s] Invoked command in '/home/taras/thesis_ws/build/drspaam' returned '0': PYTHONPATH=/home/taras/thesis_ws/build/drspaam/prefix_override:/home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --uninstall --editable --build-directory /home/taras/thesis_ws/build/drspaam/build
+[1.268s] Invoking command in '/home/taras/thesis_ws/src/drspaam': PYTHONPATH=/home/taras/thesis_ws/build/drspaam/prefix_override:/home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/drspaam build --build-base /home/taras/thesis_ws/build/drspaam/build install --record /home/taras/thesis_ws/build/drspaam/install.log --single-version-externally-managed
+[1.524s] running egg_info
+[1.524s] writing ../../build/drspaam/drspaam.egg-info/PKG-INFO
+[1.525s] writing dependency_links to ../../build/drspaam/drspaam.egg-info/dependency_links.txt
+[1.525s] writing entry points to ../../build/drspaam/drspaam.egg-info/entry_points.txt
+[1.525s] writing requirements to ../../build/drspaam/drspaam.egg-info/requires.txt
+[1.525s] writing top-level names to ../../build/drspaam/drspaam.egg-info/top_level.txt
+[1.526s] reading manifest file '../../build/drspaam/drspaam.egg-info/SOURCES.txt'
+[1.527s] writing manifest file '../../build/drspaam/drspaam.egg-info/SOURCES.txt'
+[1.527s] running build
+[1.527s] running build_py
+[1.527s] copying drspaam/centroid_tracker/centroidtracker.py -> /home/taras/thesis_ws/build/drspaam/build/lib/drspaam/centroid_tracker
+[1.527s] running install
+[1.528s] running install_lib
+[1.528s] copying /home/taras/thesis_ws/build/drspaam/build/lib/drspaam/centroid_tracker/centroidtracker.py -> /home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages/drspaam/centroid_tracker
+[1.529s] byte-compiling /home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages/drspaam/centroid_tracker/centroidtracker.py to centroidtracker.cpython-310.pyc
+[1.530s] running install_data
+[1.531s] running install_egg_info
+[1.532s] removing '/home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages/drspaam-1.0.0-py3.10.egg-info' (and everything under it)
+[1.533s] Copying ../../build/drspaam/drspaam.egg-info to /home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages/drspaam-1.0.0-py3.10.egg-info
+[1.534s] running install_scripts
+[1.552s] Installing dr_spaam_node script to /home/taras/thesis_ws/install/drspaam/lib/drspaam
+[1.552s] writing list of installed files to '/home/taras/thesis_ws/build/drspaam/install.log'
+[1.592s] Invoked command in '/home/taras/thesis_ws/src/drspaam' returned '0': PYTHONPATH=/home/taras/thesis_ws/build/drspaam/prefix_override:/home/taras/thesis_ws/install/drspaam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/drspaam build --build-base /home/taras/thesis_ws/build/drspaam/build install --record /home/taras/thesis_ws/build/drspaam/install.log --single-version-externally-managed

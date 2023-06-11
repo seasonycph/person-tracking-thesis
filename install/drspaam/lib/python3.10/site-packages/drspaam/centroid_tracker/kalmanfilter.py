@@ -10,7 +10,7 @@ class KalmanFilter(object):
         super(KalmanFilter, self).__init__()
         self.method = method
         self.stateVariance = stateVariance
-        self.measurementVvariance = measurementVariance
+        self.measurementVariance = measurementVariance
         self.dt = dt
         self.initModel()
 
@@ -44,7 +44,7 @@ class KalmanFilter(object):
         self.P = np.matrix(self.stateVariance*np.identity(self.A.shape[0]))
 
         # Covariance matrix of the sensor noise
-        self.R = np.matrix(self.measurementVvariance *
+        self.R = np.matrix(self.measurementVariance *
                            np.identity(self.H.shape[0]))
 
         # Process noise matrix of the external noise
