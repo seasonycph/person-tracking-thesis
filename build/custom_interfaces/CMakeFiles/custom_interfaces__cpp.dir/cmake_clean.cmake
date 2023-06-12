@@ -1,9 +1,13 @@
 file(REMOVE_RECURSE
   "CMakeFiles/custom_interfaces__cpp"
   "rosidl_generator_cpp/custom_interfaces/msg/associations.hpp"
+  "rosidl_generator_cpp/custom_interfaces/msg/bounding_box.hpp"
   "rosidl_generator_cpp/custom_interfaces/msg/detail/associations__builder.hpp"
   "rosidl_generator_cpp/custom_interfaces/msg/detail/associations__struct.hpp"
   "rosidl_generator_cpp/custom_interfaces/msg/detail/associations__traits.hpp"
+  "rosidl_generator_cpp/custom_interfaces/msg/detail/bounding_box__builder.hpp"
+  "rosidl_generator_cpp/custom_interfaces/msg/detail/bounding_box__struct.hpp"
+  "rosidl_generator_cpp/custom_interfaces/msg/detail/bounding_box__traits.hpp"
   "rosidl_generator_cpp/custom_interfaces/msg/detail/person_pose__builder.hpp"
   "rosidl_generator_cpp/custom_interfaces/msg/detail/person_pose__struct.hpp"
   "rosidl_generator_cpp/custom_interfaces/msg/detail/person_pose__traits.hpp"

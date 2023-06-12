@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/custom_interfaces/msg/detail/dds_fastrtps/associations__type_support.cpp.o"
   "CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/custom_interfaces/msg/detail/dds_fastrtps/associations__type_support.cpp.o.d"
+  "CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/custom_interfaces/msg/detail/dds_fastrtps/bounding_box__type_support.cpp.o"
+  "CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/custom_interfaces/msg/detail/dds_fastrtps/bounding_box__type_support.cpp.o.d"
   "CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/custom_interfaces/msg/detail/dds_fastrtps/person_pose__type_support.cpp.o"
   "CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/custom_interfaces/msg/detail/dds_fastrtps/person_pose__type_support.cpp.o.d"
   "CMakeFiles/custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/custom_interfaces/msg/detail/dds_fastrtps/tracker__type_support.cpp.o"
@@ -8,7 +10,9 @@ file(REMOVE_RECURSE
   "libcustom_interfaces__rosidl_typesupport_fastrtps_cpp.pdb"
   "libcustom_interfaces__rosidl_typesupport_fastrtps_cpp.so"
   "rosidl_typesupport_fastrtps_cpp/custom_interfaces/msg/detail/associations__rosidl_typesupport_fastrtps_cpp.hpp"
+  "rosidl_typesupport_fastrtps_cpp/custom_interfaces/msg/detail/bounding_box__rosidl_typesupport_fastrtps_cpp.hpp"
   "rosidl_typesupport_fastrtps_cpp/custom_interfaces/msg/detail/dds_fastrtps/associations__type_support.cpp"
+  "rosidl_typesupport_fastrtps_cpp/custom_interfaces/msg/detail/dds_fastrtps/bounding_box__type_support.cpp"
   "rosidl_typesupport_fastrtps_cpp/custom_interfaces/msg/detail/dds_fastrtps/person_pose__type_support.cpp"
   "rosidl_typesupport_fastrtps_cpp/custom_interfaces/msg/detail/dds_fastrtps/tracker__type_support.cpp"
   "rosidl_typesupport_fastrtps_cpp/custom_interfaces/msg/detail/person_pose__rosidl_typesupport_fastrtps_cpp.hpp"

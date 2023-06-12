@@ -1,0 +1,25 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from custom_interfaces/msg/BoundingBox.msg
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/Point.idl"
+
+module custom_interfaces {
+  module msg {
+    @verbatim (language="comment", text=
+      "Message to save the bounding box {x_top, y_left, w, h} along with the ids")
+    struct BoundingBox {
+      @verbatim (language="comment", text=
+        "IDS of the detected objects")
+      sequence<int32> ids;
+
+      @verbatim (language="comment", text=
+        "Postions of the top left corner")
+      sequence<geometry_msgs::msg::Point> coner_pos;
+
+      @verbatim (language="comment", text=
+        "Width and heigh of the bounding box, saved in the x and y fields respectivelly")
+      sequence<geometry_msgs::msg::Point> size;
+    };
+  };
+};

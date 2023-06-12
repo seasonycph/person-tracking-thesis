@@ -215,4 +215,7 @@ CMakeFiles/custom_interfaces__rosidl_typesupport_c__pyext.dir/rosidl_generator_p
  /home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_c/custom_interfaces/msg/detail/tracker__functions.h \
  /home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_c/custom_interfaces/msg/detail/associations__type_support.h \
  /home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_c/custom_interfaces/msg/detail/associations__struct.h \
- /home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_c/custom_interfaces/msg/detail/associations__functions.h
+ /home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_c/custom_interfaces/msg/detail/associations__functions.h \
+ /home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_c/custom_interfaces/msg/detail/bounding_box__type_support.h \
+ /home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_c/custom_interfaces/msg/detail/bounding_box__struct.h \
+ /home/taras/thesis_ws/build/custom_interfaces/rosidl_generator_c/custom_interfaces/msg/detail/bounding_box__functions.h

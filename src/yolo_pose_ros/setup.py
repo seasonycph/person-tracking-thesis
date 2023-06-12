@@ -23,7 +23,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            "yolo_pose_node = yolo_pose_ros.yolo_pose_node:main"
+            "yolo_pose_node = yolo_pose_ros.yolo_pose_node:main",
+            "video_stream = yolo_pose_ros.video_message_node:main"
         ],
     },
 )

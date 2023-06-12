@@ -13,6 +13,7 @@ test/test_copyright.py
 test/test_flake8.py
 test/test_pep257.py
 yolo_pose_ros/__init__.py
+yolo_pose_ros/video_message_node.py
 yolo_pose_ros/yolo_pose_node.py
 yolo_pose_ros/centroid_tracker/__init__.py
 yolo_pose_ros/centroid_tracker/centroidtracker.py

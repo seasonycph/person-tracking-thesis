@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/custom_interfaces/msg/detail/associations__type_support.cpp.o"
   "CMakeFiles/custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/custom_interfaces/msg/detail/associations__type_support.cpp.o.d"
+  "CMakeFiles/custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/custom_interfaces/msg/detail/bounding_box__type_support.cpp.o"
+  "CMakeFiles/custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/custom_interfaces/msg/detail/bounding_box__type_support.cpp.o.d"
   "CMakeFiles/custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/custom_interfaces/msg/detail/person_pose__type_support.cpp.o"
   "CMakeFiles/custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/custom_interfaces/msg/detail/person_pose__type_support.cpp.o.d"
   "CMakeFiles/custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/custom_interfaces/msg/detail/tracker__type_support.cpp.o"
@@ -9,6 +11,8 @@ file(REMOVE_RECURSE
   "libcustom_interfaces__rosidl_typesupport_introspection_cpp.so"
   "rosidl_typesupport_introspection_cpp/custom_interfaces/msg/detail/associations__rosidl_typesupport_introspection_cpp.hpp"
   "rosidl_typesupport_introspection_cpp/custom_interfaces/msg/detail/associations__type_support.cpp"
+  "rosidl_typesupport_introspection_cpp/custom_interfaces/msg/detail/bounding_box__rosidl_typesupport_introspection_cpp.hpp"
+  "rosidl_typesupport_introspection_cpp/custom_interfaces/msg/detail/bounding_box__type_support.cpp"
   "rosidl_typesupport_introspection_cpp/custom_interfaces/msg/detail/person_pose__rosidl_typesupport_introspection_cpp.hpp"
   "rosidl_typesupport_introspection_cpp/custom_interfaces/msg/detail/person_pose__type_support.cpp"
   "rosidl_typesupport_introspection_cpp/custom_interfaces/msg/detail/tracker__rosidl_typesupport_introspection_cpp.hpp"

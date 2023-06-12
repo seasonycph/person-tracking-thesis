@@ -16,6 +16,7 @@ from collections import OrderedDict
 from sensor_msgs.msg import Image
 from custom_interfaces.msg import PersonPose
 from custom_interfaces.msg import Tracker
+from custom_interfaces.msg import BoundingBox
 from geometry_msgs.msg import Point
 from cv_bridge import CvBridge, CvBridgeError
 
@@ -78,23 +79,27 @@ class YoloPoseNode(Node):
         """
 
         # Publisher
-        topic = "/yolo_pose/detections"
-        self.dets_pub_ = self.create_publisher(
-            PersonPose, topic, qos_profile=10)
+        # topic = "/yolo_pose/detections"
+        # self.dets_pub_ = self.create_publisher(
+        #     PersonPose, topic, qos_profile=10)
 
-        topic = "/yolo_pose/pose_image"
-        self.image_pub_ = self.create_publisher(
-            Image, topic, qos_profile=10)
+        # topic = "/yolo_pose/pose_image"
+        # self.image_pub_ = self.create_publisher(
+        #     Image, topic, qos_profile=10)
 
         topic = "/yolo_pose/tracker"
         self.tracker_pub_ = self.create_publisher(
             Tracker, topic, qos_profile=10)
 
+        topic = "/yolo_pose/bounding_boxes"
+        self.bbox_pub_ = self.create_publisher(
+            BoundingBox, topic, qos_profile=10)
+
         # Subscriber
         topic = "/lewis_b1/camera_front/rgb/image_raw"
+        #topic = "/MOT/image_raw"
         self.image_sub_ = self.create_subscription(
             Image, topic, self.callback_camera_front, qos_profile=10)
-
 
     def callback_camera_front(self, msg):
         # Increase frame count
@@ -110,24 +115,31 @@ class YoloPoseNode(Node):
         except CvBridgeError as e:
             self.get_logger().error(e)
 
-        # Run inference every 3 frames
-        if self.frame_count_ % 2 == 0:
-            # Run inference on the converted image
-            output, self.cv2_image_ = run_inference(
-                self.model_, self.cv2_image_, self.device_)
+        #### Run inference every 3 frames
+        # if self.frame_count_ % 2 == 0:
+        #     # Run inference on the converted image
+        #     output, self.cv2_image_ = run_inference(
+        #         self.model_, self.cv2_image_, self.device_)
 
-            # Save previous inference output and image
-            self.inf_output = output
-            self.inf_image = self.cv2_image_
+        #     # Save previous inference output and image
+        #     self.inf_output = output
+        #     self.inf_image = self.cv2_image_
 
-            # Draw keypoints and skeleton on the image
-            nimg, kpts, boxes, confs = draw_keypoints(
-                self.model_, output, self.cv2_image_)
-            
-        else:
-            self.cv2_image_ = image_processing(self.cv2_image_, self.device_)
-            nimg, kpts, boxes, confs = draw_keypoints(
-                self.model_, self.inf_output, self.cv2_image_)
+        #     # Draw keypoints and skeleton on the image
+        #     nimg, kpts, boxes, confs = draw_keypoints(
+        #         self.model_, output, self.cv2_image_)
+        # else:
+        #     self.cv2_image_ = image_processing(self.cv2_image_, self.device_)
+        #     nimg, kpts, boxes, confs = draw_keypoints(
+        #         self.model_, self.inf_output, self.cv2_image_)
+
+        #### Run inference every frame
+        output, self.cv2_image_ = run_inference(
+            self.model_, self.cv2_image_, self.device_)
+
+        # Draw keypoints and skeleton on the image
+        nimg, kpts, boxes, confs = draw_keypoints(
+            self.model_, output, self.cv2_image_)
 
         # Compute the bounding boxes around the person
         boxes = compute_bbox(kpts)
@@ -136,7 +148,7 @@ class YoloPoseNode(Node):
         detections = compute_detections(boxes, confs)
 
         # DeepSort Tracker
-        #tracks = self.tracker_.update_tracks(detections, frame=nimg)
+        # tracks = self.tracker_.update_tracks(detections, frame=nimg)
         track_dict = OrderedDict()
         # for track in tracks:
         #     if not track.is_confirmed():
@@ -145,16 +157,19 @@ class YoloPoseNode(Node):
 
         # Convert the detections into PersonPose message
         dets_msg, prsn_pose = kpts_to_person_pose(kpts)
-        dets_msg.header = msg.header
-        self.dets_pub_.publish(dets_msg)
+        # dets_msg.header = msg.header
+        # self.dets_pub_.publish(dets_msg)
 
-        # Centroid Tracker
-        #print((prsn_pose))
-        if self.frame_count_ % 2 == 0:
-            track_dict = self.centroid_tracker_.update(prsn_pose)
-            self.tmp_dict = track_dict
-        else:
-            track_dict = self.tmp_dict
+        ### Centroid Tracker
+        # Run tracking every 2 frames
+        # if self.frame_count_ % 2 == 0:
+        #     track_dict = self.centroid_tracker_.update(prsn_pose)
+        #     self.tmp_dict = track_dict
+        # else:
+        #     track_dict = self.tmp_dict
+
+        # Run tracking every frame
+        track_dict = self.centroid_tracker_.update(prsn_pose)
 
         # Convert tracker dictionary to Tracker message
         tracker_type = "centroid"
@@ -173,24 +188,27 @@ class YoloPoseNode(Node):
         # Draw the box generated by the tracker
         # nimg = draw_bbox(track_dict.values(), nimg, (255,0,0))
 
+        # Compute the bounding box message
+
         # Draw the tracked box
-        # if len(boxes) != 0:
-        #     for box in boxes:
-        #         nimg = cv2.rectangle(nimg, (int(box[0]), int(box[1])),
-        #                             (int(box[0] + box[2]), int(box[1] + box[3])),
-        #                             (0,255,0), 5)
+        if len(boxes) != 0:
+            for box in boxes:
+                nimg = cv2.rectangle(nimg, (int(box[0]), int(box[1])),
+                                     (int(box[0] + box[2]),
+                                      int(box[1] + box[3])),
+                                     (0, 255, 0), 3)
 
         # Show the inference
         display_inference(nimg)
 
         # Send the resulting image through the topic
-        try:
-            nimg = cv2.cvtColor(nimg, cv2.COLOR_BGR2RGB)
-            image_msg = self.bridge_.cv2_to_imgmsg(
-                nimg, encoding=msg.encoding, header=msg.header)
-        except CvBridgeError as e:
-            self.get_logger().error(e)
-        self.image_pub_.publish(image_msg)
+        # try:
+        #     nimg = cv2.cvtColor(nimg, cv2.COLOR_BGR2RGB)
+        #     image_msg = self.bridge_.cv2_to_imgmsg(
+        #         nimg, encoding=msg.encoding, header=msg.header)
+        # except CvBridgeError as e:
+        #     self.get_logger().error(e)
+        # self.image_pub_.publish(image_msg)
 
         # Calculate and display the FPS
         self.fps_.append(1 / (time.time() - t))
@@ -376,9 +394,9 @@ def dict_to_tracker(tracker_dict, tracker_type):
             # Save the center of the tracked bounding box
             pos = Point()
             pos.x = (tracker_dict[key][2] - tracker_dict[key]
-                    [0]) / 2 + tracker_dict[key][0]
+                     [0]) / 2 + tracker_dict[key][0]
             pos.y = (tracker_dict[key][3] - tracker_dict[key]
-                    [1]) / 2 + tracker_dict[key][1]
+                     [1]) / 2 + tracker_dict[key][1]
             tracker.positions.append(pos)
     elif tracker_type == "centroid":
         for key, position in tracker_dict.items():

@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "../rosidl_generator_py/custom_interfaces/msg/__init__.py"
   "../rosidl_generator_py/custom_interfaces/msg/_associations.py"
   "../rosidl_generator_py/custom_interfaces/msg/_associations_s.c"
+  "../rosidl_generator_py/custom_interfaces/msg/_bounding_box.py"
+  "../rosidl_generator_py/custom_interfaces/msg/_bounding_box_s.c"
   "../rosidl_generator_py/custom_interfaces/msg/_person_pose.py"
   "../rosidl_generator_py/custom_interfaces/msg/_person_pose_s.c"
   "../rosidl_generator_py/custom_interfaces/msg/_tracker.py"

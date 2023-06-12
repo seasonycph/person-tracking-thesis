@@ -3,6 +3,7 @@
   "non_idl_tuples": [
     "/home/taras/thesis_ws/src/custom_interfaces:msg/PersonPose.msg",
     "/home/taras/thesis_ws/src/custom_interfaces:msg/Tracker.msg",
-    "/home/taras/thesis_ws/src/custom_interfaces:msg/Associations.msg"
+    "/home/taras/thesis_ws/src/custom_interfaces:msg/Associations.msg",
+    "/home/taras/thesis_ws/src/custom_interfaces:msg/BoundingBox.msg"
   ]
 }
