@@ -16,7 +16,7 @@
 
 
 // Include directives for member types
-// Member 'coner_pos'
+// Member 'corner_pos'
 // Member 'size'
 #include "geometry_msgs/msg/detail/point__struct.hpp"
 
@@ -53,9 +53,9 @@ struct BoundingBox_
   using _ids_type =
     std::vector<int32_t, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<int32_t>>;
   _ids_type ids;
-  using _coner_pos_type =
+  using _corner_pos_type =
     std::vector<geometry_msgs::msg::Point_<ContainerAllocator>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<geometry_msgs::msg::Point_<ContainerAllocator>>>;
-  _coner_pos_type coner_pos;
+  _corner_pos_type corner_pos;
   using _size_type =
     std::vector<geometry_msgs::msg::Point_<ContainerAllocator>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<geometry_msgs::msg::Point_<ContainerAllocator>>>;
   _size_type size;
@@ -67,10 +67,10 @@ struct BoundingBox_
     this->ids = _arg;
     return *this;
   }
-  Type & set__coner_pos(
+  Type & set__corner_pos(
     const std::vector<geometry_msgs::msg::Point_<ContainerAllocator>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<geometry_msgs::msg::Point_<ContainerAllocator>>> & _arg)
   {
-    this->coner_pos = _arg;
+    this->corner_pos = _arg;
     return *this;
   }
   Type & set__size(
@@ -125,7 +125,7 @@ struct BoundingBox_
     if (this->ids != other.ids) {
       return false;
     }
-    if (this->coner_pos != other.coner_pos) {
+    if (this->corner_pos != other.corner_pos) {
       return false;
     }
     if (this->size != other.size) {

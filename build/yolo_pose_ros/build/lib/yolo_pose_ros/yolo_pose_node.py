@@ -53,7 +53,7 @@ class YoloPoseNode(Node):
         self.weight_file_ = "weights/yolo-pose/yolov7-w6-pose.pt"
 
         # Confidence threshold
-        self.conf_thres_ = 0.4
+        self.conf_thres_ = 0.5
 
         # Load the model
         self.get_logger().info("Loading model...")
@@ -64,14 +64,15 @@ class YoloPoseNode(Node):
         self.bridge_ = CvBridge()
 
         # Initialize the DeepSort tracker
-        self.tracker_ = DeepSort(max_age=5, n_init=2, embedder_gpu=True)
+        self.deepsort_tracker_ = DeepSort(max_age=20, n_init=2, max_cosine_distance=0.4)#, embedder="clip_RN50x16")
 
         # Initialize the centroid tracker
-        self.centroid_tracker_ = CentroidTracker(maxDisappeared=25)
+        self.centroid_tracker_ = CentroidTracker(maxDisappeared=5)
 
         # Initialize the frame count
         self.frame_count_ = 1
         self.fps_ = []
+        self.average_fps = []
 
     def init_communication(self):
         """
@@ -97,7 +98,7 @@ class YoloPoseNode(Node):
 
         # Subscriber
         topic = "/lewis_b1/camera_front/rgb/image_raw"
-        #topic = "/MOT/image_raw"
+        topic = "/MOT/image_raw"
         self.image_sub_ = self.create_subscription(
             Image, topic, self.callback_camera_front, qos_profile=10)
 
@@ -115,45 +116,52 @@ class YoloPoseNode(Node):
         except CvBridgeError as e:
             self.get_logger().error(e)
 
-        #### Run inference every 3 frames
-        # if self.frame_count_ % 2 == 0:
-        #     # Run inference on the converted image
-        #     output, self.cv2_image_ = run_inference(
-        #         self.model_, self.cv2_image_, self.device_)
+        #### Run inference every 2 frames
+        if self.frame_count_ % 2 == 0:
+            # Run inference on the converted image
+            output, self.cv2_image_ = run_inference(
+                self.model_, self.cv2_image_, self.device_)
 
-        #     # Save previous inference output and image
-        #     self.inf_output = output
-        #     self.inf_image = self.cv2_image_
+            # Save previous inference output and image
+            self.inf_output = output
+            self.inf_image = self.cv2_image_
 
-        #     # Draw keypoints and skeleton on the image
-        #     nimg, kpts, boxes, confs = draw_keypoints(
-        #         self.model_, output, self.cv2_image_)
-        # else:
-        #     self.cv2_image_ = image_processing(self.cv2_image_, self.device_)
-        #     nimg, kpts, boxes, confs = draw_keypoints(
-        #         self.model_, self.inf_output, self.cv2_image_)
+            # Draw keypoints and skeleton on the image
+            nimg, kpts, boxes, confs = draw_keypoints(
+                self.model_, self.conf_thres_, output, self.cv2_image_)
+        else:
+            self.cv2_image_ = image_processing(self.cv2_image_, self.device_)
+            nimg, kpts, boxes, confs = draw_keypoints(
+                self.model_, self.conf_thres_, self.inf_output, self.cv2_image_)
 
         #### Run inference every frame
-        output, self.cv2_image_ = run_inference(
-            self.model_, self.cv2_image_, self.device_)
-
-        # Draw keypoints and skeleton on the image
-        nimg, kpts, boxes, confs = draw_keypoints(
-            self.model_, output, self.cv2_image_)
+        # output, self.cv2_image_ = run_inference(
+        #     self.model_, self.cv2_image_, self.device_)
+        # # Draw keypoints and skeleton on the image
+        # nimg, kpts, boxes, confs = draw_keypoints(
+        #     self.model_, self.conf_thres_, output, self.cv2_image_)
 
         # Compute the bounding boxes around the person
-        boxes = compute_bbox(kpts)
+        #boxes = compute_bbox(kpts)
 
         # Compute detections
         detections = compute_detections(boxes, confs)
 
-        # DeepSort Tracker
-        # tracks = self.tracker_.update_tracks(detections, frame=nimg)
+        ### DeepSort Tracker
+        # Tracking every 2 frames
+        if self.frame_count_ % 2 == 0:
+            tracks = self.deepsort_tracker_.update_tracks(detections, frame=nimg)
+            self.tmp_tracks = tracks
+        else:
+            tracks = self.tmp_tracks
+        # Tracking every frame
+        # tracks = self.deepsort_tracker_.update_tracks(detections, frame=nimg)
+        self.deepsort_tracker_.refresh_track_ids()
         track_dict = OrderedDict()
-        # for track in tracks:
-        #     if not track.is_confirmed():
-        #         continue
-        #     track_dict[track.track_id] = track.to_ltrb()
+        for track in tracks:
+            if not track.is_confirmed():
+                continue
+            track_dict[track.track_id] = track.to_ltrb()
 
         # Convert the detections into PersonPose message
         dets_msg, prsn_pose = kpts_to_person_pose(kpts)
@@ -167,12 +175,11 @@ class YoloPoseNode(Node):
         #     self.tmp_dict = track_dict
         # else:
         #     track_dict = self.tmp_dict
-
         # Run tracking every frame
-        track_dict = self.centroid_tracker_.update(prsn_pose)
+        #track_dict, tracked_boxes = self.centroid_tracker_.update(prsn_pose, boxes)
 
         # Convert tracker dictionary to Tracker message
-        tracker_type = "centroid"
+        tracker_type = "deepsort"
         track_msg = dict_to_tracker(track_dict, tracker_type)
         track_msg.header = msg.header
         self.tracker_pub_.publish(track_msg)
@@ -188,15 +195,22 @@ class YoloPoseNode(Node):
         # Draw the box generated by the tracker
         # nimg = draw_bbox(track_dict.values(), nimg, (255,0,0))
 
-        # Compute the bounding box message
-
-        # Draw the tracked box
-        if len(boxes) != 0:
-            for box in boxes:
+        # Compute and publish the bounding box message
+        bbox_msg = compute_bbox_msg(track_msg.ids, track_dict.values())
+        self.bbox_pub_.publish(bbox_msg)
+        # Draw the tracked box // Centroid tracker
+        # if len(tracked_boxes) != 0:
+        #     for box in tracked_boxes.values():
+        #         nimg = cv2.rectangle(nimg, (int(box[0]), int(box[1])),
+        #                              (int(box[2]),
+        #                               int(box[3])),
+        #                              (0, 255, 0), 3)
+        # Draw the tracked box 
+        if len(track_dict) != 0:
+            for box in track_dict.values():
                 nimg = cv2.rectangle(nimg, (int(box[0]), int(box[1])),
-                                     (int(box[0] + box[2]),
-                                      int(box[1] + box[3])),
-                                     (0, 255, 0), 3)
+                                     (int(box[2]), int(box[3])),
+                                     (0, 255, 0), 2)
 
         # Show the inference
         display_inference(nimg)
@@ -212,9 +226,37 @@ class YoloPoseNode(Node):
 
         # Calculate and display the FPS
         self.fps_.append(1 / (time.time() - t))
+        self.average_fps.append(1 / (time.time() - t))
         if len(self.fps_) > 10:
             self.fps_ = self.fps_[-10:]
         self.get_logger().info(f"FPS: {np.mean(self.fps_)}")
+        if len(self.average_fps) > 890:
+            print(f"Overall FPS: {np.mean(self.average_fps)}")
+
+
+def compute_bbox_msg(ids, boxes):
+    msg = BoundingBox()
+
+    # IDs
+    msg.ids = ids
+
+    # Bounding boxes
+    for box in boxes:
+        # Position of the upper left corner
+        position = Point()
+        position.x = (box[0])
+        position.y = (box[1])
+        position.z = 0.0
+        msg.corner_pos.append(position)
+
+        # Width and height of the bounding box
+        size = Point()
+        size.x = (abs(box[2] - box[0])) # W = x2 - x1
+        size.y = (abs(box[3] - box[1])) # H = y2 - y1
+        size.z = 0.0
+        msg.size.append(size)
+
+    return msg
 
 
 def load_model(weight_file, device):
@@ -269,11 +311,11 @@ def image_processing(image, device):
     return image
 
 
-def draw_keypoints(model, output, image):
+def draw_keypoints(model, confidence, output, image):
     # Apply non-maximum suppression
     output = non_max_suppression_kpt(output,
-                                     0.5,  # Confidence threshold
-                                     0.65,  # IoU threshold
+                                     confidence,  # Confidence threshold
+                                     0.45,  # IoU threshold
                                      # Number of classes (only 1)
                                      nc=model.yaml['nc'],
                                      # Number of Keypoints (17)
@@ -358,7 +400,8 @@ def compute_detections(boxes, confs):
     dets = []
     # The tracker accepts detection input as ([x,y,w,h], conf, class)
     for box, conf in zip(boxes, confs):
-        dets.append((box, conf, 'person'))
+        accepted_box = [box[0], box[1], abs(box[2] - box[0]), abs(box[3] - box[1])]
+        dets.append((accepted_box, conf, 'person'))
 
     return dets
 

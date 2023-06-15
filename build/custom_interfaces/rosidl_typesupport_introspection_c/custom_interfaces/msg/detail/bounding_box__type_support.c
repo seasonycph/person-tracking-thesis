@@ -15,10 +15,10 @@
 // Include directives for member types
 // Member `ids`
 #include "rosidl_runtime_c/primitives_sequence_functions.h"
-// Member `coner_pos`
+// Member `corner_pos`
 // Member `size`
 #include "geometry_msgs/msg/point.h"
-// Member `coner_pos`
+// Member `corner_pos`
 // Member `size`
 #include "geometry_msgs/msg/detail/point__rosidl_typesupport_introspection_c.h"
 
@@ -96,7 +96,7 @@ bool custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__re
   return rosidl_runtime_c__int32__Sequence__init(member, size);
 }
 
-size_t custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__size_function__BoundingBox__coner_pos(
+size_t custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__size_function__BoundingBox__corner_pos(
   const void * untyped_member)
 {
   const geometry_msgs__msg__Point__Sequence * member =
@@ -104,7 +104,7 @@ size_t custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__
   return member->size;
 }
 
-const void * custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__get_const_function__BoundingBox__coner_pos(
+const void * custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__get_const_function__BoundingBox__corner_pos(
   const void * untyped_member, size_t index)
 {
   const geometry_msgs__msg__Point__Sequence * member =
@@ -112,7 +112,7 @@ const void * custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspecti
   return &member->data[index];
 }
 
-void * custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__get_function__BoundingBox__coner_pos(
+void * custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__get_function__BoundingBox__corner_pos(
   void * untyped_member, size_t index)
 {
   geometry_msgs__msg__Point__Sequence * member =
@@ -120,29 +120,29 @@ void * custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__
   return &member->data[index];
 }
 
-void custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__fetch_function__BoundingBox__coner_pos(
+void custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__fetch_function__BoundingBox__corner_pos(
   const void * untyped_member, size_t index, void * untyped_value)
 {
   const geometry_msgs__msg__Point * item =
     ((const geometry_msgs__msg__Point *)
-    custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__get_const_function__BoundingBox__coner_pos(untyped_member, index));
+    custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__get_const_function__BoundingBox__corner_pos(untyped_member, index));
   geometry_msgs__msg__Point * value =
     (geometry_msgs__msg__Point *)(untyped_value);
   *value = *item;
 }
 
-void custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__assign_function__BoundingBox__coner_pos(
+void custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__assign_function__BoundingBox__corner_pos(
   void * untyped_member, size_t index, const void * untyped_value)
 {
   geometry_msgs__msg__Point * item =
     ((geometry_msgs__msg__Point *)
-    custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__get_function__BoundingBox__coner_pos(untyped_member, index));
+    custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__get_function__BoundingBox__corner_pos(untyped_member, index));
   const geometry_msgs__msg__Point * value =
     (const geometry_msgs__msg__Point *)(untyped_value);
   *item = *value;
 }
 
-bool custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__resize_function__BoundingBox__coner_pos(
+bool custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__resize_function__BoundingBox__corner_pos(
   void * untyped_member, size_t size)
 {
   geometry_msgs__msg__Point__Sequence * member =
@@ -225,21 +225,21 @@ static rosidl_typesupport_introspection_c__MessageMember custom_interfaces__msg_
     custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__resize_function__BoundingBox__ids  // resize(index) function pointer
   },
   {
-    "coner_pos",  // name
+    "corner_pos",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_MESSAGE,  // type
     0,  // upper bound of string
     NULL,  // members of sub message (initialized later)
     true,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(custom_interfaces__msg__BoundingBox, coner_pos),  // bytes offset in struct
+    offsetof(custom_interfaces__msg__BoundingBox, corner_pos),  // bytes offset in struct
     NULL,  // default value
-    custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__size_function__BoundingBox__coner_pos,  // size() function pointer
-    custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__get_const_function__BoundingBox__coner_pos,  // get_const(index) function pointer
-    custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__get_function__BoundingBox__coner_pos,  // get(index) function pointer
-    custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__fetch_function__BoundingBox__coner_pos,  // fetch(index, &value) function pointer
-    custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__assign_function__BoundingBox__coner_pos,  // assign(index, value) function pointer
-    custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__resize_function__BoundingBox__coner_pos  // resize(index) function pointer
+    custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__size_function__BoundingBox__corner_pos,  // size() function pointer
+    custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__get_const_function__BoundingBox__corner_pos,  // get_const(index) function pointer
+    custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__get_function__BoundingBox__corner_pos,  // get(index) function pointer
+    custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__fetch_function__BoundingBox__corner_pos,  // fetch(index, &value) function pointer
+    custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__assign_function__BoundingBox__corner_pos,  // assign(index, value) function pointer
+    custom_interfaces__msg__BoundingBox__rosidl_typesupport_introspection_c__resize_function__BoundingBox__corner_pos  // resize(index) function pointer
   },
   {
     "size",  // name

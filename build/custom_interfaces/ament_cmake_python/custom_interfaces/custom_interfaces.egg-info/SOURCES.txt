@@ -6,5 +6,6 @@ custom_interfaces.egg-info/dependency_links.txt
 custom_interfaces.egg-info/top_level.txt
 custom_interfaces/msg/__init__.py
 custom_interfaces/msg/_associations.py
+custom_interfaces/msg/_bounding_box.py
 custom_interfaces/msg/_person_pose.py
 custom_interfaces/msg/_tracker.py

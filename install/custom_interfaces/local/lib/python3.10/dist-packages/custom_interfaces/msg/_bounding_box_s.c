@@ -126,12 +126,12 @@ bool custom_interfaces__msg__bounding_box__convert_from_py(PyObject * _pymsg, vo
     }
     Py_DECREF(field);
   }
-  {  // coner_pos
-    PyObject * field = PyObject_GetAttrString(_pymsg, "coner_pos");
+  {  // corner_pos
+    PyObject * field = PyObject_GetAttrString(_pymsg, "corner_pos");
     if (!field) {
       return false;
     }
-    PyObject * seq_field = PySequence_Fast(field, "expected a sequence in 'coner_pos'");
+    PyObject * seq_field = PySequence_Fast(field, "expected a sequence in 'corner_pos'");
     if (!seq_field) {
       Py_DECREF(field);
       return false;
@@ -142,13 +142,13 @@ bool custom_interfaces__msg__bounding_box__convert_from_py(PyObject * _pymsg, vo
       Py_DECREF(field);
       return false;
     }
-    if (!geometry_msgs__msg__Point__Sequence__init(&(ros_message->coner_pos), size)) {
+    if (!geometry_msgs__msg__Point__Sequence__init(&(ros_message->corner_pos), size)) {
       PyErr_SetString(PyExc_RuntimeError, "unable to create geometry_msgs__msg__Point__Sequence ros_message");
       Py_DECREF(seq_field);
       Py_DECREF(field);
       return false;
     }
-    geometry_msgs__msg__Point * dest = ros_message->coner_pos.data;
+    geometry_msgs__msg__Point * dest = ros_message->corner_pos.data;
     for (Py_ssize_t i = 0; i < size; ++i) {
       if (!geometry_msgs__msg__point__convert_from_py(PySequence_Fast_GET_ITEM(seq_field, i), &dest[i])) {
         Py_DECREF(seq_field);
@@ -271,16 +271,16 @@ PyObject * custom_interfaces__msg__bounding_box__convert_to_py(void * raw_ros_me
     }
     Py_DECREF(field);
   }
-  {  // coner_pos
+  {  // corner_pos
     PyObject * field = NULL;
-    size_t size = ros_message->coner_pos.size;
+    size_t size = ros_message->corner_pos.size;
     field = PyList_New(size);
     if (!field) {
       return NULL;
     }
     geometry_msgs__msg__Point * item;
     for (size_t i = 0; i < size; ++i) {
-      item = &(ros_message->coner_pos.data[i]);
+      item = &(ros_message->corner_pos.data[i]);
       PyObject * pyitem = geometry_msgs__msg__point__convert_to_py(item);
       if (!pyitem) {
         Py_DECREF(field);
@@ -292,7 +292,7 @@ PyObject * custom_interfaces__msg__bounding_box__convert_to_py(void * raw_ros_me
     }
     assert(PySequence_Check(field));
     {
-      int rc = PyObject_SetAttrString(_pymessage, "coner_pos", field);
+      int rc = PyObject_SetAttrString(_pymessage, "corner_pos", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

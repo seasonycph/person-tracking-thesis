@@ -14,7 +14,7 @@
 // Include directives for member types
 // Member `ids`
 #include "rosidl_runtime_c/primitives_sequence_functions.h"
-// Member `coner_pos`
+// Member `corner_pos`
 // Member `size`
 #include "geometry_msgs/msg/detail/point__functions.h"
 
@@ -29,8 +29,8 @@ custom_interfaces__msg__BoundingBox__init(custom_interfaces__msg__BoundingBox * 
     custom_interfaces__msg__BoundingBox__fini(msg);
     return false;
   }
-  // coner_pos
-  if (!geometry_msgs__msg__Point__Sequence__init(&msg->coner_pos, 0)) {
+  // corner_pos
+  if (!geometry_msgs__msg__Point__Sequence__init(&msg->corner_pos, 0)) {
     custom_interfaces__msg__BoundingBox__fini(msg);
     return false;
   }
@@ -50,8 +50,8 @@ custom_interfaces__msg__BoundingBox__fini(custom_interfaces__msg__BoundingBox * 
   }
   // ids
   rosidl_runtime_c__int32__Sequence__fini(&msg->ids);
-  // coner_pos
-  geometry_msgs__msg__Point__Sequence__fini(&msg->coner_pos);
+  // corner_pos
+  geometry_msgs__msg__Point__Sequence__fini(&msg->corner_pos);
   // size
   geometry_msgs__msg__Point__Sequence__fini(&msg->size);
 }
@@ -68,9 +68,9 @@ custom_interfaces__msg__BoundingBox__are_equal(const custom_interfaces__msg__Bou
   {
     return false;
   }
-  // coner_pos
+  // corner_pos
   if (!geometry_msgs__msg__Point__Sequence__are_equal(
-      &(lhs->coner_pos), &(rhs->coner_pos)))
+      &(lhs->corner_pos), &(rhs->corner_pos)))
   {
     return false;
   }
@@ -97,9 +97,9 @@ custom_interfaces__msg__BoundingBox__copy(
   {
     return false;
   }
-  // coner_pos
+  // corner_pos
   if (!geometry_msgs__msg__Point__Sequence__copy(
-      &(input->coner_pos), &(output->coner_pos)))
+      &(input->corner_pos), &(output->corner_pos)))
   {
     return false;
   }

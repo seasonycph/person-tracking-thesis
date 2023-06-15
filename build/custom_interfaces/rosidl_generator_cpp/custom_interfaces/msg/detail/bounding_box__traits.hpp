@@ -15,7 +15,7 @@
 #include "rosidl_runtime_cpp/traits.hpp"
 
 // Include directives for member types
-// Member 'coner_pos'
+// Member 'corner_pos'
 // Member 'size'
 #include "geometry_msgs/msg/detail/point__traits.hpp"
 
@@ -48,14 +48,14 @@ inline void to_flow_style_yaml(
     out << ", ";
   }
 
-  // member: coner_pos
+  // member: corner_pos
   {
-    if (msg.coner_pos.size() == 0) {
-      out << "coner_pos: []";
+    if (msg.corner_pos.size() == 0) {
+      out << "corner_pos: []";
     } else {
-      out << "coner_pos: [";
-      size_t pending_items = msg.coner_pos.size();
-      for (auto item : msg.coner_pos) {
+      out << "corner_pos: [";
+      size_t pending_items = msg.corner_pos.size();
+      for (auto item : msg.corner_pos) {
         to_flow_style_yaml(item, out);
         if (--pending_items > 0) {
           out << ", ";
@@ -109,16 +109,16 @@ inline void to_block_style_yaml(
     }
   }
 
-  // member: coner_pos
+  // member: corner_pos
   {
     if (indentation > 0) {
       out << std::string(indentation, ' ');
     }
-    if (msg.coner_pos.size() == 0) {
-      out << "coner_pos: []\n";
+    if (msg.corner_pos.size() == 0) {
+      out << "corner_pos: []\n";
     } else {
-      out << "coner_pos:\n";
-      for (auto item : msg.coner_pos) {
+      out << "corner_pos:\n";
+      for (auto item : msg.corner_pos) {
         if (indentation > 0) {
           out << std::string(indentation, ' ');
         }

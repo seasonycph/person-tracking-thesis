@@ -37,15 +37,15 @@ private:
   ::custom_interfaces::msg::BoundingBox msg_;
 };
 
-class Init_BoundingBox_coner_pos
+class Init_BoundingBox_corner_pos
 {
 public:
-  explicit Init_BoundingBox_coner_pos(::custom_interfaces::msg::BoundingBox & msg)
+  explicit Init_BoundingBox_corner_pos(::custom_interfaces::msg::BoundingBox & msg)
   : msg_(msg)
   {}
-  Init_BoundingBox_size coner_pos(::custom_interfaces::msg::BoundingBox::_coner_pos_type arg)
+  Init_BoundingBox_size corner_pos(::custom_interfaces::msg::BoundingBox::_corner_pos_type arg)
   {
-    msg_.coner_pos = std::move(arg);
+    msg_.corner_pos = std::move(arg);
     return Init_BoundingBox_size(msg_);
   }
 
@@ -59,10 +59,10 @@ public:
   Init_BoundingBox_ids()
   : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
   {}
-  Init_BoundingBox_coner_pos ids(::custom_interfaces::msg::BoundingBox::_ids_type arg)
+  Init_BoundingBox_corner_pos ids(::custom_interfaces::msg::BoundingBox::_ids_type arg)
   {
     msg_.ids = std::move(arg);
-    return Init_BoundingBox_coner_pos(msg_);
+    return Init_BoundingBox_corner_pos(msg_);
   }
 
 private:

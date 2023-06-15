@@ -63,13 +63,13 @@ class BoundingBox(metaclass=Metaclass_BoundingBox):
 
     __slots__ = [
         '_ids',
-        '_coner_pos',
+        '_corner_pos',
         '_size',
     ]
 
     _fields_and_field_types = {
         'ids': 'sequence<int32>',
-        'coner_pos': 'sequence<geometry_msgs/Point>',
+        'corner_pos': 'sequence<geometry_msgs/Point>',
         'size': 'sequence<geometry_msgs/Point>',
     }
 
@@ -84,7 +84,7 @@ class BoundingBox(metaclass=Metaclass_BoundingBox):
             'Invalid arguments passed to constructor: %s' % \
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
         self.ids = array.array('i', kwargs.get('ids', []))
-        self.coner_pos = kwargs.get('coner_pos', [])
+        self.corner_pos = kwargs.get('corner_pos', [])
         self.size = kwargs.get('size', [])
 
     def __repr__(self):
@@ -118,7 +118,7 @@ class BoundingBox(metaclass=Metaclass_BoundingBox):
             return False
         if self.ids != other.ids:
             return False
-        if self.coner_pos != other.coner_pos:
+        if self.corner_pos != other.corner_pos:
             return False
         if self.size != other.size:
             return False
@@ -158,12 +158,12 @@ class BoundingBox(metaclass=Metaclass_BoundingBox):
         self._ids = array.array('i', value)
 
     @builtins.property
-    def coner_pos(self):
-        """Message field 'coner_pos'."""
-        return self._coner_pos
+    def corner_pos(self):
+        """Message field 'corner_pos'."""
+        return self._corner_pos
 
-    @coner_pos.setter
-    def coner_pos(self, value):
+    @corner_pos.setter
+    def corner_pos(self, value):
         if __debug__:
             from geometry_msgs.msg import Point
             from collections.abc import Sequence
@@ -178,8 +178,8 @@ class BoundingBox(metaclass=Metaclass_BoundingBox):
                  not isinstance(value, UserString) and
                  all(isinstance(v, Point) for v in value) and
                  True), \
-                "The 'coner_pos' field must be a set or sequence and each value of type 'Point'"
-        self._coner_pos = value
+                "The 'corner_pos' field must be a set or sequence and each value of type 'Point'"
+        self._corner_pos = value
 
     @builtins.property
     def size(self):

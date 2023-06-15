@@ -15,7 +15,7 @@ module custom_interfaces {
 
       @verbatim (language="comment", text=
         "Postions of the top left corner")
-      sequence<geometry_msgs::msg::Point> coner_pos;
+      sequence<geometry_msgs::msg::Point> corner_pos;
 
       @verbatim (language="comment", text=
         "Width and heigh of the bounding box, saved in the x and y fields respectivelly")

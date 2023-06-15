@@ -20,7 +20,7 @@ extern "C"
 // Include directives for member types
 // Member 'ids'
 #include "rosidl_runtime_c/primitives_sequence.h"
-// Member 'coner_pos'
+// Member 'corner_pos'
 // Member 'size'
 #include "geometry_msgs/msg/detail/point__struct.h"
 
@@ -33,7 +33,7 @@ typedef struct custom_interfaces__msg__BoundingBox
   /// IDS of the detected objects
   rosidl_runtime_c__int32__Sequence ids;
   /// Postions of the top left corner
-  geometry_msgs__msg__Point__Sequence coner_pos;
+  geometry_msgs__msg__Point__Sequence corner_pos;
   /// Width and heigh of the bounding box, saved in the x and y fields respectivelly
   geometry_msgs__msg__Point__Sequence size;
 } custom_interfaces__msg__BoundingBox;

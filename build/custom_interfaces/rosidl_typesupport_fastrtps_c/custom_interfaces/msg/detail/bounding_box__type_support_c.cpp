@@ -34,7 +34,7 @@ extern "C"
 {
 #endif
 
-#include "geometry_msgs/msg/detail/point__functions.h"  // coner_pos, size
+#include "geometry_msgs/msg/detail/point__functions.h"  // corner_pos, size
 #include "rosidl_runtime_c/primitives_sequence.h"  // ids
 #include "rosidl_runtime_c/primitives_sequence_functions.h"  // ids
 
@@ -74,15 +74,15 @@ static bool _BoundingBox__cdr_serialize(
     cdr.serializeArray(array_ptr, size);
   }
 
-  // Field name: coner_pos
+  // Field name: corner_pos
   {
     const message_type_support_callbacks_t * callbacks =
       static_cast<const message_type_support_callbacks_t *>(
       ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
         rosidl_typesupport_fastrtps_c, geometry_msgs, msg, Point
       )()->data);
-    size_t size = ros_message->coner_pos.size;
-    auto array_ptr = ros_message->coner_pos.data;
+    size_t size = ros_message->corner_pos.size;
+    auto array_ptr = ros_message->corner_pos.data;
     cdr << static_cast<uint32_t>(size);
     for (size_t i = 0; i < size; ++i) {
       if (!callbacks->cdr_serialize(
@@ -140,7 +140,7 @@ static bool _BoundingBox__cdr_deserialize(
     cdr.deserializeArray(array_ptr, size);
   }
 
-  // Field name: coner_pos
+  // Field name: corner_pos
   {
     const message_type_support_callbacks_t * callbacks =
       static_cast<const message_type_support_callbacks_t *>(
@@ -150,14 +150,14 @@ static bool _BoundingBox__cdr_deserialize(
     uint32_t cdrSize;
     cdr >> cdrSize;
     size_t size = static_cast<size_t>(cdrSize);
-    if (ros_message->coner_pos.data) {
-      geometry_msgs__msg__Point__Sequence__fini(&ros_message->coner_pos);
+    if (ros_message->corner_pos.data) {
+      geometry_msgs__msg__Point__Sequence__fini(&ros_message->corner_pos);
     }
-    if (!geometry_msgs__msg__Point__Sequence__init(&ros_message->coner_pos, size)) {
-      fprintf(stderr, "failed to create array for field 'coner_pos'");
+    if (!geometry_msgs__msg__Point__Sequence__init(&ros_message->corner_pos, size)) {
+      fprintf(stderr, "failed to create array for field 'corner_pos'");
       return false;
     }
-    auto array_ptr = ros_message->coner_pos.data;
+    auto array_ptr = ros_message->corner_pos.data;
     for (size_t i = 0; i < size; ++i) {
       if (!callbacks->cdr_deserialize(
           cdr, &array_ptr[i]))
@@ -222,10 +222,10 @@ size_t get_serialized_size_custom_interfaces__msg__BoundingBox(
     current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name coner_pos
+  // field.name corner_pos
   {
-    size_t array_size = ros_message->coner_pos.size;
-    auto array_ptr = ros_message->coner_pos.data;
+    size_t array_size = ros_message->corner_pos.size;
+    auto array_ptr = ros_message->corner_pos.data;
     current_alignment += padding +
       eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
 
@@ -284,7 +284,7 @@ size_t max_serialized_size_custom_interfaces__msg__BoundingBox(
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: coner_pos
+  // member: corner_pos
   {
     size_t array_size = 0;
     full_bounded = false;
