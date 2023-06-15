@@ -29,7 +29,7 @@ class VideoStreamNode(Node):
 
     def init_parameters(self):
         data = 'MOT17-11-DPM'
-        tracker = 'DeepSortTracker'
+        tracker = 'CentroidTracker'
         evaluation = "4"
         # Image directory
         self.image_dir = f"/media/taras/5038-A14F/tracking_datasets/MOT17/train/{data}/img1/"
@@ -70,7 +70,7 @@ class VideoStreamNode(Node):
         topic = "/MOT/image_raw"
         self.image_pub_ = self.create_publisher(Image, topic, qos_profile=10)
         self.timer_ = self.create_timer(
-            timer_period_sec=0.5, callback=self.publish_image)
+            timer_period_sec=0.4, callback=self.publish_image)
 
     def publish_image(self):
         """
@@ -103,7 +103,6 @@ class VideoStreamNode(Node):
 
         # Publish the image
         self.image_pub_.publish(image_msg)
-       
 
     def callback_yolo_track(self, msg):
         """
@@ -122,7 +121,7 @@ class VideoStreamNode(Node):
             h = str(msg.size[i].y)
 
             # Write the result line
-            result = frame_id + "," + str(float(id-1)) + "," + x + "," + y + "," + w + "," + h + "," + "1,-1,-1,-1\n"
+            result = frame_id + "," + str(float(id)) + "," + x + "," + y + "," + w + "," + h + "," + "1,-1,-1,-1\n"
             self.res_file.write(result)
             if frame_id == "1":
                 print("Done")

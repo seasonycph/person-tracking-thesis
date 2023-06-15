@@ -64,10 +64,12 @@ class YoloPoseNode(Node):
         self.bridge_ = CvBridge()
 
         # Initialize the DeepSort tracker
-        self.deepsort_tracker_ = DeepSort(max_age=20, n_init=2, max_cosine_distance=0.4)#, embedder="clip_RN50x16")
+        # , embedder="clip_RN50x16")
+        self.deepsort_tracker_ = DeepSort(
+            max_age=20, n_init=2, max_cosine_distance=0.4)
 
         # Initialize the centroid tracker
-        self.centroid_tracker_ = CentroidTracker(maxDisappeared=5)
+        self.centroid_tracker_ = CentroidTracker(maxDisappeared=20)
 
         # Initialize the frame count
         self.frame_count_ = 1
@@ -116,7 +118,7 @@ class YoloPoseNode(Node):
         except CvBridgeError as e:
             self.get_logger().error(e)
 
-        #### Run inference every 2 frames
+        # Run inference every 2 frames
         if self.frame_count_ % 2 == 0:
             # Run inference on the converted image
             output, self.cv2_image_ = run_inference(
@@ -134,7 +136,7 @@ class YoloPoseNode(Node):
             nimg, kpts, boxes, confs = draw_keypoints(
                 self.model_, self.conf_thres_, self.inf_output, self.cv2_image_)
 
-        #### Run inference every frame
+        # Run inference every frame
         # output, self.cv2_image_ = run_inference(
         #     self.model_, self.cv2_image_, self.device_)
         # # Draw keypoints and skeleton on the image
@@ -142,44 +144,45 @@ class YoloPoseNode(Node):
         #     self.model_, self.conf_thres_, output, self.cv2_image_)
 
         # Compute the bounding boxes around the person
-        #boxes = compute_bbox(kpts)
+        # boxes = compute_bbox(kpts)
 
         # Compute detections
         detections = compute_detections(boxes, confs)
 
-        ### DeepSort Tracker
+        # DeepSort Tracker
         # Tracking every 2 frames
-        if self.frame_count_ % 2 == 0:
-            tracks = self.deepsort_tracker_.update_tracks(detections, frame=nimg)
-            self.tmp_tracks = tracks
-        else:
-            tracks = self.tmp_tracks
+        # if self.frame_count_ % 2 == 0:
+        #     tracks = self.deepsort_tracker_.update_tracks(detections, frame=nimg)
+        #     self.tmp_tracks = tracks
+        # else:
+        #     tracks = self.tmp_tracks
         # Tracking every frame
         # tracks = self.deepsort_tracker_.update_tracks(detections, frame=nimg)
-        self.deepsort_tracker_.refresh_track_ids()
-        track_dict = OrderedDict()
-        for track in tracks:
-            if not track.is_confirmed():
-                continue
-            track_dict[track.track_id] = track.to_ltrb()
+        # self.deepsort_tracker_.refresh_track_ids()
+        # track_dict = OrderedDict()
+        # for track in tracks:
+        #     if not track.is_confirmed():
+        #         continue
+        #     track_dict[track.track_id] = track.to_ltrb()
 
         # Convert the detections into PersonPose message
         dets_msg, prsn_pose = kpts_to_person_pose(kpts)
         # dets_msg.header = msg.header
         # self.dets_pub_.publish(dets_msg)
 
-        ### Centroid Tracker
+        # Centroid Tracker
         # Run tracking every 2 frames
-        # if self.frame_count_ % 2 == 0:
-        #     track_dict = self.centroid_tracker_.update(prsn_pose)
-        #     self.tmp_dict = track_dict
-        # else:
-        #     track_dict = self.tmp_dict
+        if self.frame_count_ % 2 == 0:
+            track_dict, tracked_boxes = self.centroid_tracker_.update(
+                prsn_pose, boxes)
+            self.tmp_dict, self.tmp_boxes = track_dict, tracked_boxes
+        else:
+            track_dict, tracked_boxes = self.tmp_dict, self.tmp_boxes
         # Run tracking every frame
-        #track_dict, tracked_boxes = self.centroid_tracker_.update(prsn_pose, boxes)
+        # track_dict, tracked_boxes = self.centroid_tracker_.update(prsn_pose, boxes)
 
         # Convert tracker dictionary to Tracker message
-        tracker_type = "deepsort"
+        tracker_type = "centroid"
         track_msg = dict_to_tracker(track_dict, tracker_type)
         track_msg.header = msg.header
         self.tracker_pub_.publish(track_msg)
@@ -196,21 +199,22 @@ class YoloPoseNode(Node):
         # nimg = draw_bbox(track_dict.values(), nimg, (255,0,0))
 
         # Compute and publish the bounding box message
-        bbox_msg = compute_bbox_msg(track_msg.ids, track_dict.values())
+        bbox_msg = compute_bbox_msg(track_msg.ids, tracked_boxes.values())
         self.bbox_pub_.publish(bbox_msg)
+
         # Draw the tracked box // Centroid tracker
-        # if len(tracked_boxes) != 0:
-        #     for box in tracked_boxes.values():
-        #         nimg = cv2.rectangle(nimg, (int(box[0]), int(box[1])),
-        #                              (int(box[2]),
-        #                               int(box[3])),
-        #                              (0, 255, 0), 3)
-        # Draw the tracked box 
-        if len(track_dict) != 0:
-            for box in track_dict.values():
+        if len(tracked_boxes) != 0:
+            for box in tracked_boxes.values():
                 nimg = cv2.rectangle(nimg, (int(box[0]), int(box[1])),
-                                     (int(box[2]), int(box[3])),
+                                     (int(box[2]),
+                                      int(box[3])),
                                      (0, 255, 0), 2)
+        # Draw the tracked box // DeepSORT
+        # if len(track_dict) != 0:
+        #     for box in track_dict.values():
+        #         nimg = cv2.rectangle(nimg, (int(box[0]), int(box[1])),
+        #                              (int(box[2]), int(box[3])),
+        #                              (0, 255, 0), 2)
 
         # Show the inference
         display_inference(nimg)
@@ -230,7 +234,12 @@ class YoloPoseNode(Node):
         if len(self.fps_) > 10:
             self.fps_ = self.fps_[-10:]
         self.get_logger().info(f"FPS: {np.mean(self.fps_)}")
-        if len(self.average_fps) > 890:
+        MOT17_02 = 590
+        MOT17_04 = 1040
+        MOT17_05 = 830
+        MOT17_10 = 650
+        MOT17_11 = 890
+        if len(self.average_fps) > MOT17_11:
             print(f"Overall FPS: {np.mean(self.average_fps)}")
 
 
@@ -244,15 +253,15 @@ def compute_bbox_msg(ids, boxes):
     for box in boxes:
         # Position of the upper left corner
         position = Point()
-        position.x = (box[0])
-        position.y = (box[1])
+        position.x = float(box[0])
+        position.y = float(box[1])
         position.z = 0.0
         msg.corner_pos.append(position)
 
         # Width and height of the bounding box
         size = Point()
-        size.x = (abs(box[2] - box[0])) # W = x2 - x1
-        size.y = (abs(box[3] - box[1])) # H = y2 - y1
+        size.x = float(abs(box[2] - box[0]))  # W = x2 - x1
+        size.y = float(abs(box[3] - box[1]))  # H = y2 - y1
         size.z = 0.0
         msg.size.append(size)
 
@@ -400,7 +409,8 @@ def compute_detections(boxes, confs):
     dets = []
     # The tracker accepts detection input as ([x,y,w,h], conf, class)
     for box, conf in zip(boxes, confs):
-        accepted_box = [box[0], box[1], abs(box[2] - box[0]), abs(box[3] - box[1])]
+        accepted_box = [box[0], box[1], abs(
+            box[2] - box[0]), abs(box[3] - box[1])]
         dets.append((accepted_box, conf, 'person'))
 
     return dets
