@@ -1,3 +1,4 @@
 [console_scripts]
+data_streamer = drspaam.data_streamer:main
 dr_spaam_node = drspaam.drspaam_node:main
 

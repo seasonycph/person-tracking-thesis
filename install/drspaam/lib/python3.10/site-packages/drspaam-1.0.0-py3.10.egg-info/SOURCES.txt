@@ -9,6 +9,7 @@ setup.py
 ../../build/drspaam/drspaam.egg-info/top_level.txt
 ../../build/drspaam/drspaam.egg-info/zip-safe
 drspaam/__init__.py
+drspaam/data_streamer.py
 drspaam/drspaam_node.py
 drspaam/centroid_tracker/__init__.py
 drspaam/centroid_tracker/centroidtracker.py

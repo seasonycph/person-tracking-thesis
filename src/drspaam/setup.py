@@ -21,7 +21,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            "dr_spaam_node = drspaam.drspaam_node:main"
+            "dr_spaam_node = drspaam.drspaam_node:main",
+            "data_streamer = drspaam.data_streamer:main"
         ],
     },
 )

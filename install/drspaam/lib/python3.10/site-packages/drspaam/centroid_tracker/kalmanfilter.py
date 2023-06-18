@@ -89,5 +89,6 @@ class KalmanFilter(object):
         # Update the covariance matrix
         self.errorCov = self.predictedErrorCov - self.kalmanGain * self.H * self.predictedErrorCov
         #(np.identity(self.P.shape[0])
+        
     def __str__(self) -> str:
         return f"{self.state[0]}, {self.state[2]}"

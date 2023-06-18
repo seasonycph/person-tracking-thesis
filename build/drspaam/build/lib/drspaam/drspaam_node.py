@@ -24,9 +24,6 @@ class DrSpaamNode(Node):
         # Read the parameters for the detector
         self.read_params()
 
-        # Initialize the node
-        self.get_logger().info("DR-SPAAM node initialized.")
-
         # Initialize the detector
         self._detector = Detector(
             model_name="DR-SPAAM",
@@ -34,12 +31,12 @@ class DrSpaamNode(Node):
             gpu=torch.cuda.is_available(),
             stride=self.stride,
             tracking=False)
-
+        
         # Initialize tracker
-        self.centroid_tracker_ = CentroidTracker(maxDisappeared=25)
+        self.centroid_tracker_ = CentroidTracker(maxDisappeared=25, minPresence=0)
 
-        # Previous deections
-        self.prev_dets_xy = np.array([0, 0])
+        # Initialize the node
+        self.get_logger().info("DR-SPAAM node initialized.")
 
         # Initialize the comunication
         self.init_communication()
@@ -50,7 +47,10 @@ class DrSpaamNode(Node):
         """
         self.weight_file = "weights/dr-spaam/dr_spaam_e40.pth"
         self.stride = 1
-        self.conf_thresh = 0.75
+        self.conf_thresh = 0.7
+
+        # Flag for Kalman filter usage
+        self.kalmanEnabled = True
 
     def init_communication(self):
         """
@@ -83,6 +83,7 @@ class DrSpaamNode(Node):
             Associations, topic, self.callback_associations, qos_profile=10)
 
         topic = "/lewis_b1/scan_front"
+        topic = "/data_streamer/laser_scan"
         self.scan_sub_ = self.create_subscription(
             LaserScan, topic, self.callback_scan_front, qos_profile=10)
 
@@ -101,11 +102,11 @@ class DrSpaamNode(Node):
 
         # Handle the 'inf' values
         scan = np.array(msg.ranges)
-        scan[np.isinf(scan)] = 39.99
-        scan[np.isnan(scan)] = 39.99
+        scan[np.isinf(scan)] = 29.99#39.99
+        scan[np.isnan(scan)] = 29.99#39.99
 
         # Extract the detections
-        #t = time.time()
+        t = time.time()
         dets_xy, dets_cls, _ = self._detector(scan)
 
         # Confidence threshold
@@ -121,7 +122,10 @@ class DrSpaamNode(Node):
         self.tracker = track_dict
 
         # Convert to tracker message
-        track_msg = dict_to_tracker(self.predictions)  # (track_dict)
+        if self.kalmanEnabled == True:
+            track_msg = dict_to_tracker(self.predictions)  # (track_dict)
+        else:
+            track_msg = dict_to_tracker(track_dict)
         track_msg.header = msg.header
         self.tracker_pub_.publish(track_msg)
 
@@ -151,7 +155,7 @@ class DrSpaamNode(Node):
         self.tracker_id_tviz_pub_.publish(tracker_ids_msg)
 
         # Time until detection message is published
-        #self.get_logger().info(f"End-to-end inference time: {time.time() - t}")
+        self.get_logger().info(f"End-to-end inference SPS: {1 / (time.time() - t)}")
 
     def associations_to_rviz_marker(self):
         # We will use the associations only to draw the rviz tracklets
@@ -184,8 +188,8 @@ def detections_to_pose_array(dets_xy, dets_cls):
 
         p = Pose()
 
-        p.position.x = d_xy[0]
-        p.position.y = d_xy[1]
+        p.position.x = d_xy[1]
+        p.position.y = d_xy[0]
         p.position.z = 0.0
         pose_array.poses.append(p)
 
@@ -357,8 +361,8 @@ def dict_to_tracker(tracker_dict):
         tracker.ids.append(int(key))
         # Save the tracked centroid
         pos = Point()
-        pos.x = pose[0]
-        pos.y = pose[1]
+        pos.x = pose[1]
+        pos.y = pose[0]
         tracker.positions.append(pos)
 
     return tracker

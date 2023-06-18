@@ -100,7 +100,7 @@ class YoloPoseNode(Node):
 
         # Subscriber
         topic = "/lewis_b1/camera_front/rgb/image_raw"
-        topic = "/MOT/image_raw"
+        #topic = "/MOT/image_raw"
         self.image_sub_ = self.create_subscription(
             Image, topic, self.callback_camera_front, qos_profile=10)
 
@@ -234,13 +234,13 @@ class YoloPoseNode(Node):
         if len(self.fps_) > 10:
             self.fps_ = self.fps_[-10:]
         self.get_logger().info(f"FPS: {np.mean(self.fps_)}")
-        MOT17_02 = 590
-        MOT17_04 = 1040
-        MOT17_05 = 830
-        MOT17_10 = 650
-        MOT17_11 = 890
-        if len(self.average_fps) > MOT17_11:
-            print(f"Overall FPS: {np.mean(self.average_fps)}")
+        # MOT17_02 = 590
+        # MOT17_04 = 1040
+        # MOT17_05 = 830
+        # MOT17_10 = 650
+        # MOT17_11 = 890
+        # if len(self.average_fps) > MOT17_11:
+        #     print(f"Overall FPS: {np.mean(self.average_fps)}")
 
 
 def compute_bbox_msg(ids, boxes):
