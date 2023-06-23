@@ -47,10 +47,10 @@ class DrSpaamNode(Node):
         """
         self.weight_file = "weights/dr-spaam/dr_spaam_e40.pth"
         self.stride = 1
-        self.conf_thresh = 0.7
+        self.conf_thresh = 0.5
 
         # Flag for Kalman filter usage
-        self.kalmanEnabled = True
+        self.kalmanEnabled = False
 
     def init_communication(self):
         """
@@ -83,7 +83,7 @@ class DrSpaamNode(Node):
             Associations, topic, self.callback_associations, qos_profile=10)
 
         topic = "/lewis_b1/scan_front"
-        topic = "/data_streamer/laser_scan"
+        #topic = "/data_streamer/laser_scan"
         self.scan_sub_ = self.create_subscription(
             LaserScan, topic, self.callback_scan_front, qos_profile=10)
 
@@ -361,8 +361,8 @@ def dict_to_tracker(tracker_dict):
         tracker.ids.append(int(key))
         # Save the tracked centroid
         pos = Point()
-        pos.x = pose[1]
-        pos.y = pose[0]
+        pos.x = pose[0]
+        pos.y = pose[1]
         tracker.positions.append(pos)
 
     return tracker

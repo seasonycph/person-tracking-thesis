@@ -20,17 +20,18 @@ class DataStreamerNode(Node):
 
         # Info on initialized node
         self.get_logger().info("Data streamer node initialized.")
+        self.get_logger().info(f"Running test for {self.test_type} with test case {self.test_case}")
 
         # Initialize the communications
         self.init_communications()
 
     def read_params(self):
         # File name for generalization
-        test_type = "static_robot"
-        file_name = f"{test_type}_data"
+        self.test_type = "moving_robot"
+        file_name = f"{self.test_type}_data"
 
         # Name of the file from which read the data
-        self.data_file = f"/media/taras/5038-A14F/dataset_lidar/gt/selected/{test_type}/{file_name}.csv"
+        self.data_file = f"/media/taras/5038-A14F/dataset_lidar/gt/selected/{self.test_type}/{file_name}.csv"
 
         # Calculate the number of lines in the file and save the scans
         self.seq_len = 0
@@ -50,10 +51,10 @@ class DataStreamerNode(Node):
         self.scan_num = 0
 
         # Test case
-        test_case = f"{test_type}/4"
+        self.test_case = "1"
         
         # File to which write the results
-        self.result_file = open(f"/media/taras/5038-A14F/dataset_lidar/tracker/{test_case}/{file_name}_result.txt", "+w")
+        self.result_file = open(f"/media/taras/5038-A14F/dataset_lidar/tracker/{self.test_type}/{self.test_case}/{file_name}_result.txt", "+w")
 
 
     def init_communications(self):
@@ -66,7 +67,7 @@ class DataStreamerNode(Node):
         self.scan_pub_ = self.create_publisher(
             LaserScan, topic, qos_profile=10)
         self.timer_ = self.create_timer(
-            timer_period_sec=0.05, callback=self.publish_scan)
+            timer_period_sec=0.07, callback=self.publish_scan)
 
         # Subscriber
         topic = "/dr_spaam/tracker"
