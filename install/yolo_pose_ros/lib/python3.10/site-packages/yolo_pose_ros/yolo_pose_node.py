@@ -66,10 +66,10 @@ class YoloPoseNode(Node):
         # Initialize the DeepSort tracker
         # , embedder="clip_RN50x16")
         self.deepsort_tracker_ = DeepSort(
-            max_age=20, n_init=2, max_cosine_distance=0.4)
+            max_age=5, n_init=2, max_cosine_distance=0.4)
 
         # Initialize the centroid tracker
-        self.centroid_tracker_ = CentroidTracker(maxDisappeared=20)
+        self.centroid_tracker_ = CentroidTracker(maxDisappeared=5)
 
         # Initialize the frame count
         self.frame_count_ = 1
@@ -149,21 +149,21 @@ class YoloPoseNode(Node):
         # Compute detections
         detections = compute_detections(boxes, confs)
 
-        # DeepSort Tracker
+        #### DeepSort Tracker
         # Tracking every 2 frames
-        # if self.frame_count_ % 2 == 0:
-        #     tracks = self.deepsort_tracker_.update_tracks(detections, frame=nimg)
-        #     self.tmp_tracks = tracks
-        # else:
-        #     tracks = self.tmp_tracks
+        if self.frame_count_ % 2 == 0:
+            tracks = self.deepsort_tracker_.update_tracks(detections, frame=nimg)
+            self.tmp_tracks = tracks
+        else:
+            tracks = self.tmp_tracks
         # Tracking every frame
         # tracks = self.deepsort_tracker_.update_tracks(detections, frame=nimg)
         # self.deepsort_tracker_.refresh_track_ids()
-        # track_dict = OrderedDict()
-        # for track in tracks:
-        #     if not track.is_confirmed():
-        #         continue
-        #     track_dict[track.track_id] = track.to_ltrb()
+        track_dict = OrderedDict()
+        for track in tracks:
+            if not track.is_confirmed():
+                continue
+            track_dict[track.track_id] = track.to_ltrb()
 
         # Convert the detections into PersonPose message
         dets_msg, prsn_pose = kpts_to_person_pose(kpts)
@@ -172,17 +172,17 @@ class YoloPoseNode(Node):
 
         # Centroid Tracker
         # Run tracking every 2 frames
-        if self.frame_count_ % 2 == 0:
-            track_dict, tracked_boxes = self.centroid_tracker_.update(
-                prsn_pose, boxes)
-            self.tmp_dict, self.tmp_boxes = track_dict, tracked_boxes
-        else:
-            track_dict, tracked_boxes = self.tmp_dict, self.tmp_boxes
+        # if self.frame_count_ % 2 == 0:
+        #     track_dict, tracked_boxes = self.centroid_tracker_.update(
+        #         prsn_pose, boxes)
+        #     self.tmp_dict, self.tmp_boxes = track_dict, tracked_boxes
+        # else:
+        #     track_dict, tracked_boxes = self.tmp_dict, self.tmp_boxes
         # Run tracking every frame
         # track_dict, tracked_boxes = self.centroid_tracker_.update(prsn_pose, boxes)
 
         # Convert tracker dictionary to Tracker message
-        tracker_type = "centroid"
+        tracker_type = "deepsort"
         track_msg = dict_to_tracker(track_dict, tracker_type)
         track_msg.header = msg.header
         self.tracker_pub_.publish(track_msg)
@@ -199,22 +199,22 @@ class YoloPoseNode(Node):
         # nimg = draw_bbox(track_dict.values(), nimg, (255,0,0))
 
         # Compute and publish the bounding box message
-        bbox_msg = compute_bbox_msg(track_msg.ids, tracked_boxes.values())
+        bbox_msg = compute_bbox_msg(track_msg.ids, track_dict.values())
         self.bbox_pub_.publish(bbox_msg)
 
         # Draw the tracked box // Centroid tracker
-        if len(tracked_boxes) != 0:
-            for box in tracked_boxes.values():
-                nimg = cv2.rectangle(nimg, (int(box[0]), int(box[1])),
-                                     (int(box[2]),
-                                      int(box[3])),
-                                     (0, 255, 0), 2)
-        # Draw the tracked box // DeepSORT
-        # if len(track_dict) != 0:
-        #     for box in track_dict.values():
+        # if len(tracked_boxes) != 0:
+        #     for box in tracked_boxes.values():
         #         nimg = cv2.rectangle(nimg, (int(box[0]), int(box[1])),
-        #                              (int(box[2]), int(box[3])),
+        #                              (int(box[2]),
+        #                               int(box[3])),
         #                              (0, 255, 0), 2)
+        # Draw the tracked box // DeepSORT
+        if len(track_dict) != 0:
+            for box in track_dict.values():
+                nimg = cv2.rectangle(nimg, (int(box[0]), int(box[1])),
+                                     (int(box[2]), int(box[3])),
+                                     (0, 255, 0), 2)
 
         # Show the inference
         display_inference(nimg)

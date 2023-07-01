@@ -28,9 +28,9 @@ class VideoStreamNode(Node):
         self.get_logger().info("Video Stremer node initialized.")
 
     def init_parameters(self):
-        data = 'MOT17-11-DPM'
-        tracker = 'CentroidTracker'
-        evaluation = "4"
+        data = 'MOT17-05-DPM'
+        tracker = 'DeepSortTracker'
+        evaluation = "10"
         # Image directory
         self.image_dir = f"/media/taras/5038-A14F/tracking_datasets/MOT17/train/{data}/img1/"
 
@@ -51,7 +51,7 @@ class VideoStreamNode(Node):
         self.im_num = 0
 
         # The file to which write the results
-        self.res_file = open(f"/home/taras/thesis_ws/track_results/{tracker}/{evaluation}/{data}.txt", "+w")
+        self.res_file = open(f"/media/taras/5038-A14F/tracking_datasets/track_results/{tracker}/{evaluation}/{data}.txt", "+w")
 
         # Create bridge to convert image to Image message
         self.bridge_ = CvBridge()

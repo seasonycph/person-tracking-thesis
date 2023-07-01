@@ -70,7 +70,7 @@ class TrackerNode(Node):
         # Compute the relative angle of each detection
         # 34.5 is half of the HFOV of the camera
         # 480 is half of the size of the picture
-        # THe halves are taken so the coordinate system starts at the middle, like in the LiDAR
+        # The halves are taken so the coordinate system starts at the center, like in the LiDAR
         # The new tracking dictionary will be
         # {'ID': [x, y, angle]}
         for key, poses in self.yolo_track_.items():
@@ -105,7 +105,7 @@ class TrackerNode(Node):
         self.associations_msg = Associations()
 
         # Choose which tracklets will be used
-        # If yolo tracklets are empty, there will be no associations and same if drspaam's are e,pty
+        # If yolo tracklets are empty, there will be no associations and same if drspaam's are empty
         # Otherwise use yolo's as a base
         if len(list(self.yolo_track_.keys())) == 0:
             tracklets = self.drspaam_track_

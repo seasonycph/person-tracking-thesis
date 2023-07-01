@@ -27,7 +27,7 @@ class DataStreamerNode(Node):
 
     def read_params(self):
         # File name for generalization
-        self.test_type = "moving_robot"
+        self.test_type = "static_robot"
         file_name = f"{self.test_type}_data"
 
         # Name of the file from which read the data
@@ -51,7 +51,7 @@ class DataStreamerNode(Node):
         self.scan_num = 0
 
         # Test case
-        self.test_case = "1"
+        self.test_case = "9"
         
         # File to which write the results
         self.result_file = open(f"/media/taras/5038-A14F/dataset_lidar/tracker/{self.test_type}/{self.test_case}/{file_name}_result.txt", "+w")
@@ -121,7 +121,7 @@ class DataStreamerNode(Node):
         # Publish the message
         self.scan_pub_.publish(laser_msg)
 
-        
+        self.get_logger().info(f"Published scan {self.scan_num}")
 
         #print(f"Publication time: {time.time() - t}")
 

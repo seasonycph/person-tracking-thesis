@@ -33,7 +33,7 @@ class DrSpaamNode(Node):
             tracking=False)
         
         # Initialize tracker
-        self.centroid_tracker_ = CentroidTracker(maxDisappeared=25, minPresence=0)
+        self.centroid_tracker_ = CentroidTracker(maxDisappeared=10, minPresence=5)
 
         # Initialize the node
         self.get_logger().info("DR-SPAAM node initialized.")
@@ -46,11 +46,11 @@ class DrSpaamNode(Node):
         Reads parameters from ROS server
         """
         self.weight_file = "weights/dr-spaam/dr_spaam_e40.pth"
-        self.stride = 1
-        self.conf_thresh = 0.5
+        self.stride = 3
+        self.conf_thresh = 0.6
 
         # Flag for Kalman filter usage
-        self.kalmanEnabled = False
+        self.kalmanEnabled = True
 
     def init_communication(self):
         """
@@ -78,12 +78,12 @@ class DrSpaamNode(Node):
             MarkerArray, topic, qos_profile=10)
 
         # Subscriber
-        topic = "/tracker/associations"
-        self.associations_sub_ = self.create_subscription(
-            Associations, topic, self.callback_associations, qos_profile=10)
+        # topic = "/tracker/associations"
+        # self.associations_sub_ = self.create_subscription(
+        #     Associations, topic, self.callback_associations, qos_profile=10)
 
         topic = "/lewis_b1/scan_front"
-        topic = "/data_streamer/laser_scan"
+        #topic = "/data_streamer/laser_scan"
         self.scan_sub_ = self.create_subscription(
             LaserScan, topic, self.callback_scan_front, qos_profile=10)
 
@@ -102,8 +102,8 @@ class DrSpaamNode(Node):
 
         # Handle the 'inf' values
         scan = np.array(msg.ranges)
-        scan[np.isinf(scan)] = 29.99#39.99
-        scan[np.isnan(scan)] = 29.99#39.99
+        scan[np.isinf(scan)] = 39.99#29.99#
+        scan[np.isnan(scan)] = 39.99#29.99#
 
         # Extract the detections
         t = time.time()
